@@ -1,13 +1,7 @@
 package Converters;
 
-import Objects.Constants.TVDBEpisodeConstants;
-import Objects.Constants.TVDBIMDBConstants;
-import Objects.Constants.TVDBSeriesConstants;
-import Objects.Constants.TVDBUpdateConstants;
-import Objects.TVDBEpisode;
-import Objects.TVDBIMDB;
-import Objects.TVDBSeries;
-import Objects.TVDBUpdate;
+import Objects.*;
+import Objects.Constants.*;
 
 public class XMLSwitchHelper {
     public static void switchTVDBUpdate(TVDBUpdate tvdbUpdate, String switchName, String content) {
@@ -224,6 +218,68 @@ public class XMLSwitchHelper {
                 break;
             case TVDBSeriesConstants.ZAP2IT_ID:
                 tvdbSeries.setZap2itId(content);
+                break;
+        }
+    }
+
+    public static void switchOMDB(OMDB omdb, String switchName, String content) {
+        switch(switchName) {
+            case OMDBConstants.TITLE:
+                omdb.setTitle(content);
+                break;
+            case OMDBConstants.YEAR:
+                omdb.setYear(content);
+                break;
+            case OMDBConstants.RATED:
+                omdb.setRated(content);
+                break;
+            case OMDBConstants.RELEASED:
+                omdb.setReleased(content);
+                break;
+            case OMDBConstants.RUNTIME:
+                omdb.setRuntime(content);
+                break;
+            case OMDBConstants.GENRE:
+                omdb.setGenre(content);
+                break;
+            case OMDBConstants.DIRECTOR:
+                omdb.setDirector(content);
+                break;
+            case OMDBConstants.WRITER:
+                omdb.setWriter(content);
+                break;
+            case OMDBConstants.ACTORS:
+                omdb.setActors(content);
+                break;
+            case OMDBConstants.PLOT:
+                omdb.setPlot(content);
+                break;
+            case OMDBConstants.LANGUAGE:
+                omdb.setLanguage(content);
+                break;
+            case OMDBConstants.COUNTRY:
+                omdb.setCountry(content);
+                break;
+            case OMDBConstants.AWARDS:
+                omdb.setAwards(content);
+                break;
+            case OMDBConstants.POSTER:
+                omdb.setPoster(content);
+                break;
+            case OMDBConstants.METASCORE:
+                omdb.setMetascore(content);
+                break;
+            case OMDBConstants.IMDB_RATING:
+                omdb.setImdbRating(content);
+                break;
+            case OMDBConstants.IMDB_VOTES:
+                omdb.setImdbVotes(content);
+                break;
+            case OMDBConstants.IMDB_ID:
+                omdb.setImdbID(content);
+                break;
+            case OMDBConstants.TYPE:
+                omdb.setType(content);
                 break;
         }
     }
