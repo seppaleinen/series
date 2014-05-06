@@ -11,34 +11,29 @@ public class DomParser implements XmlParser {
     @Override
     public TVDBEpisode parseTVDBEpisodeFromXML(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        TVDBEpisode tvdbEpisode = TVDBEpisodeNodeHandler.parse(document);
-        return tvdbEpisode;
+        return TVDBEpisodeNodeHandler.parse(document);
     }
 
     @Override
     public TVDBIMDB parseTVDBIMDBFromXml(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        TVDBIMDB tvdbimdb = TVDBIMDBNodeHandler.parse(document);
-        return tvdbimdb;
+        return TVDBIMDBNodeHandler.parse(document);
     }
 
     @Override
     public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        TVDBSeries tvdbSeries = TVDBSeriesNodeHandler.parse(document);
-        return tvdbSeries;
+        return TVDBSeriesNodeHandler.parse(document);
     }
 
     @Override
     public TVDBUpdate parseTVDBUpdateFromXml(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        TVDBUpdate tvdbUpdate = TVDBUpdateNodeHandler.parse(document);
-        return tvdbUpdate;
+        return TVDBUpdateNodeHandler.parse(document);
     }
 
     @Override
     public OMDB parseOmdbFromXml(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        OMDB omdb = OMDBNodeHandler.parse(document);
-        return omdb;
+        return OMDBNodeHandler.parse(document);
     }}

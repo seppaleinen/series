@@ -26,7 +26,6 @@ public class StAXParserTest {
         parserTests.testParseOMDBFromXml(saxParser);
     }
 
-    @Ignore
     @Test
     public void testParseTVDBUpdateFromXml() throws IOException, ParserConfigurationException, SAXException {
         parserTests.testParseTVDBUpdateFromXml(saxParser);
