@@ -1,5 +1,7 @@
 package Integrations;
 
+import Integrations.Utils.UrlConnection;
+
 import java.io.BufferedReader;
 import java.net.URL;
 

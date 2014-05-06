@@ -1,12 +1,16 @@
+package MediaFinder.FileFinder;
+
+import MediaFinder.Finder;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Finder {
+public class FileFinder implements Finder {
     private List<String> result = new ArrayList<>();
     private static List<String> mediaFormats = new ArrayList<>();
 
-    public Finder(){
+    public FileFinder(){
         mediaFormats.add(".avi");
         mediaFormats.add(".mpg");
         mediaFormats.add(".mkv");
@@ -15,7 +19,7 @@ public class Finder {
         mediaFormats.add(".mpeg");
     }
 
-    public void searchDirectory(String directoryPath) {
+    public List<String> searchDirectory(String directoryPath) {
         File directory = new File(directoryPath);
 
         if (directory.isDirectory()) {
@@ -24,6 +28,7 @@ public class Finder {
             System.out.println(directory.getAbsoluteFile() + " is not a directory!");
         }
 
+        return result;
     }
 
     private void search(File file) {

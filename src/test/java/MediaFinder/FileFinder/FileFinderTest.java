@@ -1,3 +1,6 @@
+package MediaFinder.FileFinder;
+
+import MediaFinder.Finder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -5,22 +8,20 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class FinderTest {
+public class FileFinderTest {
     private static final String MEDIADIR = "/Media";
-    private Finder finder;
+    private Finder fileFinder;
 
     @Before
     public void setup(){
-        finder = new Finder();
+        fileFinder = new FileFinder();
     }
 
     @Test
     public void testFinder(){
         String directory = getFile(MEDIADIR);
 
-        finder.searchDirectory(directory);
-
-        List<String> result = finder.getResult();
+        List<String> result = fileFinder.searchDirectory(directory);
 
         assertNotNull(result);
         assertFalse("Result should not be empty", result.isEmpty());
