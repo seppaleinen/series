@@ -1,12 +1,9 @@
-package Converters.Utils;
+package Converters.SaxParser.Utils;
 
 import Objects.TVDBIMDB;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TVDBIMDBHandler extends DefaultHandler {
     private static final String ELEMENT = "Series";

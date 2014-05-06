@@ -1,4 +1,4 @@
-package Converters.Utils;
+package Converters.SaxParser.Utils;
 
 import Objects.TVDBUpdate;
 import org.xml.sax.Attributes;

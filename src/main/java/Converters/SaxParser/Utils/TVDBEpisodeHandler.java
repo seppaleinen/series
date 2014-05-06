@@ -1,4 +1,4 @@
-package Converters.Utils;
+package Converters.SaxParser.Utils;
 
 import Objects.TVDBEpisode;
 import org.xml.sax.Attributes;
