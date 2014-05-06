@@ -1,5 +1,6 @@
 package Converters.SaxParser.Utils;
 
+import Converters.XMLSwitchHelper;
 import Objects.Constants.TVDBUpdateConstants;
 import Objects.TVDBUpdate;
 import org.xml.sax.Attributes;
@@ -19,19 +20,7 @@ public class TVDBUpdateHandler extends DefaultHandler {
     }
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        switch (qName){
-            case TVDBUpdateConstants.ELEMENTNAME:
-                break;
-            case TVDBUpdateConstants.TIME:
-                tvdbUpdate.setTime(content);
-                break;
-            case TVDBUpdateConstants.SERIES:
-                tvdbUpdate.getSeriesList().add(content);
-                break;
-            case TVDBUpdateConstants.EPISODE:
-                tvdbUpdate.getEpisodeList().add(content);
-                break;
-        }
+        XMLSwitchHelper.switchTVDBUpdate(tvdbUpdate, qName, content);
     }
     public void characters(char[] ch, int start, int length) throws SAXException {
         content = String.copyValueOf(ch, start, length).trim();

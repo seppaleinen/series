@@ -3,7 +3,6 @@ package Converters;
 import Objects.TVDBEpisode;
 import Objects.TVDBSeries;
 import Objects.TVDBUpdate;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;

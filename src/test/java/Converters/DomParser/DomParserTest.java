@@ -20,7 +20,6 @@ public class DomParserTest {
         parserTests = new ParserTests();
     }
 
-    @Ignore
     @Test
     public void testParseOMDBFromXml(){
         parserTests.testParseOMDBFromXml(saxParser);
@@ -36,13 +35,11 @@ public class DomParserTest {
         parserTests.testParseTVDBIMDBFromXml(saxParser);
     }
 
-    @Ignore
     @Test
     public void testParseTVDBSeriesFromXml(){
         parserTests.testParseTVDBSeriesFromXml(saxParser);
     }
 
-    @Ignore
     @Test
     public void testParseTVDBEpisodeFromXml(){
         parserTests.testParseTVDBEpisodeFromXml(saxParser);

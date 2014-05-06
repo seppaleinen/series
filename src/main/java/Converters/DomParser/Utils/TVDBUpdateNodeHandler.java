@@ -1,5 +1,6 @@
 package Converters.DomParser.Utils;
 
+import Converters.XMLSwitchHelper;
 import Objects.Constants.TVDBUpdateConstants;
 import Objects.TVDBUpdate;
 import org.w3c.dom.Document;
@@ -29,17 +30,9 @@ public class TVDBUpdateNodeHandler {
     }
 
     private static void extractInformationFromNode(Node node) {
-        String content = node.getLastChild().getTextContent().trim();
-        switch (node.getNodeName()) {
-            case TVDBUpdateConstants.TIME:
-                tvdbUpdate.setTime(content);
-                break;
-            case TVDBUpdateConstants.SERIES:
-                tvdbUpdate.getSeriesList().add(content);
-                break;
-            case TVDBUpdateConstants.EPISODE:
-                tvdbUpdate.getEpisodeList().add(content);
-                break;
+        if(node.getLastChild()!=null) {
+            String content = node.getLastChild().getTextContent().trim();
+            XMLSwitchHelper.switchTVDBUpdate(tvdbUpdate, node.getNodeName(), content);
         }
     }
 }

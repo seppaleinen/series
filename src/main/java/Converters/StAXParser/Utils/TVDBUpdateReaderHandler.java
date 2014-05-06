@@ -1,5 +1,6 @@
 package Converters.StAXParser.Utils;
 
+import Converters.XMLSwitchHelper;
 import Objects.Constants.TVDBUpdateConstants;
 import Objects.TVDBUpdate;
 
@@ -12,8 +13,8 @@ public class TVDBUpdateReaderHandler {
     private static String content;
 
     public static TVDBUpdate parse(XMLStreamReader xmlStreamReader) {
-        while (readerHasNext(xmlStreamReader)) {
-            int event = getNextEvent(xmlStreamReader);
+        while (XmlStreamReaderHelper.readerHasNext(xmlStreamReader)) {
+            int event = XmlStreamReaderHelper.getNextEvent(xmlStreamReader);
             switchEvent(event, xmlStreamReader);
         }
         return tvdbUpdate;
@@ -30,39 +31,8 @@ public class TVDBUpdateReaderHandler {
                 content = xmlStreamReader.getText().trim();
                 break;
             case XMLStreamConstants.END_ELEMENT:
-                switch (xmlStreamReader.getLocalName()) {
-                    case TVDBUpdateConstants.TIME:
-                        tvdbUpdate.setTime(content);
-                        break;
-                    case TVDBUpdateConstants.SERIES:
-                        tvdbUpdate.getSeriesList().add(content);
-                        break;
-                    case TVDBUpdateConstants.EPISODE:
-                        tvdbUpdate.getEpisodeList().add(content);
-                        break;
-                }
+                XMLSwitchHelper.switchTVDBUpdate(tvdbUpdate, xmlStreamReader.getLocalName(), content);
                 break;
         }
     }
-
-    private static boolean readerHasNext(XMLStreamReader xmlStreamReader) {
-        boolean hasNext = false;
-        try {
-            hasNext = xmlStreamReader.hasNext();
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
-        }
-        return hasNext;
-    }
-
-    private static int getNextEvent(XMLStreamReader xmlStreamReader) {
-        Integer event = null;
-        try {
-            event = xmlStreamReader.next();
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
-        }
-        return event;
-    }
-
 }

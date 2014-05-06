@@ -5,7 +5,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.InputStream;
 
-public class XMLStreamReaderCreater {
+public class XmlStreamReaderHelper {
     public static XMLStreamReader getXMLStreamReader(InputStream inputStream){
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         return createXmlStreamReader(xmlInputFactory, inputStream);
@@ -20,4 +20,25 @@ public class XMLStreamReaderCreater {
         }
         return xmlStreamReader;
     }
+
+    public static boolean readerHasNext(XMLStreamReader xmlStreamReader) {
+        boolean hasNext = false;
+        try {
+            hasNext = xmlStreamReader.hasNext();
+        } catch (XMLStreamException e) {
+            e.printStackTrace();
+        }
+        return hasNext;
+    }
+
+    public static int getNextEvent(XMLStreamReader xmlStreamReader) {
+        Integer event = null;
+        try {
+            event = xmlStreamReader.next();
+        } catch (XMLStreamException e) {
+            e.printStackTrace();
+        }
+        return event;
+    }
+
 }

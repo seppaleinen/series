@@ -1,5 +1,6 @@
 package Converters.SaxParser.Utils;
 
+import Converters.XMLSwitchHelper;
 import Objects.Constants.TVDBIMDBConstants;
 import Objects.TVDBIMDB;
 import org.xml.sax.Attributes;
@@ -19,34 +20,7 @@ public class TVDBIMDBHandler extends DefaultHandler {
     }
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        switch (qName){
-            case TVDBIMDBConstants.ELEMENT:
-                break;
-            case TVDBIMDBConstants.SERIES_ID:
-                tvdbimdb.setSeriesId(content);
-                break;
-            case TVDBIMDBConstants.LANGUAGE:
-                tvdbimdb.setLanguage(content);
-                break;
-            case TVDBIMDBConstants.SERIES_NAME:
-                tvdbimdb.setSeriesName(content);
-                break;
-            case TVDBIMDBConstants.BANNER:
-                tvdbimdb.setBanner(content);
-                break;
-            case TVDBIMDBConstants.OVERVIEW:
-                tvdbimdb.setOverview(content);
-                break;
-            case TVDBIMDBConstants.FIRST_AIRED:
-                tvdbimdb.setFirstAired(content);
-                break;
-            case TVDBIMDBConstants.IMDB_ID:
-                tvdbimdb.setImdbId(content);
-                break;
-            case TVDBIMDBConstants.ID:
-                tvdbimdb.setId(content);
-                break;
-        }
+        XMLSwitchHelper.switchTVDBIMDB(tvdbimdb, qName, content);
     }
     public void characters(char[] ch, int start, int length) throws SAXException {
         content = String.copyValueOf(ch, start, length).trim();

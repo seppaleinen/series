@@ -1,5 +1,6 @@
 package Converters.DomParser.Utils;
 
+import Converters.XMLSwitchHelper;
 import Objects.TVDBEpisode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -37,8 +38,9 @@ public class TVDBEpisodeNodeHandler {
     }
 
     private static void extractInformationFromNode(Node node) {
-        String content = node.getLastChild().getTextContent().trim();
-        switch (node.getNodeName()) {
+        if(node.getLastChild()!=null) {
+            String content = node.getLastChild().getTextContent().trim();
+            XMLSwitchHelper.switchTVDBEpisode(tvdbEpisode, node.getNodeName(), content);
         }
     }
 }

@@ -1,5 +1,6 @@
 package Converters.DomParser.Utils;
 
+import Converters.XMLSwitchHelper;
 import Objects.Constants.TVDBIMDBConstants;
 import Objects.TVDBIMDB;
 import org.w3c.dom.Document;
@@ -39,32 +40,9 @@ public class TVDBIMDBNodeHandler {
     }
 
     private static void extractInformationFromNode(Node node) {
-        String content = node.getLastChild().getTextContent().trim();
-        switch (node.getNodeName()) {
-            case TVDBIMDBConstants.SERIES_ID:
-                tvdbimdb.setSeriesId(content);
-                break;
-            case TVDBIMDBConstants.LANGUAGE:
-                tvdbimdb.setLanguage(content);
-                break;
-            case TVDBIMDBConstants.SERIES_NAME:
-                tvdbimdb.setSeriesName(content);
-                break;
-            case TVDBIMDBConstants.BANNER:
-                tvdbimdb.setBanner(content);
-                break;
-            case TVDBIMDBConstants.OVERVIEW:
-                tvdbimdb.setOverview(content);
-                break;
-            case TVDBIMDBConstants.FIRST_AIRED:
-                tvdbimdb.setFirstAired(content);
-                break;
-            case TVDBIMDBConstants.IMDB_ID:
-                tvdbimdb.setImdbId(content);
-                break;
-            case TVDBIMDBConstants.ID:
-                tvdbimdb.setId(content);
-                break;
+        if(node.getLastChild()!=null) {
+            String content = node.getLastChild().getTextContent().trim();
+            XMLSwitchHelper.switchTVDBIMDB(tvdbimdb, node.getNodeName(), content);
         }
     }
 }
