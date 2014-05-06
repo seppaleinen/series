@@ -1,7 +1,6 @@
 package Converters.DomParser;
 
-import Converters.DomParser.Utils.DocumentHandler;
-import Converters.DomParser.Utils.TVDBUpdateNodeHandler;
+import Converters.DomParser.Utils.*;
 import Converters.XmlParser;
 import Objects.*;
 import org.w3c.dom.Document;
@@ -12,19 +11,22 @@ public class DomParser implements XmlParser {
     @Override
     public TVDBEpisode parseTVDBEpisodeFromXML(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return null;
+        TVDBEpisode tvdbEpisode = TVDBEpisodeNodeHandler.parse(document);
+        return tvdbEpisode;
     }
 
     @Override
     public TVDBIMDB parseTVDBIMDBFromXml(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return null;
+        TVDBIMDB tvdbimdb = TVDBIMDBNodeHandler.parse(document);
+        return tvdbimdb;
     }
 
     @Override
     public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return null;
+        TVDBSeries tvdbSeries = TVDBSeriesNodeHandler.parse(document);
+        return tvdbSeries;
     }
 
     @Override
@@ -37,5 +39,6 @@ public class DomParser implements XmlParser {
     @Override
     public OMDB parseOmdbFromXml(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return null;
+        OMDB omdb = OMDBNodeHandler.parse(document);
+        return omdb;
     }}

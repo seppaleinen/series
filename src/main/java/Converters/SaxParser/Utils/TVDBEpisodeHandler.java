@@ -1,48 +1,18 @@
 package Converters.SaxParser.Utils;
 
+import Objects.Constants.TVDBEpisodeConstants;
 import Objects.TVDBEpisode;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class TVDBEpisodeHandler extends DefaultHandler {
-    private static final String ELEMENT = "Episode";
-    private static final String ID = "id";
-    private static final String SEASON_ID = "seasonid";
-    private static final String EPISODE_NUMBER = "EpisodeNumber";
-    private static final String EPISODE_NAME = "EpisodeName";
-    private static final String FIRST_AIRED = "FirstAired";
-    private static final String GUEST_STARS = "GuestStars";
-    private static final String DIRECTOR = "Director";
-    private static final String WRITER = "Writer";
-    private static final String OVERVIEW = "Overview";
-    private static final String PRODUCTION_CODE = "ProductionCode";
-    private static final String LAST_UPDATED = "lastupdated";
-    private static final String FLAGGED = "flagged";
-    private static final String DVD_DISCID = "DVD_discid";
-    private static final String DVD_SEASON = "DVD_season";
-    private static final String DVD_EPISODENUMBER = "DVD_episodenumber";
-    private static final String DVD_CHAPTER = "DVD_chapter";
-    private static final String ABSOLUTE_NUMBER = "absolute_number";
-    private static final String FILENAME = "filename";
-    private static final String SERIESID = "seriesid";
-    private static final String THUMB_ADDED = "thumb_added";
-    private static final String THUMB_WIDTH = "thumb_width";
-    private static final String THUMB_HEIGHT = "thumb_height";
-    private static final String TMS_EXPORT = "tms_export";
-    private static final String MIRROR_UPDATE = "mirrorupdate";
-    private static final String IMDB_ID = "IMDB_ID";
-    private static final String EPIMGFLAG = "EpImgFlag";
-    private static final String RATING = "Rating";
-    private static final String SEASON_NUMBER = "SeasonNumber";
-    private static final String LANGUAGE = "Language";
-
     private TVDBEpisode tvdbEpisode;
     private String content;
 
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         switch (qName) {
-            case ELEMENT:
+            case TVDBEpisodeConstants.ELEMENT:
                 tvdbEpisode = new TVDBEpisode();
                 break;
         }
@@ -50,93 +20,93 @@ public class TVDBEpisodeHandler extends DefaultHandler {
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
         switch (qName){
-            case ELEMENT:
+            case TVDBEpisodeConstants.ELEMENT:
                 break;
-            case ID:
+            case TVDBEpisodeConstants.ID:
                 tvdbEpisode.setId(content);
                 break;
-            case SEASON_ID:
+            case TVDBEpisodeConstants.SEASON_ID:
                 tvdbEpisode.setSeasonid(content);
                 break;
-            case EPISODE_NUMBER:
+            case TVDBEpisodeConstants.EPISODE_NUMBER:
                 tvdbEpisode.setEpisodeNumber(content);
                 break;
-            case EPISODE_NAME:
+            case TVDBEpisodeConstants.EPISODE_NAME:
                 tvdbEpisode.setEpisodeName(content);
                 break;
-            case FIRST_AIRED:
+            case TVDBEpisodeConstants.FIRST_AIRED:
                 tvdbEpisode.setFirstAired(content);
                 break;
-            case GUEST_STARS:
+            case TVDBEpisodeConstants.GUEST_STARS:
                 tvdbEpisode.setGuestStars(content);
                 break;
-            case DIRECTOR:
+            case TVDBEpisodeConstants.DIRECTOR:
                 tvdbEpisode.setDirector(content);
                 break;
-            case WRITER:
+            case TVDBEpisodeConstants.WRITER:
                 tvdbEpisode.setWriter(content);
                 break;
-            case OVERVIEW:
+            case TVDBEpisodeConstants.OVERVIEW:
                 tvdbEpisode.setOverview(content);
                 break;
-            case PRODUCTION_CODE:
+            case TVDBEpisodeConstants.PRODUCTION_CODE:
                 tvdbEpisode.setProductionCode(content);
                 break;
-            case LAST_UPDATED:
+            case TVDBEpisodeConstants.LAST_UPDATED:
                 tvdbEpisode.setLastUpdated(content);
                 break;
-            case FLAGGED:
+            case TVDBEpisodeConstants.FLAGGED:
                 tvdbEpisode.setFlagged(content);
                 break;
-            case DVD_DISCID:
+            case TVDBEpisodeConstants.DVD_DISCID:
                 tvdbEpisode.setDvdDiscId(content);
                 break;
-            case DVD_SEASON:
+            case TVDBEpisodeConstants.DVD_SEASON:
                 tvdbEpisode.setDvdSeason(content);
                 break;
-            case DVD_EPISODENUMBER:
+            case TVDBEpisodeConstants.DVD_EPISODENUMBER:
                 tvdbEpisode.setDvdEpisodeNumber(content);
                 break;
-            case DVD_CHAPTER:
+            case TVDBEpisodeConstants.DVD_CHAPTER:
                 tvdbEpisode.setDvdChapter(content);
                 break;
-            case ABSOLUTE_NUMBER:
+            case TVDBEpisodeConstants.ABSOLUTE_NUMBER:
                 tvdbEpisode.setAbsoluteNumber(content);
                 break;
-            case FILENAME:
+            case TVDBEpisodeConstants.FILENAME:
                 tvdbEpisode.setFilename(content);
                 break;
-            case SERIESID:
+            case TVDBEpisodeConstants.SERIESID:
                 tvdbEpisode.setSeriesId(content);
                 break;
-            case THUMB_ADDED:
+            case TVDBEpisodeConstants.THUMB_ADDED:
                 tvdbEpisode.setThumbAdded(content);
                 break;
-            case THUMB_WIDTH:
+            case TVDBEpisodeConstants.THUMB_WIDTH:
                 tvdbEpisode.setThumbWidth(content);
                 break;
-            case THUMB_HEIGHT:
+            case TVDBEpisodeConstants.THUMB_HEIGHT:
                 tvdbEpisode.setThumbHeight(content);
                 break;
-            case TMS_EXPORT:
+            case TVDBEpisodeConstants.TMS_EXPORT:
                 tvdbEpisode.setTmsExport(content);
                 break;
-            case MIRROR_UPDATE:
+            case TVDBEpisodeConstants.MIRROR_UPDATE:
                 tvdbEpisode.setMirrorUpdate(content);
                 break;
-            case IMDB_ID:
+            case TVDBEpisodeConstants.IMDB_ID:
                 tvdbEpisode.setImdbId(content);
                 break;
-            case EPIMGFLAG:
+            case TVDBEpisodeConstants.EPIMGFLAG:
                 tvdbEpisode.setEpImgFlag(content);
                 break;
-            case RATING:
+            case TVDBEpisodeConstants.RATING:
                 tvdbEpisode.setRating(content);
                 break;
-            case SEASON_NUMBER:
+            case TVDBEpisodeConstants.SEASON_NUMBER:
                 tvdbEpisode.setSeasonNumber(content);
                 break;
-            case LANGUAGE:
+            case TVDBEpisodeConstants.LANGUAGE:
                 tvdbEpisode.setLanguage(content);
                 break;
         }

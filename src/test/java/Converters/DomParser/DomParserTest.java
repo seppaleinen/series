@@ -31,7 +31,6 @@ public class DomParserTest {
         parserTests.testParseTVDBUpdateFromXml(saxParser);
     }
 
-    @Ignore
     @Test
     public void testParseTVDBIMDBFromXml() {
         parserTests.testParseTVDBIMDBFromXml(saxParser);

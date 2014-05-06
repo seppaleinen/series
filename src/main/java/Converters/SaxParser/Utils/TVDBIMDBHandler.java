@@ -1,28 +1,18 @@
 package Converters.SaxParser.Utils;
 
+import Objects.Constants.TVDBIMDBConstants;
 import Objects.TVDBIMDB;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class TVDBIMDBHandler extends DefaultHandler {
-    private static final String ELEMENT = "Series";
-    private static final String SERIES_ID = "seriesid";
-    private static final String LANGUAGE = "language";
-    private static final String SERIES_NAME = "SeriesName";
-    private static final String BANNER = "banner";
-    private static final String OVERVIEW = "Overview";
-    private static final String FIRST_AIRED = "FirstAired";
-    private static final String IMDB_ID = "IMDB_ID";
-    private static final String ID = "id";
-
-    //private List<TVDBIMDB> tvdbimdbList = new ArrayList<>();
     private TVDBIMDB tvdbimdb;
     private String content;
 
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         switch (qName) {
-            case ELEMENT:
+            case TVDBIMDBConstants.ELEMENT:
                 tvdbimdb = new TVDBIMDB();
                 break;
         }
@@ -30,31 +20,30 @@ public class TVDBIMDBHandler extends DefaultHandler {
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
         switch (qName){
-            case ELEMENT:
-                //tvdbimdbList.add(tvdbimdb);
+            case TVDBIMDBConstants.ELEMENT:
                 break;
-            case SERIES_ID:
+            case TVDBIMDBConstants.SERIES_ID:
                 tvdbimdb.setSeriesId(content);
                 break;
-            case LANGUAGE:
+            case TVDBIMDBConstants.LANGUAGE:
                 tvdbimdb.setLanguage(content);
                 break;
-            case SERIES_NAME:
+            case TVDBIMDBConstants.SERIES_NAME:
                 tvdbimdb.setSeriesName(content);
                 break;
-            case BANNER:
+            case TVDBIMDBConstants.BANNER:
                 tvdbimdb.setBanner(content);
                 break;
-            case OVERVIEW:
+            case TVDBIMDBConstants.OVERVIEW:
                 tvdbimdb.setOverview(content);
                 break;
-            case FIRST_AIRED:
+            case TVDBIMDBConstants.FIRST_AIRED:
                 tvdbimdb.setFirstAired(content);
                 break;
-            case IMDB_ID:
+            case TVDBIMDBConstants.IMDB_ID:
                 tvdbimdb.setImdbId(content);
                 break;
-            case ID:
+            case TVDBIMDBConstants.ID:
                 tvdbimdb.setId(content);
                 break;
         }
