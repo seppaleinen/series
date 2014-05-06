@@ -4,6 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.StandardOutputStreamLog;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,15 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class FirstClassTest{
-    private static final String HOMEDIR = System.getProperty("user.home");
-    private static final String EXISTINGMEDIA = HOMEDIR + "/Downloads/Serier/Pompeii.2014.BDRip.x264-SPARKS/Pompeii.2014.BDRip.x264-SPARKS.mkv";
+    private static final String MEDIADIR = "/Media";
+    private static final String EXISTINGMEDIAAVI = "Fight club.avi";
+    private static final String EXISTINGMEDIAMKV = "Killer clowns from outer space.mkv";
+    private static final String EXISTINGMEDIAMP4 = "Alien.mp4";
+    private static final String EXISTINGMEDIAMPEG = "Forrest.Gump.mpeg";
+    private static final String EXISTINGMEDIAOGM = "Full_Metal_Jacket.ogm";
+    private static final String EXISTINGMEDIAMPG = "Jaws.mpg";
+    private static final String NOTMEDIA = "NOT_MEDIA.mp3";
+
     private String[] arguments;
     @Rule
     public final StandardOutputStreamLog log = new StandardOutputStreamLog();
@@ -28,27 +36,25 @@ public class FirstClassTest{
     }
     @Test
     public void testOneArgument() {
-        arguments = new String[]{EXISTINGMEDIA};
+        arguments = new String[]{getFile(EXISTINGMEDIAAVI)};
 
         FirstClass.main(arguments);
 
-        assertThat(log.getLog(), containsString(EXISTINGMEDIA));
+        assertThat(log.getLog(), containsString(EXISTINGMEDIAAVI));
     }
     @Test
     public void testMultipleArguments() {
-        arguments = new String[]{EXISTINGMEDIA, EXISTINGMEDIA};
+        arguments = new String[]{getFile(EXISTINGMEDIAAVI), getFile(EXISTINGMEDIAMKV)};
 
         FirstClass.main(arguments);
 
-        assertThat(log.getLog(), containsString(EXISTINGMEDIA));
-        assertThat(log.getLog(), containsString(EXISTINGMEDIA));
+        assertThat(log.getLog(), containsString(EXISTINGMEDIAAVI));
+        assertThat(log.getLog(), containsString(EXISTINGMEDIAMKV));
     }
 
     @Test
     public void testMediaFileFalse(){
-        String NOTMEDIAFILE = HOMEDIR + "/hoj.txt";
-
-        boolean mediaFile = FirstClass.isMediaFile(NOTMEDIAFILE);
+        boolean mediaFile = FirstClass.isMediaFile(getFile(NOTMEDIA));
 
         assertFalse(mediaFile);
     }
@@ -56,12 +62,12 @@ public class FirstClassTest{
     @Test
     public void testMediaFileTrue() {
        List<String> mediaFiles = new ArrayList<String>();
-       mediaFiles.add(HOMEDIR + "/Downloads/hej.avi");
-       mediaFiles.add(HOMEDIR + "/Downloads/hej.mpg");
-       mediaFiles.add(HOMEDIR + "/Downloads/hej.mkv");
-       mediaFiles.add(HOMEDIR + "/Downloads/hej.mp4");
-       mediaFiles.add(HOMEDIR + "/Downloads/hej.ogm");
-       mediaFiles.add(HOMEDIR + "/Downloads/hej.mpeg");
+       mediaFiles.add(getFile(EXISTINGMEDIAAVI));
+       mediaFiles.add(getFile(EXISTINGMEDIAMPG));
+       mediaFiles.add(getFile(EXISTINGMEDIAMKV));
+       mediaFiles.add(getFile(EXISTINGMEDIAMP4));
+       mediaFiles.add(getFile(EXISTINGMEDIAOGM));
+       mediaFiles.add(getFile(EXISTINGMEDIAMPEG));
        for(String mediaFile : mediaFiles){
            boolean isMediaFile = FirstClass.isMediaFile(mediaFile);
            assertTrue(mediaFile + " should be mediafile", isMediaFile);
@@ -70,7 +76,7 @@ public class FirstClassTest{
 
     @Test
     public void testMediaFileExistsFalse(){
-       String NONEXISTANTFILE = HOMEDIR + "/hejhej.txt";
+       String NONEXISTANTFILE = this.getClass().getResource("Media").getPath() + "NONEXISTANT";
 
        boolean exists = FirstClass.fileExists(NONEXISTANTFILE);
 
@@ -79,36 +85,22 @@ public class FirstClassTest{
 
     @Test
     public void testMediaFileExistsTrue(){
-        String EXISTINGFILE = HOMEDIR + "/Downloads/PapersPlease.app";
+        String EXISTINGFILE = getFile(EXISTINGMEDIAMPG);
 
         boolean exists = FirstClass.fileExists(EXISTINGFILE);
 
         assertTrue(EXISTINGFILE + " should exist", exists);
     }
 
-
-    @Test
-    public void testMediaFileAndExist_NoMediaFile() {
-        String NONEXISTANTFILE = HOMEDIR + "/hejhej.txt";
-
-        boolean exists = FirstClass.isMediaFileAndExists(NONEXISTANTFILE);
-
-        assertFalse(exists);
-    }
-
-    @Test
-    public void testMediaFileAndExist_NonExistant() {
-        String NONMEDIAFILE = HOMEDIR + "/hejhej.avi";
-
-        boolean exists = FirstClass.isMediaFileAndExists(NONMEDIAFILE);
-
-        assertFalse(exists);
-    }
-
     @Test
     public void testMediaFileAndExist_True(){
-        boolean existingMedia = FirstClass.isMediaFileAndExists(EXISTINGMEDIA);
+        boolean existingMedia = FirstClass.isMediaFileAndExists(getFile(EXISTINGMEDIAMPG));
 
-        assertTrue(EXISTINGMEDIA + " should exist", existingMedia);
+        assertTrue(EXISTINGMEDIAMPEG + " should exist", existingMedia);
     }
+
+    private String getFile(String filename){
+        return this.getClass().getResource(MEDIADIR + "/" + filename).getFile().replace("%20", " ");
+    }
+
 }

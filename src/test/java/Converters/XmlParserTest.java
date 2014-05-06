@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 
 public class XmlParserTest {
     private XmlParser xmlParser;
+    private static final String XMLDIR = "/XML";
     private static final String TVDBUPDATES = "TVDBUPDATES.xml";
     private static final String TVDBIMDB = "TVDBIMDB.xml";
     private static final String TVDBEPISODE = "TVDBEPISODE.xml";
@@ -67,7 +68,7 @@ public class XmlParserTest {
     }
 
     private InputStream getFile(String filename){
-        return this.getClass().getResourceAsStream("/" + filename);
+        return this.getClass().getResourceAsStream(XMLDIR + "/" + filename);
     }
 
 }
