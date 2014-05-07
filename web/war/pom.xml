@@ -9,18 +9,10 @@
 
     <version>1.0</version>
     <artifactId>war</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <name>war</name>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <webXml>src/main/webapp/META-INF/web.xml</webXml>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <modules>
+        <module>wicket</module>
+    </modules>
 </project>
