@@ -28,7 +28,6 @@ public class TVDBImpl extends UrlConnection implements TVDBInterface {
     }
 
     private InputStream getTVDBInfo(String tvDBUrl){
-        URL url = createUrl(tvDBUrl);
-        return getInputStream(url);
+        return getInputStream(tvDBUrl);
     }
 }

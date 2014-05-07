@@ -9,11 +9,10 @@ import java.net.URL;
 public class OMDBImpl extends UrlConnection implements OMDBInterface {
     public InputStream getOmdbInfo(String title){
         String omdbUrl = getOmdbUrl(title);
-        URL url = createUrl(omdbUrl);
-        return getInputStream(url);
+        return getInputStream(omdbUrl);
     }
 
-    public String getOmdbUrl(String title){
+    private String getOmdbUrl(String title){
         return OMDB_URL.replace("#", title);
     }
 }

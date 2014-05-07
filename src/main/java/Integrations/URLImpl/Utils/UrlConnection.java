@@ -6,17 +6,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class UrlConnection {
-    protected URL createUrl(String omdbUrl){
-        URL url = null;
+    protected InputStream getInputStream(String address){
+        InputStream inputStream = null;
         try {
-            url = new URL(omdbUrl);
+            URL url = new URL(address);
+            inputStream = getInputStream(url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return url;
+        return inputStream;
     }
 
-    protected InputStream getInputStream(URL url){
+    private InputStream getInputStream(URL url){
         InputStream inputStream = null;
         try {
             inputStream = url.openStream();

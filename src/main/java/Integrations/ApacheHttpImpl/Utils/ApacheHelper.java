@@ -1,4 +1,4 @@
-package Integrations.ApacheHttpImpl.ApacheUtils;
+package Integrations.ApacheHttpImpl.Utils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ApacheHelper {
-    public static InputStream getInputStream(String url){
+    public InputStream getInputStream(String url){
         DefaultHttpClient httpClient = new DefaultHttpClient();
 
         HttpGet httpGet = new HttpGet(url);
@@ -16,7 +16,7 @@ public class ApacheHelper {
         return getInputStream(httpClient, httpGet);
     }
 
-    private static InputStream getInputStream(DefaultHttpClient httpClient, HttpGet httpRequest){
+    private InputStream getInputStream(DefaultHttpClient httpClient, HttpGet httpRequest){
         InputStream inputStream = null;
         try {
             HttpResponse httpResponse = httpClient.execute(httpRequest);
