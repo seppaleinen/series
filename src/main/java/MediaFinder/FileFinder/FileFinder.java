@@ -59,8 +59,4 @@ public class FileFinder implements Finder {
 
         }
     }
-
-    public List<String> getResult(){
-        return result;
-    }
 }
