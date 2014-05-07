@@ -12,6 +12,14 @@
 
 # App modules
 !src/
+!web/
+web/*
+!web/war/
+web/war/*
+!web/war/src/
+!web/ear/
+web/ear/*
+!web/ear/src/
 
 
 # Explicita undantag för vissa resurser, var de än befinner sig
