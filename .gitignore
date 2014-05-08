@@ -21,6 +21,10 @@ web/war/*
 web/ear/*
 !web/ear/src/
 
+!backend
+backend/*
+!backend/src
+
 
 # Explicita undantag för vissa resurser, var de än befinner sig
 # -----------------------------------------------------------------
