@@ -1,4 +1,4 @@
-package Integrations.ApacheHttpImpl;
+/*package Integrations.ApacheHttpImpl;
 
 import Integrations.OMDBInterface;
 import org.junit.Before;
@@ -23,3 +23,4 @@ public class OMDBApacheImplTest {
         assertNotNull(omdbInfo);
     }
 }
+*/

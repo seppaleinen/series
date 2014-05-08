@@ -1,4 +1,4 @@
-package Integrations.ApacheHttpImpl.Utils;
+/*package Integrations.ApacheHttpImpl.Utils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -33,3 +33,4 @@ public class ApacheHelper {
     }
 
 }
+*/

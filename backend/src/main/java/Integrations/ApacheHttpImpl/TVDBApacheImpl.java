@@ -1,4 +1,4 @@
-package Integrations.ApacheHttpImpl;
+/*package Integrations.ApacheHttpImpl;
 
 import Integrations.ApacheHttpImpl.Utils.ApacheHelper;
 import Integrations.TVDBInterface;
@@ -34,3 +34,4 @@ public class TVDBApacheImpl extends ApacheHelper implements TVDBInterface {
         return URL.replace("#", title);
     }
 }
+*/

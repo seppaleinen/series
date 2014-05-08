@@ -5,7 +5,17 @@
 </head>
 <body>
 <h1>
-    <span wicket:id="message">message will be replace later</span>
+    <form wicket:id="form">
+    <input type="text" wicket:id="directory"/>
+    <button wicket:id="searchButton">SEARCH MEDIA</button><br/>
+    <div wicket:id="listViewContainer">
+    <tr wicket:id="listView">
+        <td>
+            <span wicket:id="name"></span>
+        </td>
+    </tr>
+    </div>
+    </form>
 </h1>
 </body>
 </html>

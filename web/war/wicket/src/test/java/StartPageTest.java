@@ -20,5 +20,10 @@ public class StartPageTest {
         StartPage startPage = new StartPage(new PageParameters());
         tester.startPage(startPage);
         tester.assertNoErrorMessage();
+        tester.assertRenderedPage(StartPage.class);
+    }
+
+    @Test
+    public void testPressButton(){
     }
 }

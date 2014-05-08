@@ -1,4 +1,4 @@
-package Integrations.ApacheHttpImpl;
+/*package Integrations.ApacheHttpImpl;
 
 import Integrations.TVDBInterface;
 import org.junit.Before;
@@ -11,3 +11,4 @@ public class TVDBApacheImplTest {
         tvdbInterface = new TVDBApacheImpl();
     }
 }
+*/
