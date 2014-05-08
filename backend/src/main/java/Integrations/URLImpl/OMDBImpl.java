@@ -12,6 +12,7 @@ public class OMDBImpl extends UrlConnection implements OMDBInterface {
     }
 
     private String getOmdbUrl(String title){
-        return OMDB_URL.replace("#", title);
+        String formattedTitle = title.replace(" ", "+");
+        return OMDB_URL.replace("#", formattedTitle);
     }
 }

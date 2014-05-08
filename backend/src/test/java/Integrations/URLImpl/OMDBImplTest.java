@@ -18,7 +18,7 @@ public class OMDBImplTest {
 
     @Test
     public void testGetInfoFromOmdb(){
-        String title = "Pompeii";
+        String title = "neon genesis evangelion";
         InputStream omdbInfo = OMDBImpl.getOmdbInfo(title);
         assertNotNull(omdbInfo);
     }
