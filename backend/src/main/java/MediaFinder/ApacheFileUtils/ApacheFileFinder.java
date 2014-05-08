@@ -2,6 +2,7 @@ package MediaFinder.ApacheFileUtils;
 
 import MediaFinder.ApacheFileUtils.Utils.CustomFileVisitor;
 import MediaFinder.Finder;
+import Objects.FinderSeries;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -17,7 +18,7 @@ public class ApacheFileFinder implements Finder {
     }
 
     @Override
-    public List<String> searchDirectory(String directoryPath) {
+    public List<FinderSeries> searchDirectory(String directoryPath) {
         Path directory = getPath(directoryPath);
         walkFileTree(directory);
         return customFileVisitor.getResult();

@@ -1,5 +1,6 @@
 package MediaFinder.ApacheFileUtils;
 
+import Objects.FinderSeries;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class ApacheFileFinderTest {
     public void testSearchDirectory() {
         int expectedResultSize = 6;
         String directory = getFile(MEDIADIR);
-        List<String> result = apacheFileFinder.searchDirectory(directory);
+        List<FinderSeries> result = apacheFileFinder.searchDirectory(directory);
         assertNotNull("Result should not be null", result);
         assertEquals("Resultsize should be " + expectedResultSize, expectedResultSize, result.size());
     }

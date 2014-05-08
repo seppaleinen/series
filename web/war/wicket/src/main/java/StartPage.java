@@ -1,5 +1,7 @@
+import MediaFinder.ApacheFileUtils.ApacheFileFinder;
 import MediaFinder.FileFinder.FileFinder;
 import MediaFinder.Finder;
+import Objects.FinderSeries;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -74,12 +76,12 @@ public class StartPage extends WebPage {
         return new Button(SEARCH_BUTTON_ID){
             @Override
             public void onSubmit(){
-                Finder mediaFinder = new FileFinder();
+                Finder mediaFinder = new ApacheFileFinder();
                 if(modelObject.getDirectory()!= null && !modelObject.getDirectory().isEmpty()){
-                    List<String> mediaFinderResults = mediaFinder.searchDirectory(modelObject.getDirectory());
+                    List<FinderSeries> mediaFinderResults = mediaFinder.searchDirectory(modelObject.getDirectory());
                     results.clear();
-                    for(String resultString : mediaFinderResults){
-                        results.add(resultString);
+                    for(FinderSeries finderSeries : mediaFinderResults){
+                        results.add(finderSeries.getEpisodeTitle());
                     }
                 }
             }

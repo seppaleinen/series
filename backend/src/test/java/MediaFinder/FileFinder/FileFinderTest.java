@@ -1,11 +1,13 @@
 package MediaFinder.FileFinder;
 
 import MediaFinder.Finder;
+import Objects.FinderSeries;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 public class FileFinderTest {
@@ -19,12 +21,14 @@ public class FileFinderTest {
 
     @Test
     public void testFinder(){
+        int expectedResultSize = 6;
         String directory = getFile(MEDIADIR);
 
-        List<String> result = fileFinder.searchDirectory(directory);
+        List<FinderSeries> result = fileFinder.searchDirectory(directory);
 
         assertNotNull(result);
         assertFalse("Result should not be empty", result.isEmpty());
+        assertEquals("Resultsize should be " + expectedResultSize, expectedResultSize, result.size());
     }
 
     private String getFile(String directory){

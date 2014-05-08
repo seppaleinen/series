@@ -2,6 +2,8 @@ package MediaFinder.FileFinder;
 
 import MediaFinder.Finder;
 import MediaFinder.MediaFinderConstants;
+import MediaFinder.MediaInfo;
+import Objects.FinderSeries;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.List;
 public class FileFinder implements Finder {
     private List<String> result = new ArrayList<>();
 
-    public List<String> searchDirectory(String directoryPath) {
+    public List<FinderSeries> searchDirectory(String directoryPath) {
         File directory = new File(directoryPath);
 
         if (directory.isDirectory()) {
@@ -19,7 +21,14 @@ public class FileFinder implements Finder {
             System.out.println(directory.getAbsoluteFile() + " is not a directory!");
         }
 
-        return result;
+        List<FinderSeries> finderSeriesList = new ArrayList<>();
+        MediaInfo mediaInfo = new MediaInfo();
+
+        for(String mediaPath : result){
+            finderSeriesList.add(mediaInfo.getFinderSeriesFromPath(mediaPath));
+        }
+
+        return finderSeriesList;
     }
 
     private void search(File file) {
