@@ -16,7 +16,9 @@
 web/*
 !web/war/
 web/war/*
-!web/war/src/
+!web/war/wicket/
+web/war/wicket/*
+!web/war/wicket/src
 !web/ear/
 web/ear/*
 !web/ear/src/
