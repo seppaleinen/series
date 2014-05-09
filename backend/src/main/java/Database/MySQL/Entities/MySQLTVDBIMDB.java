@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "TVDBIMDB")
 @NamedQueries(
-        @NamedQuery(name = "findByImdbId", query = "select TVDBIMDB from MySQLTVDBIMDB TVDBIMDB where TVDBIMDB.imdbId = :imdbId);")
+        @NamedQuery(name = "findByImdbId", query = "select TVDBIMDB from MySQLTVDBIMDB TVDBIMDB where TVDBIMDB.imdbId = :imdbId")
 )
 public class MySQLTVDBIMDB implements Serializable {
     private static final long serialVersionUID = 1L;
