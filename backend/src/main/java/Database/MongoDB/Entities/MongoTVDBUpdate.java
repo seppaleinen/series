@@ -1,14 +1,20 @@
 package Database.MongoDB.Entities;
 
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class MongoTVDBUpdate extends BaseEntity {
+public class MongoTVDBUpdate {
+    public static final String TIME_KEY = "time";
+    @Id
     private String time;
+    @Embedded
     private List<String> seriesList = new ArrayList<>();
+    @Embedded
     private List<String> episodeList = new ArrayList<>();
 
     public String getTime() {

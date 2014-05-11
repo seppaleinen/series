@@ -32,8 +32,7 @@ public class MongoDBImplTest {
         dbInterface.saveOMDB(omdb);
 
         OMDB foundOmdb = dbInterface.getOMDB(omdb.getImdbID());
-        assertNotNull(foundOmdb);
-        assertEquals("Title should be the same", omdb.getTitle(), foundOmdb.getTitle());
+        assertEquals("Objects should be equals", omdb, foundOmdb);
     }
 
     @Test
@@ -43,8 +42,7 @@ public class MongoDBImplTest {
         dbInterface.saveTVDBEpisode(tvdbEpisode);
 
         TVDBEpisode foundTVDBEpisode = dbInterface.getTVDBEpisode(tvdbEpisode.getId());
-        assertNotNull("TVDBEpisode should not be null", foundTVDBEpisode);
-        assertEquals("EpisodeName should be the same", tvdbEpisode.getEpisodeName(), foundTVDBEpisode.getEpisodeName());
+        assertEquals("Objects should be equals", tvdbEpisode, foundTVDBEpisode);
     }
 
     @Test
@@ -54,8 +52,7 @@ public class MongoDBImplTest {
         dbInterface.saveTVDBIMDB(tvdbimdb);
 
         TVDBIMDB foundTVDBIMDB = dbInterface.getTVDBIMDB(tvdbimdb.getImdbId());
-        assertNotNull(foundTVDBIMDB);
-        assertEquals("SeriesName should be equal", tvdbimdb.getSeriesName(), foundTVDBIMDB.getSeriesName());
+        assertEquals("Objects should be equals", tvdbimdb, foundTVDBIMDB);
     }
 
     @Test
@@ -65,8 +62,7 @@ public class MongoDBImplTest {
         dbInterface.saveTVDBSeries(tvdbSeries);
 
         TVDBSeries foundTVDBSeries = dbInterface.getTVDBSeries(tvdbSeries.getSeriesId());
-        assertNotNull(foundTVDBSeries);
-        assertEquals("SeriesName should be equal", tvdbSeries.getSeriesName(), foundTVDBSeries.getSeriesName());
+        assertEquals("Objects should be equals", tvdbSeries, foundTVDBSeries);
     }
 
     @Test
@@ -76,8 +72,6 @@ public class MongoDBImplTest {
         dbInterface.saveTVDBUpdate(tvdbUpdate);
 
         TVDBUpdate foundTVDBUpdate = dbInterface.getTVDBUpdate();
-        assertNotNull("FOUNDTVDBUPDATE should not be null", foundTVDBUpdate);
-        assertEquals("Time should be equals", tvdbUpdate.getTime(), foundTVDBUpdate.getTime());
+        assertEquals("Objects should be equals", tvdbUpdate, foundTVDBUpdate);
     }
-
 }

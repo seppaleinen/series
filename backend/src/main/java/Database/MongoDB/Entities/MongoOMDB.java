@@ -1,13 +1,11 @@
 package Database.MongoDB.Entities;
 
-import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Version;
 
 @Entity
-public class MongoOMDB extends BaseEntity {
+public class MongoOMDB {
+    public static final String IMDB_KEY = "imdbID";
     private String title;
     private String year;
     private String rated;
@@ -25,6 +23,7 @@ public class MongoOMDB extends BaseEntity {
     private String metascore;
     private String imdbRating;
     private String imdbVotes;
+    @Id
     private String imdbID;
     private String type;
 

@@ -1,15 +1,18 @@
 package Database.MongoDB.Entities;
 
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 @Entity
-public class MongoTVDBSeries extends BaseEntity {
+public class MongoTVDBSeries {
+    public static final String SERIESID_KEY = "seriesId";
     private String actors;
     private String airsDayOfWeek;
     private String airsTime;
     private String contentRating;
     private String firstAired;
     private String genre;
+    @Id
     private String imdbId;
     private String language;
     private String network;

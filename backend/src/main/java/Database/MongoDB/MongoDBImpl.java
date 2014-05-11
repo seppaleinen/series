@@ -32,7 +32,7 @@ public class MongoDBImpl implements DBInterface {
     public TVDBIMDB getTVDBIMDB(String imdbId) {
         TVDBIMDBMorphiaDao tvdbimdbMorphiaDao = new TVDBIMDBMorphiaDao(mongoClient, morphia, DATABASE);
 
-        MongoTVDBIMDB mongoTVDBIMDB = tvdbimdbMorphiaDao.findOne("imdbId", imdbId);
+        MongoTVDBIMDB mongoTVDBIMDB = tvdbimdbMorphiaDao.findOne(MongoTVDBIMDB.IMDBID_KEY, imdbId);
 
         return MongoToObject.convertMongoTVDBIMDB_To_TVDBIMDB(mongoTVDBIMDB);
     }
@@ -41,7 +41,7 @@ public class MongoDBImpl implements DBInterface {
     public TVDBEpisode getTVDBEpisode(String episodeId) {
         TVDBEpisodeMorphiaDao tvdbEpisodeMorphiaDao = new TVDBEpisodeMorphiaDao(mongoClient, morphia, DATABASE);
 
-        MongoTVDBEpisode mongoTVDBEpisode = tvdbEpisodeMorphiaDao.findOne("internalId", episodeId);
+        MongoTVDBEpisode mongoTVDBEpisode = tvdbEpisodeMorphiaDao.findOne(MongoTVDBEpisode.ID_KEY, episodeId);
 
         return MongoToObject.convertMongoTVDBEpisode_To_TVDBEpisode(mongoTVDBEpisode);
     }
@@ -50,7 +50,7 @@ public class MongoDBImpl implements DBInterface {
     public TVDBSeries getTVDBSeries(String seriesId) {
         TVDBSeriesMorphiaDao tvdbSeriesMorphiaDao = new TVDBSeriesMorphiaDao(mongoClient, morphia, DATABASE);
 
-        MongoTVDBSeries mongoTVDBSeries = tvdbSeriesMorphiaDao.findOne("seriesId", seriesId);
+        MongoTVDBSeries mongoTVDBSeries = tvdbSeriesMorphiaDao.findOne(MongoTVDBSeries.SERIESID_KEY, seriesId);
 
         return MongoToObject.convertMongoTVDBSeries_To_TVDBSeries(mongoTVDBSeries);
     }
@@ -59,7 +59,7 @@ public class MongoDBImpl implements DBInterface {
     public TVDBUpdate getTVDBUpdate() {
         TVDBUpdateMorphiaDao tvdbUpdateMorphiaDao = new TVDBUpdateMorphiaDao(mongoClient, morphia, DATABASE);
 
-        MongoTVDBUpdate mongoTVDBUpdate = tvdbUpdateMorphiaDao.findOne("time", "TIME");
+        MongoTVDBUpdate mongoTVDBUpdate = tvdbUpdateMorphiaDao.findOne(MongoTVDBUpdate.TIME_KEY, "TIME");
 
         return MongoToObject.convertMongoTVDBUpdate_To_TVDBUpdate(mongoTVDBUpdate);
     }
@@ -68,7 +68,7 @@ public class MongoDBImpl implements DBInterface {
     public OMDB getOMDB(String IMDBId) {
         OMDBMorphiaDao omdbMorphiaDao = new OMDBMorphiaDao(mongoClient, morphia, DATABASE);
 
-        MongoOMDB mongoOMDB = omdbMorphiaDao.findOne(OMDBConstants.IMDB_ID, IMDBId);
+        MongoOMDB mongoOMDB = omdbMorphiaDao.findOne(MongoOMDB.IMDB_KEY, IMDBId);
 
         return MongoToObject.convertMongoOMDB_To_OMDB(mongoOMDB);
     }

@@ -40,7 +40,7 @@ public class MongoToObject {
         if(mongoTVDBEpisode != null){
             tvdbEpisode = new TVDBEpisode();
 
-            tvdbEpisode.setId(mongoTVDBEpisode.getInternalId());
+            tvdbEpisode.setId(mongoTVDBEpisode.getId());
             tvdbEpisode.setSeasonid(mongoTVDBEpisode.getSeasonid());
             tvdbEpisode.setEpisodeNumber(mongoTVDBEpisode.getEpisodeNumber());
             tvdbEpisode.setEpisodeName(mongoTVDBEpisode.getEpisodeName());
@@ -88,7 +88,7 @@ public class MongoToObject {
             tvdbimdb.setOverview(mongoTVDBIMDB.getOverview());
             tvdbimdb.setFirstAired(mongoTVDBIMDB.getFirstAired());
             tvdbimdb.setImdbId(mongoTVDBIMDB.getImdbId());
-            tvdbimdb.setId(mongoTVDBIMDB.getInternalId());
+            tvdbimdb.setId(mongoTVDBIMDB.getId());
         }
 
         return tvdbimdb;

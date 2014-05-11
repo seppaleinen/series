@@ -1,11 +1,13 @@
 package Database.MongoDB.Entities;
 
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 @Entity
-public class MongoTVDBEpisode extends BaseEntity {
-    //är egentligen id
-    private String internalId;
+public class MongoTVDBEpisode {
+    public static final String ID_KEY = "id";
+    @Id
+    private String id;
     private String seasonid;
     private String episodeNumber;
     private String episodeName;
@@ -35,12 +37,12 @@ public class MongoTVDBEpisode extends BaseEntity {
     private String seasonNumber;
     private String language;
 
-    public String getInternalId() {
-        return internalId;
+    public String getId() {
+        return id;
     }
 
-    public void setInternalId(String internalId) {
-        this.internalId = internalId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getSeasonid() {

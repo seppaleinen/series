@@ -33,7 +33,7 @@ public class ObjectToMongo {
     public static MongoTVDBEpisode convertTVDBEpisode_To_MongoTVDBEpisode(TVDBEpisode tvdbEpisode) {
         MongoTVDBEpisode mongoTVDBEpisode = new MongoTVDBEpisode();
 
-        mongoTVDBEpisode.setInternalId(tvdbEpisode.getId());
+        mongoTVDBEpisode.setId(tvdbEpisode.getId());
         mongoTVDBEpisode.setSeasonid(tvdbEpisode.getSeasonid());
         mongoTVDBEpisode.setEpisodeNumber(tvdbEpisode.getEpisodeNumber());
         mongoTVDBEpisode.setEpisodeName(tvdbEpisode.getEpisodeName());
@@ -76,7 +76,7 @@ public class ObjectToMongo {
         mongoTVDBIMDB.setOverview(tvdbimdb.getOverview());
         mongoTVDBIMDB.setFirstAired(tvdbimdb.getFirstAired());
         mongoTVDBIMDB.setImdbId(tvdbimdb.getImdbId());
-        mongoTVDBIMDB.setInternalId(tvdbimdb.getId());
+        mongoTVDBIMDB.setId(tvdbimdb.getId());
 
         return mongoTVDBIMDB;
     }
