@@ -1,10 +1,8 @@
 package Database.MongoDB;
 
 import Database.DBInterface;
-import Database.MongoDB.Dao.OMDBMorphiaDao;
-import Database.MongoDB.Dao.TVDBEpisodeMorphiaDao;
-import Database.MongoDB.Entities.MongoOMDB;
-import Database.MongoDB.Entities.MongoTVDBEpisode;
+import Database.MongoDB.Dao.*;
+import Database.MongoDB.Entities.*;
 import Database.MongoDB.Utils.MongoToObject;
 import Database.MongoDB.Utils.ObjectToMongo;
 import Objects.*;
@@ -25,12 +23,6 @@ public class MongoDBImpl implements DBInterface {
     private static final int PORT = 27017;
     private static final String DATABASE = "MONGODB";
 
-    private static final String TVDBUPDATE_KEY = "TVDBUPDATE";
-    private static final String TVDBSERIES_KEY = "TVDBSERIES";
-    private static final String TVDBEPISODE_KEY = "TVDBEPISODE";
-    private static final String TVDBIMDB_KEY = "TVDBIMDB";
-    private static final String OMDB_KEY = "OMDB";
-
     public MongoDBImpl(){
         mongoClient = getMongoClient();
         morphia = new Morphia();
@@ -38,26 +30,38 @@ public class MongoDBImpl implements DBInterface {
 
     @Override
     public TVDBIMDB getTVDBIMDB(String imdbId) {
-        return null;
+        TVDBIMDBMorphiaDao tvdbimdbMorphiaDao = new TVDBIMDBMorphiaDao(mongoClient, morphia, DATABASE);
+
+        MongoTVDBIMDB mongoTVDBIMDB = tvdbimdbMorphiaDao.findOne("imdbId", imdbId);
+
+        return MongoToObject.convertMongoTVDBIMDB_To_TVDBIMDB(mongoTVDBIMDB);
     }
 
     @Override
     public TVDBEpisode getTVDBEpisode(String episodeId) {
         TVDBEpisodeMorphiaDao tvdbEpisodeMorphiaDao = new TVDBEpisodeMorphiaDao(mongoClient, morphia, DATABASE);
 
-        MongoTVDBEpisode mongoTVDBEpisode = tvdbEpisodeMorphiaDao.findOne("episodeId", episodeId);
+        MongoTVDBEpisode mongoTVDBEpisode = tvdbEpisodeMorphiaDao.findOne("internalId", episodeId);
 
         return MongoToObject.convertMongoTVDBEpisode_To_TVDBEpisode(mongoTVDBEpisode);
     }
 
     @Override
     public TVDBSeries getTVDBSeries(String seriesId) {
-        return null;
+        TVDBSeriesMorphiaDao tvdbSeriesMorphiaDao = new TVDBSeriesMorphiaDao(mongoClient, morphia, DATABASE);
+
+        MongoTVDBSeries mongoTVDBSeries = tvdbSeriesMorphiaDao.findOne("seriesId", seriesId);
+
+        return MongoToObject.convertMongoTVDBSeries_To_TVDBSeries(mongoTVDBSeries);
     }
 
     @Override
     public TVDBUpdate getTVDBUpdate() {
-        return null;
+        TVDBUpdateMorphiaDao tvdbUpdateMorphiaDao = new TVDBUpdateMorphiaDao(mongoClient, morphia, DATABASE);
+
+        MongoTVDBUpdate mongoTVDBUpdate = tvdbUpdateMorphiaDao.findOne("time", "TIME");
+
+        return MongoToObject.convertMongoTVDBUpdate_To_TVDBUpdate(mongoTVDBUpdate);
     }
 
     @Override
@@ -71,7 +75,11 @@ public class MongoDBImpl implements DBInterface {
 
     @Override
     public void saveTVDBIMDB(TVDBIMDB tvdbimdb) {
-        //saveObject(tvdbimdb, DATABASE);
+        MongoTVDBIMDB mongoTVDBIMDB = ObjectToMongo.convertTVDBIMDB_To_MongoTVDBIMDB(tvdbimdb);
+
+        TVDBIMDBMorphiaDao tvdbimdbMorphiaDao = new TVDBIMDBMorphiaDao(mongoClient, morphia, DATABASE);
+
+        tvdbimdbMorphiaDao.save(mongoTVDBIMDB);
     }
 
     @Override
@@ -85,14 +93,20 @@ public class MongoDBImpl implements DBInterface {
 
     @Override
     public void saveTVDBSeries(TVDBSeries tvdbSeries) {
+        MongoTVDBSeries mongoTVDBSeries = ObjectToMongo.convertTVDBSeries_To_MongoTVDBSeries(tvdbSeries);
 
-        //saveObject(tvdbSeries, DATABASE);
+        TVDBSeriesMorphiaDao tvdbSeriesMorphiaDao = new TVDBSeriesMorphiaDao(mongoClient, morphia, DATABASE);
+
+        tvdbSeriesMorphiaDao.save(mongoTVDBSeries);
     }
 
     @Override
     public void saveTVDBUpdate(TVDBUpdate tvdbUpdate) {
+        MongoTVDBUpdate mongoTVDBUpdate = ObjectToMongo.convertTVDBUpdate_To_MongoTVDBUpdate(tvdbUpdate);
 
-        //saveObject(tvdbUpdate, DATABASE);
+        TVDBUpdateMorphiaDao tvdbUpdateMorphiaDao = new TVDBUpdateMorphiaDao(mongoClient, morphia, DATABASE);
+
+        tvdbUpdateMorphiaDao.save(mongoTVDBUpdate);
     }
 
     @Override

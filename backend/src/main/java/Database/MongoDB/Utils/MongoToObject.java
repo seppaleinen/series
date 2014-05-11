@@ -1,9 +1,7 @@
 package Database.MongoDB.Utils;
 
-import Database.MongoDB.Entities.MongoOMDB;
-import Database.MongoDB.Entities.MongoTVDBEpisode;
-import Objects.OMDB;
-import Objects.TVDBEpisode;
+import Database.MongoDB.Entities.*;
+import Objects.*;
 
 public class MongoToObject {
     public static OMDB convertMongoOMDB_To_OMDB(MongoOMDB mongoOMDB){
@@ -42,7 +40,7 @@ public class MongoToObject {
         if(mongoTVDBEpisode != null){
             tvdbEpisode = new TVDBEpisode();
 
-            tvdbEpisode.setId(mongoTVDBEpisode.getEpisodeId());
+            tvdbEpisode.setId(mongoTVDBEpisode.getInternalId());
             tvdbEpisode.setSeasonid(mongoTVDBEpisode.getSeasonid());
             tvdbEpisode.setEpisodeNumber(mongoTVDBEpisode.getEpisodeNumber());
             tvdbEpisode.setEpisodeName(mongoTVDBEpisode.getEpisodeName());
@@ -76,4 +74,72 @@ public class MongoToObject {
         return tvdbEpisode;
     }
 
+
+    public static TVDBIMDB convertMongoTVDBIMDB_To_TVDBIMDB(MongoTVDBIMDB mongoTVDBIMDB){
+        TVDBIMDB tvdbimdb = null;
+
+        if(mongoTVDBIMDB != null){
+            tvdbimdb = new TVDBIMDB();
+
+            tvdbimdb.setSeriesId(mongoTVDBIMDB.getSeriesId());
+            tvdbimdb.setLanguage(mongoTVDBIMDB.getLanguage());
+            tvdbimdb.setSeriesName(mongoTVDBIMDB.getSeriesName());
+            tvdbimdb.setBanner(mongoTVDBIMDB.getBanner());
+            tvdbimdb.setOverview(mongoTVDBIMDB.getOverview());
+            tvdbimdb.setFirstAired(mongoTVDBIMDB.getFirstAired());
+            tvdbimdb.setImdbId(mongoTVDBIMDB.getImdbId());
+            tvdbimdb.setId(mongoTVDBIMDB.getInternalId());
+        }
+
+        return tvdbimdb;
     }
+
+    public static TVDBSeries convertMongoTVDBSeries_To_TVDBSeries(MongoTVDBSeries mongoTVDBSeries){
+        TVDBSeries tvdbSeries = null;
+
+        if(mongoTVDBSeries != null){
+            tvdbSeries = new TVDBSeries();
+
+            tvdbSeries.setActors(mongoTVDBSeries.getActors());
+            tvdbSeries.setAirsDayOfWeek(mongoTVDBSeries.getAirsDayOfWeek());
+            tvdbSeries.setAirsTime(mongoTVDBSeries.getAirsTime());
+            tvdbSeries.setContentRating(mongoTVDBSeries.getContentRating());
+            tvdbSeries.setFirstAired(mongoTVDBSeries.getFirstAired());
+            tvdbSeries.setGenre(mongoTVDBSeries.getGenre());
+            tvdbSeries.setImdbId(mongoTVDBSeries.getImdbId());
+            tvdbSeries.setLanguage(mongoTVDBSeries.getLanguage());
+            tvdbSeries.setNetwork(mongoTVDBSeries.getNetwork());
+            tvdbSeries.setNetworkId(mongoTVDBSeries.getNetworkId());
+            tvdbSeries.setOverview(mongoTVDBSeries.getOverview());
+            tvdbSeries.setRating(mongoTVDBSeries.getRating());
+            tvdbSeries.setRatingCount(mongoTVDBSeries.getRatingCount());
+            tvdbSeries.setRuntime(mongoTVDBSeries.getRuntime());
+            tvdbSeries.setSeriesId(mongoTVDBSeries.getSeriesId());
+            tvdbSeries.setSeriesName(mongoTVDBSeries.getSeriesName());
+            tvdbSeries.setStatus(mongoTVDBSeries.getStatus());
+            tvdbSeries.setAdded(mongoTVDBSeries.getAdded());
+            tvdbSeries.setAddedBy(mongoTVDBSeries.getAddedBy());
+            tvdbSeries.setBanner(mongoTVDBSeries.getBanner());
+            tvdbSeries.setFanart(mongoTVDBSeries.getFanart());
+            tvdbSeries.setLastUpdated(mongoTVDBSeries.getLastUpdated());
+            tvdbSeries.setPoster(mongoTVDBSeries.getPoster());
+            tvdbSeries.setZap2itId(mongoTVDBSeries.getZap2itId());
+        }
+
+        return tvdbSeries;
+    }
+
+    public static TVDBUpdate convertMongoTVDBUpdate_To_TVDBUpdate(MongoTVDBUpdate mongoTVDBUpdate){
+        TVDBUpdate tvdbUpdate = null;
+
+        if(mongoTVDBUpdate != null){
+            tvdbUpdate = new TVDBUpdate();
+
+            tvdbUpdate.setTime(mongoTVDBUpdate.getTime());
+            tvdbUpdate.setEpisodeList(mongoTVDBUpdate.getEpisodeList());
+            tvdbUpdate.setSeriesList(mongoTVDBUpdate.getSeriesList());
+        }
+
+        return tvdbUpdate;
+    }
+}
