@@ -27,59 +27,40 @@ public class MongoDBImplTest {
 
     @Test
     public void testSaveAndFindOMDB(){
-        OMDB omdb = new OMDB();
-
-        omdb.setImdbID("IMDBID");
-        omdb.setTitle("TITLE");
-        omdb.setType("TYPE");
-        omdb.setGenre("GENRE");
+        OMDB omdb = ObjectCreater.createOMDB();
 
         dbInterface.saveOMDB(omdb);
 
-        OMDB foundOmdb = dbInterface.getOMDB("IMDBID");
+        OMDB foundOmdb = dbInterface.getOMDB(omdb.getImdbID());
         assertNotNull(foundOmdb);
         assertEquals("Title should be the same", omdb.getTitle(), foundOmdb.getTitle());
     }
 
     @Test
     public void testSaveAndFindTVDBEpisode(){
-        TVDBEpisode tvdbEpisode = new TVDBEpisode();
-
-        tvdbEpisode.setId("EPISODEID");
-        tvdbEpisode.setLanguage("LANGUAGE");
-        tvdbEpisode.setImdbId("IMDBID");
-        tvdbEpisode.setEpisodeName("EPISODENAME");
+        TVDBEpisode tvdbEpisode = ObjectCreater.createTVDBEpisode();
 
         dbInterface.saveTVDBEpisode(tvdbEpisode);
 
-        TVDBEpisode foundTVDBEpisode = dbInterface.getTVDBEpisode("EPISODEID");
+        TVDBEpisode foundTVDBEpisode = dbInterface.getTVDBEpisode(tvdbEpisode.getId());
         assertNotNull("TVDBEpisode should not be null", foundTVDBEpisode);
         assertEquals("EpisodeName should be the same", tvdbEpisode.getEpisodeName(), foundTVDBEpisode.getEpisodeName());
     }
 
     @Test
     public void testSaveAndFindTVDBIMDB(){
-        TVDBIMDB tvdbimdb = new TVDBIMDB();
-
-        tvdbimdb.setId("ID");
-        tvdbimdb.setImdbId("IMDBID");
-        tvdbimdb.setSeriesName("SERIESNAME");
-        tvdbimdb.setLanguage("LANGUAGE");
+        TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
 
         dbInterface.saveTVDBIMDB(tvdbimdb);
 
-        TVDBIMDB foundTVDBIMDB = dbInterface.getTVDBIMDB("IMDBID");
+        TVDBIMDB foundTVDBIMDB = dbInterface.getTVDBIMDB(tvdbimdb.getImdbId());
         assertNotNull(foundTVDBIMDB);
         assertEquals("SeriesName should be equal", tvdbimdb.getSeriesName(), foundTVDBIMDB.getSeriesName());
     }
 
     @Test
     public void testSaveAndFindTVDBSeries(){
-        TVDBSeries tvdbSeries = new TVDBSeries();
-
-        tvdbSeries.setImdbId("IMDBID");
-        tvdbSeries.setSeriesId("SERIESID");
-        tvdbSeries.setSeriesName("SERIESNAME");
+        TVDBSeries tvdbSeries = ObjectCreater.createTVDBSeries();
 
         dbInterface.saveTVDBSeries(tvdbSeries);
 
@@ -90,11 +71,7 @@ public class MongoDBImplTest {
 
     @Test
     public void testSaveAndFindTVDBUpdate(){
-        TVDBUpdate tvdbUpdate = new TVDBUpdate();
-
-        tvdbUpdate.setTime("TIME");
-        tvdbUpdate.getEpisodeList().add("EPISODE");
-        tvdbUpdate.getSeriesList().add("SERIES");
+        TVDBUpdate tvdbUpdate = ObjectCreater.createTVDBUpdate();
 
         dbInterface.saveTVDBUpdate(tvdbUpdate);
 
