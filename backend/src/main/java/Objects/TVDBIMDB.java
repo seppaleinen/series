@@ -1,6 +1,10 @@
 package Objects;
 
-public class TVDBIMDB {
+import java.io.Serializable;
+
+public class TVDBIMDB implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String seriesId;
     private String language;
     private String seriesName;

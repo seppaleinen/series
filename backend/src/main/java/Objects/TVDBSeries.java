@@ -1,6 +1,10 @@
 package Objects;
 
-public class TVDBSeries {
+import java.io.Serializable;
+
+public class TVDBSeries implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String actors;
     private String airsDayOfWeek;
     private String airsTime;

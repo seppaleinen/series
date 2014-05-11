@@ -1,11 +1,11 @@
-package Objects;
+package Database.MongoDB.Entities;
 
-import java.io.Serializable;
+import org.mongodb.morphia.annotations.Entity;
 
-public class TVDBEpisode implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    private String id;
+@Entity
+public class MongoTVDBEpisode extends BaseEntity {
+    //är egentligen id
+    private String episodeId;
     private String seasonid;
     private String episodeNumber;
     private String episodeName;
@@ -35,12 +35,12 @@ public class TVDBEpisode implements Serializable {
     private String seasonNumber;
     private String language;
 
-    public String getId() {
-        return id;
+    public String getEpisodeId() {
+        return episodeId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEpisodeId(String episodeId) {
+        this.episodeId = episodeId;
     }
 
     public String getSeasonid() {

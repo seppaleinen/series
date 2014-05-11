@@ -1,9 +1,12 @@
 package Objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TVDBUpdate {
+public class TVDBUpdate implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String time;
     private List<String> seriesList = new ArrayList<>();
     private List<String> episodeList = new ArrayList<>();

@@ -11,6 +11,14 @@
         <module>web</module>
         <module>backend</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+    </dependencies>
      <!--
     <dependencies>
         <dependency>

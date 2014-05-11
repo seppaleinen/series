@@ -1,10 +1,13 @@
-package Objects;
+package Database.MongoDB.Entities;
 
-import java.io.Serializable;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Version;
 
-public class OMDB implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+@Entity
+public class MongoOMDB extends BaseEntity {
     private String title;
     private String year;
     private String rated;
