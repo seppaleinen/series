@@ -7,47 +7,41 @@ import Database.MySQL.Utils.ObjectToJPA;
 import Objects.TVDBIMDB;
 import org.junit.*;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.sql.*;
 
-import static org.junit.Assert.assertEquals;
 
 public class MySQLImplTest {
     private DBInterface dbInterface;
-    private static EntityManagerFactory factory;
-    private static EntityManager entityManager;
 
-    //@BeforeClass
-    public static void setupClass() {
-        factory = Persistence.createEntityManagerFactory("default");
-        entityManager = factory.createEntityManager();
-    }
-
-    @Before
-    public void setup(){
-        dbInterface = new MySQLImpl();
-    }
-
-    @Ignore
     @Test
-    public void testSaveAndFindTVDBIMDB(){
-        TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
-
-        dbInterface.saveTVDBIMDB(tvdbimdb);
-
-        TVDBIMDB foundTVDBIMDB = dbInterface.getTVDBIMDB(tvdbimdb.getImdbId());
-        assertEquals("Objects should be equals", tvdbimdb, foundTVDBIMDB);
+    public void testConnection() throws ClassNotFoundException, SQLException {
+        String dbUrl = "jdbc:mysql://localhost:3306/MYDB";
+        String dbClass = "com.mysql.jdbc.Driver";
+        String query = "select distinct(table_name) from INFORMATION_SCHEMA.TABLES";
+        String username = "root";
+        String password = "minstlol";
+        Class.forName(dbClass);
+        Connection connection = DriverManager.getConnection(dbUrl, username, password);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        while(resultSet.next()){
+            System.out.println("TABLENAME: " + resultSet.getString(1));
+        }
+        connection.close();
     }
 
-    @Ignore
     @Test
-    public void testEntityMySQLTVDBIMDB(){
+    public void testHibernate(){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-
         TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
         MySQLTVDBIMDB mySQLTVDBIMDB = ObjectToJPA.convertTVDBIMDB_To_MySQLTVDBIMDB(tvdbimdb);
         entityManager.persist(mySQLTVDBIMDB);
-        entityManager.flush();
+        entityManager.close();
     }
 }

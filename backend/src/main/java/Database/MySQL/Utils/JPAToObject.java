@@ -3,8 +3,6 @@ package Database.MySQL.Utils;
 import Database.MySQL.Entities.MySQLTVDBIMDB;
 import Objects.TVDBIMDB;
 
-import javax.persistence.Id;
-
 public class JPAToObject {
     public static TVDBIMDB convertMySQLTVDBIMDB_To_TVDBIMDB(MySQLTVDBIMDB mySQLTVDBIMDB){
         TVDBIMDB tvdbimdb = new TVDBIMDB();
