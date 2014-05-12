@@ -4,12 +4,20 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <!--Databas-->
+    <changeSet id="1" author="David" runAlways="true" failOnError="true">
+        <sqlFile splitStatements="false" path="MYSQLOMDB.sql"        relativeToChangelogFile="true"/>
+    </changeSet>
     <changeSet id="2" author="David" runAlways="true" failOnError="true">
-        <sqlFile  splitStatements="false" path="MYSQLOMDB.sql" relativeToChangelogFile="true"/>
-        <sqlFile  splitStatements="false" path="MYSQLTVDBEPISODE.sql" relativeToChangelogFile="true"/>
-        <sqlFile  splitStatements="true" path="MYSQLTVDBIMDB.sql" relativeToChangelogFile="true"/>
-        <sqlFile  splitStatements="true" path="MYSQLTVDBSERIES.sql" relativeToChangelogFile="true"/>
-        <sqlFile  splitStatements="true" path="MYSQLTVDBUPDATE.sql" relativeToChangelogFile="true"/>
+        <sqlFile splitStatements="false" path="MYSQLTVDBEPISODE.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="3" author="David" runAlways="true" failOnError="true">
+        <sqlFile splitStatements="true"  path="MYSQLTVDBIMDB.sql"    relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="4" author="David" runAlways="true" failOnError="true">
+        <sqlFile splitStatements="true"  path="MYSQLTVDBSERIES.sql"  relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="5" author="David" runAlways="true" failOnError="true">
+        <sqlFile splitStatements="true"  path="MYSQLTVDBUPDATE.sql"  relativeToChangelogFile="true"/>
     </changeSet>
 
 </databaseChangeLog>

@@ -1,4 +1,4 @@
-CREATE TABLE mydb.TVDBEPISODE (
+CREATE TABLE MYDB.TVDBEPISODE (
 id varchar(255),
 seasonid varchar(255),
 episodeNumber varchar(255),

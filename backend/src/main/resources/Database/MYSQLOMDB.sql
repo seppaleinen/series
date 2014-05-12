@@ -1,4 +1,4 @@
-CREATE TABLE mydb.OMDB (
+CREATE TABLE MYDB.OMDB (
 title varchar(255),
 year varchar(255),
 rated varchar(255),

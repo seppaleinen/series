@@ -120,14 +120,14 @@
         <liquibase-core.version>2.0.5</liquibase-core.version>
         <liquibase-plugin.version>2.0.1</liquibase-plugin.version>
 
-        <!-- properties som måste sättas i .m2/settings.xml -->
         <mysql_dev.username>root</mysql_dev.username>
         <mysql_dev.password>minstlol</mysql_dev.password>
-        <mysql.url>jdbc:mysql://localhost:3306/mydb</mysql.url>
+        <mysql.url>jdbc:mysql://localhost:3306/MYDB</mysql.url>
         <mysql_admin.username>root</mysql_admin.username>
         <mysql_admin.password>minstlol</mysql_admin.password>
         <mysql_changeLogFile>src/main/resources/Database/master.xml</mysql_changeLogFile>
-        <liquibase-plugin.verbose>false</liquibase-plugin.verbose>
+        <liquibase-plugin.verbose>true</liquibase-plugin.verbose>
+        <drop_database>true</drop_database>
     </properties>
 
     <profiles>
@@ -155,87 +155,11 @@
                                     <username>${mysql_dev.username}</username>
                                     <password>${mysql_dev.password}</password>
                                     <verbose>${liquibase-plugin.verbose}</verbose>
+                                    <dropFirst>${drop_database}</dropFirst>
                                 </configuration>
                                 <goals>
                                     <goal>update</goal>
                                 </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>sql-maven-plugin</artifactId>
-                        <version>1.4</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>mysql</groupId>
-                                <artifactId>mysql-connector-java</artifactId>
-                                <version>5.1.30</version>
-                            </dependency>
-                        </dependencies>
-                        <configuration>
-                            <driver>com.mysql.jdbc.Driver</driver>
-                            <url>${mysql.url}</url>
-                            <username>root</username>
-                            <password>${mysql_admin.password}</password>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>drop-sub-user</id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>execute</goal>
-                                </goals>
-                                <configuration>
-                                    <autocommit>true</autocommit>
-                                    <delimiter>/</delimiter>
-                                    <delimiterType>row</delimiterType>
-                                    <srcFiles>
-                                        <!--
-                                        <srcFile>src/main/resources/changes/LIC-0/killa_sessioner.sql</srcFile>
-                                        <srcFile>src/main/resources/changes/LIC-0/droppa_users.sql</srcFile>
-                                        -->
-                                    </srcFiles>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>drop-create-super-user</id>
-                                <goals>
-                                    <goal>execute</goal>
-                                </goals>
-                                <phase>initialize</phase>
-                                <configuration>
-                                    <autocommit>true</autocommit>
-                                    <sqlCommand>
-                                     DROP TABLE mydb.OMDB;
-                                     DROP TABLE mydb.TVDBEPISODE;
-                                     DROP TABLE mydb.TVDBIMDB;
-                                     DROP TABLE mydb.TVDBSERIES;
-                                     DROP TABLE mydb.TVDBUPDATE;
-                                    </sqlCommand>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.7</version>
-                        <executions>
-                            <execution>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <echo>####################################################################################</echo>
-                                        <echo>Droppar user ${mysql_dev.username} i databasen ${mysql.url}</echo>
-                                        <echo>####################################################################################</echo>
-                                    </target>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>

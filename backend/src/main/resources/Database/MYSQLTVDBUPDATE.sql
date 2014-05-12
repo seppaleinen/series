@@ -1,4 +1,4 @@
-CREATE TABLE mydb.TVDBUPDATE (
+CREATE TABLE MYDB.TVDBUPDATE (
 time varchar(255)
   #seriesList
   #episodeList

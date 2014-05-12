@@ -1,4 +1,4 @@
-CREATE TABLE mydb.TVDBIMDB (
+CREATE TABLE MYDB.TVDBIMDB (
   seriesId varchar(255),
   language varchar(255),
   seriesName varchar(255),

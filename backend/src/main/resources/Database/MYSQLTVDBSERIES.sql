@@ -1,4 +1,4 @@
-CREATE TABLE mydb.TVDBSERIES (
+CREATE TABLE MYDB.TVDBSERIES (
 actors varchar(255),
 airsDayOfWeek varchar(255),
 airsTime varchar(255),
