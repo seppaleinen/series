@@ -35,7 +35,18 @@ public class MySQLImplTest {
     }
 
     @Test
-    public void testHibernate(){
+    public void testHibernateHSQLDB(){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
+        MySQLTVDBIMDB mySQLTVDBIMDB = ObjectToJPA.convertTVDBIMDB_To_MySQLTVDBIMDB(tvdbimdb);
+        entityManager.persist(mySQLTVDBIMDB);
+        entityManager.close();
+    }
+
+    @Test
+    public void testHibernateDefault(){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
@@ -44,4 +55,5 @@ public class MySQLImplTest {
         entityManager.persist(mySQLTVDBIMDB);
         entityManager.close();
     }
+
 }
