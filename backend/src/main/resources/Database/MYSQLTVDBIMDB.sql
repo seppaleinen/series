@@ -5,5 +5,6 @@ CREATE TABLE MYDB.TVDBIMDB (
   banner varchar(255),
   overview varchar(255),
   firstAired varchar(255),
-  imdbId varchar(255)
+  imdbId varchar(255),
+  id varchar(255)
 );

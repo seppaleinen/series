@@ -11,49 +11,56 @@ import org.junit.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.sql.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class MySQLImplTest {
     private DBInterface dbInterface;
+    private static EntityManager entityManager;
+    private static String persistenceName;
+
+    @BeforeClass
+    public static void setupClass(){
+        persistenceName = databaseExists() ? "default" : "test";
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(persistenceName);
+        entityManager = entityManagerFactory.createEntityManager();
+    }
 
     @Test
-    public void testConnection() throws ClassNotFoundException, SQLException {
+    public void testHibernateTVDBIMDB(){
+        System.out.println("Running on " + persistenceName + " persistence");
+        entityManager.getTransaction().begin();
+        TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
+        MySQLTVDBIMDB mySQLTVDBIMDB = ObjectToJPA.convertTVDBIMDB_To_MySQLTVDBIMDB(tvdbimdb);
+        entityManager.persist(mySQLTVDBIMDB);
+        TypedQuery<MySQLTVDBIMDB> query = entityManager.createNamedQuery(MySQLTVDBIMDB.FIND_BY_IMDBID, MySQLTVDBIMDB.class).setParameter("imdbId", mySQLTVDBIMDB.getImdbId());
+        MySQLTVDBIMDB foundMySQLTVDBIMDB = query.getSingleResult();
+        assertNotNull("Result should not be null", foundMySQLTVDBIMDB);
+        assertEquals("Objects should be equals", mySQLTVDBIMDB, foundMySQLTVDBIMDB);
+        entityManager.close();
+    }
+
+    private static boolean databaseExists() {
         String dbUrl = "jdbc:mysql://localhost:3306/MYDB";
-        String dbClass = "com.mysql.jdbc.Driver";
-        String query = "select distinct(table_name) from INFORMATION_SCHEMA.TABLES";
         String username = "root";
         String password = "minstlol";
-        Class.forName(dbClass);
-        Connection connection = DriverManager.getConnection(dbUrl, username, password);
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        while(resultSet.next()){
-            System.out.println("TABLENAME: " + resultSet.getString(1));
+
+        String dbClass = "com.mysql.jdbc.Driver";
+        try {
+            Class.forName(dbClass);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        connection.close();
-    }
 
-    @Test
-    public void testHibernateHSQLDB(){
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
-        MySQLTVDBIMDB mySQLTVDBIMDB = ObjectToJPA.convertTVDBIMDB_To_MySQLTVDBIMDB(tvdbimdb);
-        entityManager.persist(mySQLTVDBIMDB);
-        entityManager.close();
+        try {
+            DriverManager.getConnection(dbUrl, username, password);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
-
-    @Test
-    public void testHibernateDefault(){
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
-        MySQLTVDBIMDB mySQLTVDBIMDB = ObjectToJPA.convertTVDBIMDB_To_MySQLTVDBIMDB(tvdbimdb);
-        entityManager.persist(mySQLTVDBIMDB);
-        entityManager.close();
-    }
-
 }
