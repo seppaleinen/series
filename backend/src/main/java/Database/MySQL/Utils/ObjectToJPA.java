@@ -1,6 +1,8 @@
 package Database.MySQL.Utils;
 
+import Database.MySQL.Entities.MySQLOMDB;
 import Database.MySQL.Entities.MySQLTVDBIMDB;
+import Objects.OMDB;
 import Objects.TVDBIMDB;
 
 public class ObjectToJPA {
@@ -17,5 +19,11 @@ public class ObjectToJPA {
         mySQLTVDBIMDB.setId(tvdbimdb.getId());
 
         return mySQLTVDBIMDB;
+    }
+
+    public static MySQLOMDB convertOMDB_To_MySQLOMDB(OMDB omdb) {
+        MySQLOMDB mySQLOMDB = new MySQLOMDB();
+
+        return mySQLOMDB;
     }
 }
