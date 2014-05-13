@@ -1,17 +1,15 @@
 package Database.MySQL.HibernateManager;
 
-
-import Database.MySQL.Entities.MySQLOMDB;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
 public class HibernateManager {
     public EntityManager entityManager;
 
     public HibernateManager(String persistenceName) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(persistenceName);
-        entityManager = entityManagerFactory.createEntityManager();
+        if(entityManager==null){
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(persistenceName);
+            entityManager = entityManagerFactory.createEntityManager();
+        }
     }
 
     public <T> T getEntity(Class<T> clazz, String namedQueryString, String parameter, String parameterValue){

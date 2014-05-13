@@ -2,8 +2,10 @@ package Database.MySQL.Utils;
 
 import Database.MySQL.Entities.MySQLOMDB;
 import Database.MySQL.Entities.MySQLTVDBIMDB;
+import Database.MySQL.Entities.MySQLTVDBSeries;
 import Objects.OMDB;
 import Objects.TVDBIMDB;
+import Objects.TVDBSeries;
 
 public class ObjectToJPA {
     public static MySQLTVDBIMDB convertTVDBIMDB_To_MySQLTVDBIMDB(TVDBIMDB tvdbimdb){
@@ -45,5 +47,36 @@ public class ObjectToJPA {
         mySQLOMDB.setType(omdb.getType());
 
         return mySQLOMDB;
+    }
+
+    public static MySQLTVDBSeries convertTVDBSeries_To_MySQLTVDBSeries(TVDBSeries tvdbSeries){
+        MySQLTVDBSeries mySQLTVDBSeries = new MySQLTVDBSeries();
+
+        mySQLTVDBSeries.setActors(tvdbSeries.getActors());
+        mySQLTVDBSeries.setAirsDayOfWeek(tvdbSeries.getAirsDayOfWeek());
+        mySQLTVDBSeries.setAirsTime(tvdbSeries.getAirsTime());
+        mySQLTVDBSeries.setContentRating(tvdbSeries.getContentRating());
+        mySQLTVDBSeries.setFirstAired(tvdbSeries.getFirstAired());
+        mySQLTVDBSeries.setGenre(tvdbSeries.getGenre());
+        mySQLTVDBSeries.setImdbId(tvdbSeries.getImdbId());
+        mySQLTVDBSeries.setLanguage(tvdbSeries.getLanguage());
+        mySQLTVDBSeries.setNetwork(tvdbSeries.getNetwork());
+        mySQLTVDBSeries.setNetworkId(tvdbSeries.getNetworkId());
+        mySQLTVDBSeries.setOverview(tvdbSeries.getOverview());
+        mySQLTVDBSeries.setRating(tvdbSeries.getRating());
+        mySQLTVDBSeries.setRatingCount(tvdbSeries.getRatingCount());
+        mySQLTVDBSeries.setRuntime(tvdbSeries.getRuntime());
+        mySQLTVDBSeries.setSeriesId(tvdbSeries.getSeriesId());
+        mySQLTVDBSeries.setSeriesName(tvdbSeries.getSeriesName());
+        mySQLTVDBSeries.setStatus(tvdbSeries.getStatus());
+        mySQLTVDBSeries.setAdded(tvdbSeries.getAdded());
+        mySQLTVDBSeries.setAddedBy(tvdbSeries.getAddedBy());
+        mySQLTVDBSeries.setBanner(tvdbSeries.getBanner());
+        mySQLTVDBSeries.setFanart(tvdbSeries.getFanart());
+        mySQLTVDBSeries.setLastUpdated(tvdbSeries.getLastUpdated());
+        mySQLTVDBSeries.setPoster(tvdbSeries.getPoster());
+        mySQLTVDBSeries.setZap2itId(tvdbSeries.getZap2itId());
+
+        return mySQLTVDBSeries;
     }
 }

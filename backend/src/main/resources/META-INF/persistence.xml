@@ -7,6 +7,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>Database.MySQL.Entities.MySQLTVDBIMDB</class>
         <class>Database.MySQL.Entities.MySQLOMDB</class>
+        <class>Database.MySQL.Entities.MySQLTVDBSeries</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/MYDB" />
