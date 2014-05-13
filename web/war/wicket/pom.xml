@@ -79,56 +79,71 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.glassfish.maven.plugin</groupId>
-                <artifactId>maven-glassfish-plugin</artifactId>
-                <version>2.1</version>
-                <!--
-                     Automatisera till att vid
-                     mvn clean = undeploy
-                     mvn install = deploy
-
-                     Annars mvn glassfish:deploy|redeploy|undeploy
-                -->
-                <!--
-                <executions>
-                    <execution>
-                        <id>gf-undeploy</id>
-                        <goals>
-                            <goal>undeploy</goal>
-                        </goals>
-                        <phase>clean</phase>
-                    </execution>
-                    <execution>
-                        <id>gf-deploy</id>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                        <phase>package</phase>
-                    </execution>
-                </executions>
-                -->
-                <configuration>
-                    <glassfishDirectory>${glassfish.dir}</glassfishDirectory>
-                    <user>${user}</user>
-                    <passwordFile>${glassfish.passwords}</passwordFile>
-                    <domain>
-                        <name>${domain.name}</name>
-                        <httpPort>${port}</httpPort>
-                        <adminPort>${admin.port}</adminPort>
-                    </domain>
-                    <components>
-                        <component>
-                            <name>${project.artifactId}</name>
-                            <artifact>target/${project.artifactId}-${project.version}.war</artifact>
-                        </component>
-                    </components>
-                    <debug>true</debug>
-                    <terse>false</terse>
-                    <echo>true</echo>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>glassfish</id>
+            <activation>
+                <property>
+                    <name>glassfish</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.glassfish.maven.plugin</groupId>
+                        <artifactId>maven-glassfish-plugin</artifactId>
+                        <version>2.1</version>
+                        <!--
+                             Automatisera till att vid
+                             mvn clean = undeploy
+                             mvn install = deploy
+
+                             Annars mvn glassfish:deploy|redeploy|undeploy
+                        -->
+                        <executions>
+                            <execution>
+                                <id>gf-undeploy</id>
+                                <goals>
+                                    <goal>undeploy</goal>
+                                </goals>
+                                <phase>clean</phase>
+                            </execution>
+                            <execution>
+                                <id>gf-deploy</id>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <glassfishDirectory>${glassfish.dir}</glassfishDirectory>
+                            <user>${user}</user>
+                            <passwordFile>${glassfish.passwords}</passwordFile>
+                            <domain>
+                                <name>${domain.name}</name>
+                                <httpPort>${port}</httpPort>
+                                <adminPort>${admin.port}</adminPort>
+                            </domain>
+                            <components>
+                                <component>
+                                    <name>${project.artifactId}</name>
+                                    <artifact>target/${project.artifactId}-${project.version}.war</artifact>
+                                </component>
+                            </components>
+                            <debug>true</debug>
+                            <terse>false</terse>
+                            <echo>true</echo>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 
 </project>
