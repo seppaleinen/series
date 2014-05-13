@@ -63,6 +63,7 @@ public class MySQLImplTest {
         assertEquals("Objects should be equals", tvdbimdb, foundTVDBIMDB);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindOMDB() {
         OMDB omdb = ObjectCreater.createOMDB();

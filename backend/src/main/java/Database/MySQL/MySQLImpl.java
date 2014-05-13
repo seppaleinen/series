@@ -9,6 +9,8 @@ import Database.MySQL.Utils.JPAToObject;
 import Database.MySQL.Utils.ObjectToJPA;
 import Objects.*;
 
+import javax.persistence.EntityManager;
+
 public class MySQLImpl implements DBInterface {
     private String persistence = "default";
     private MySQLTVDBIMDBService mySQLTVDBIMDBService;
