@@ -4,6 +4,7 @@ import Database.MongoDB.ObjectCreater;
 import Database.MySQL.Entities.MySQLTVDBIMDB;
 import Database.MySQL.Utils.ObjectToJPA;
 import Objects.OMDB;
+import Objects.TVDBEpisode;
 import Objects.TVDBIMDB;
 import Objects.TVDBSeries;
 import org.junit.*;
@@ -71,6 +72,18 @@ public class MySQLImplTest {
 
         assertNotNull("Result should not be null", foundTVDBSeries);
         assertEquals("Objects should be equals", tvdbSeries, foundTVDBSeries);
+    }
+
+    @Test
+    public void testSaveAndFindTVDBEpisode() {
+        TVDBEpisode tvdbEpisode = ObjectCreater.createTVDBEpisode();
+
+        dbInterface.saveTVDBEpisode(tvdbEpisode);
+
+        TVDBEpisode foundTVDBEpisode = dbInterface.getTVDBEpisode(tvdbEpisode.getSeriesId());
+
+        assertNotNull("Result should not be null", foundTVDBEpisode);
+        assertEquals("Objects should be equals", tvdbEpisode, foundTVDBEpisode);
     }
 
     private static boolean databaseExists() {

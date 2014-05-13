@@ -2,6 +2,7 @@ package Database.MySQL;
 
 import Database.DBInterface;
 import Database.MySQL.Entities.MySQLOMDB;
+import Database.MySQL.Entities.MySQLTVDBEpisode;
 import Database.MySQL.Entities.MySQLTVDBIMDB;
 import Database.MySQL.Entities.MySQLTVDBSeries;
 import Database.MySQL.HibernateManager.HibernateManager;
@@ -24,7 +25,11 @@ public class MySQLImpl implements DBInterface {
 
     @Override
     public TVDBEpisode getTVDBEpisode(String episodeId) {
-        return null;
+        hibernateManager = new HibernateManager(persistence);
+
+        MySQLTVDBEpisode mySQLTVDBEpisode = hibernateManager.getEntity(MySQLTVDBEpisode.class, MySQLTVDBEpisode.FIND_BY_SERIESID, "id", episodeId);
+
+        return JPAToObject.convertMySQLTVDBEpisode_To_TVDBEpisode(mySQLTVDBEpisode);
     }
 
     @Override
@@ -61,7 +66,11 @@ public class MySQLImpl implements DBInterface {
 
     @Override
     public void saveTVDBEpisode(TVDBEpisode tvdbEpisode) {
+        hibernateManager = new HibernateManager(persistence);
 
+        MySQLTVDBEpisode mySQLTVDBEpisode = ObjectToJPA.convertTVDBEpisode_To_MySQLTVDBEpisode(tvdbEpisode);
+
+        hibernateManager.saveEntity(mySQLTVDBEpisode);
     }
 
     @Override

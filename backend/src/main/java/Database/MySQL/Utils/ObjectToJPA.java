@@ -1,9 +1,11 @@
 package Database.MySQL.Utils;
 
 import Database.MySQL.Entities.MySQLOMDB;
+import Database.MySQL.Entities.MySQLTVDBEpisode;
 import Database.MySQL.Entities.MySQLTVDBIMDB;
 import Database.MySQL.Entities.MySQLTVDBSeries;
 import Objects.OMDB;
+import Objects.TVDBEpisode;
 import Objects.TVDBIMDB;
 import Objects.TVDBSeries;
 
@@ -47,6 +49,42 @@ public class ObjectToJPA {
         mySQLOMDB.setType(omdb.getType());
 
         return mySQLOMDB;
+    }
+    
+    public static MySQLTVDBEpisode convertTVDBEpisode_To_MySQLTVDBEpisode(TVDBEpisode tvdbEpisode){
+        MySQLTVDBEpisode mySQLTVDBEpisode = new MySQLTVDBEpisode();
+
+        mySQLTVDBEpisode.setId(tvdbEpisode.getId());
+        mySQLTVDBEpisode.setSeasonid(tvdbEpisode.getSeasonid());
+        mySQLTVDBEpisode.setEpisodeNumber(tvdbEpisode.getEpisodeNumber());
+        mySQLTVDBEpisode.setEpisodeName(tvdbEpisode.getEpisodeName());
+        mySQLTVDBEpisode.setFirstAired(tvdbEpisode.getFirstAired());
+        mySQLTVDBEpisode.setGuestStars(tvdbEpisode.getGuestStars());
+        mySQLTVDBEpisode.setDirector(tvdbEpisode.getDirector());
+        mySQLTVDBEpisode.setWriter(tvdbEpisode.getWriter());
+        mySQLTVDBEpisode.setOverview(tvdbEpisode.getOverview());
+        mySQLTVDBEpisode.setProductionCode(tvdbEpisode.getProductionCode());
+        mySQLTVDBEpisode.setLastUpdated(tvdbEpisode.getLastUpdated());
+        mySQLTVDBEpisode.setFlagged(tvdbEpisode.getFlagged());
+        mySQLTVDBEpisode.setDvdDiscId(tvdbEpisode.getDvdDiscId());
+        mySQLTVDBEpisode.setDvdSeason(tvdbEpisode.getDvdSeason());
+        mySQLTVDBEpisode.setDvdEpisodeNumber(tvdbEpisode.getDvdEpisodeNumber());
+        mySQLTVDBEpisode.setDvdChapter(tvdbEpisode.getDvdChapter());
+        mySQLTVDBEpisode.setAbsoluteNumber(tvdbEpisode.getAbsoluteNumber());
+        mySQLTVDBEpisode.setFilename(tvdbEpisode.getFilename());
+        mySQLTVDBEpisode.setSeriesId(tvdbEpisode.getSeriesId());
+        mySQLTVDBEpisode.setThumbAdded(tvdbEpisode.getThumbAdded());
+        mySQLTVDBEpisode.setThumbWidth(tvdbEpisode.getThumbWidth());
+        mySQLTVDBEpisode.setThumbHeight(tvdbEpisode.getThumbHeight());
+        mySQLTVDBEpisode.setTmsExport(tvdbEpisode.getTmsExport());
+        mySQLTVDBEpisode.setMirrorUpdate(tvdbEpisode.getMirrorUpdate());
+        mySQLTVDBEpisode.setImdbId(tvdbEpisode.getImdbId());
+        mySQLTVDBEpisode.setEpImgFlag(tvdbEpisode.getEpImgFlag());
+        mySQLTVDBEpisode.setRating(tvdbEpisode.getRating());
+        mySQLTVDBEpisode.setSeasonNumber(tvdbEpisode.getSeasonNumber());
+        mySQLTVDBEpisode.setLanguage(tvdbEpisode.getLanguage());
+        
+        return mySQLTVDBEpisode;
     }
 
     public static MySQLTVDBSeries convertTVDBSeries_To_MySQLTVDBSeries(TVDBSeries tvdbSeries){
