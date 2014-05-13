@@ -1,6 +1,7 @@
 package Database.MySQL.HibernateManager;
 
 import javax.persistence.*;
+import java.util.List;
 
 public class HibernateManager {
     public EntityManager entityManager;
@@ -24,6 +25,18 @@ public class HibernateManager {
         return result;
     }
 
+    public <T> List<T> getEntities(Class<T> clazz, String queryString){
+        entityManager.getTransaction().begin();
+
+        TypedQuery<T> query = entityManager.createNamedQuery(queryString, clazz);
+
+        List<T> result = getQueryResultList(query);
+
+        entityManager.close();
+
+        return result;
+    }
+
     public <T> void saveEntity(T t){
         entityManager.getTransaction().begin();
 
@@ -40,6 +53,16 @@ public class HibernateManager {
         T result;
         try {
             result = query.getSingleResult();
+        } catch (NoResultException e) {
+            result = null;
+        }
+        return result;
+    }
+
+    private <T> List<T> getQueryResultList(TypedQuery<T> query) {
+        List<T> result;
+        try {
+            result = query.getResultList();
         } catch (NoResultException e) {
             result = null;
         }

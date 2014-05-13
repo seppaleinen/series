@@ -9,6 +9,7 @@
         <class>Database.MySQL.Entities.MySQLOMDB</class>
         <class>Database.MySQL.Entities.MySQLTVDBSeries</class>
         <class>Database.MySQL.Entities.MySQLTVDBEpisode</class>
+        <class>Database.MySQL.Entities.MySQLTVDBUpdate</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -27,6 +28,7 @@
         <class>Database.MySQL.Entities.MySQLOMDB</class>
         <class>Database.MySQL.Entities.MySQLTVDBSeries</class>
         <class>Database.MySQL.Entities.MySQLTVDBEpisode</class>
+        <class>Database.MySQL.Entities.MySQLTVDBUpdate</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.connection.provider_class" value="org.hibernate.connection.DriverManagerConnectionProvider" />

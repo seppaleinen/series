@@ -1,14 +1,13 @@
 package Database.MySQL;
 
 import Database.DBInterface;
-import Database.MySQL.Entities.MySQLOMDB;
-import Database.MySQL.Entities.MySQLTVDBEpisode;
-import Database.MySQL.Entities.MySQLTVDBIMDB;
-import Database.MySQL.Entities.MySQLTVDBSeries;
+import Database.MySQL.Entities.*;
 import Database.MySQL.HibernateManager.HibernateManager;
 import Database.MySQL.Utils.JPAToObject;
 import Database.MySQL.Utils.ObjectToJPA;
 import Objects.*;
+
+import java.util.List;
 
 public class MySQLImpl implements DBInterface {
     private String persistence = "default";
@@ -43,6 +42,13 @@ public class MySQLImpl implements DBInterface {
 
     @Override
     public TVDBUpdate getTVDBUpdate() {
+        hibernateManager = new HibernateManager(persistence);
+
+        List<MySQLTVDBUpdate> mySQLTVDBUpdate = hibernateManager.getEntities(MySQLTVDBUpdate.class, MySQLTVDBUpdate.FIND_BY_SERIESID);
+
+        if(mySQLTVDBUpdate!=null){
+            JPAToObject.convertMySQLTVDBUpdate_To_TVDBUpdate(mySQLTVDBUpdate.get(0));
+        }
         return null;
     }
 
@@ -84,7 +90,11 @@ public class MySQLImpl implements DBInterface {
 
     @Override
     public void saveTVDBUpdate(TVDBUpdate tvdbUpdate) {
+        hibernateManager = new HibernateManager(persistence);
 
+        MySQLTVDBUpdate mySQLTVDBUpdate = ObjectToJPA.convertTVDBUpdate_To_MySQLTVDBUpdate(tvdbUpdate);
+
+        hibernateManager.saveEntity(mySQLTVDBUpdate);
     }
 
     @Override

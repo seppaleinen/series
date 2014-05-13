@@ -1,13 +1,7 @@
 package Database.MySQL.Utils;
 
-import Database.MySQL.Entities.MySQLOMDB;
-import Database.MySQL.Entities.MySQLTVDBEpisode;
-import Database.MySQL.Entities.MySQLTVDBIMDB;
-import Database.MySQL.Entities.MySQLTVDBSeries;
-import Objects.OMDB;
-import Objects.TVDBEpisode;
-import Objects.TVDBIMDB;
-import Objects.TVDBSeries;
+import Database.MySQL.Entities.*;
+import Objects.*;
 
 public class ObjectToJPA {
     public static MySQLTVDBIMDB convertTVDBIMDB_To_MySQLTVDBIMDB(TVDBIMDB tvdbimdb){
@@ -85,6 +79,14 @@ public class ObjectToJPA {
         mySQLTVDBEpisode.setLanguage(tvdbEpisode.getLanguage());
         
         return mySQLTVDBEpisode;
+    }
+
+    public static MySQLTVDBUpdate convertTVDBUpdate_To_MySQLTVDBUpdate(TVDBUpdate tvdbUpdate){
+        MySQLTVDBUpdate mySQLTVDBUpdate = new MySQLTVDBUpdate();
+
+        mySQLTVDBUpdate.setTime(tvdbUpdate.getTime());
+
+        return mySQLTVDBUpdate;
     }
 
     public static MySQLTVDBSeries convertTVDBSeries_To_MySQLTVDBSeries(TVDBSeries tvdbSeries){

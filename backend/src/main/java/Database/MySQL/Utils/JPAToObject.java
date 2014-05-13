@@ -1,13 +1,7 @@
 package Database.MySQL.Utils;
 
-import Database.MySQL.Entities.MySQLOMDB;
-import Database.MySQL.Entities.MySQLTVDBEpisode;
-import Database.MySQL.Entities.MySQLTVDBIMDB;
-import Database.MySQL.Entities.MySQLTVDBSeries;
-import Objects.OMDB;
-import Objects.TVDBEpisode;
-import Objects.TVDBIMDB;
-import Objects.TVDBSeries;
+import Database.MySQL.Entities.*;
+import Objects.*;
 
 public class JPAToObject {
     public static TVDBIMDB convertMySQLTVDBIMDB_To_TVDBIMDB(MySQLTVDBIMDB mySQLTVDBIMDB){
@@ -97,6 +91,18 @@ public class JPAToObject {
         }
         
         return tvdbEpisode;
+    }
+
+    public static TVDBUpdate convertMySQLTVDBUpdate_To_TVDBUpdate(MySQLTVDBUpdate mySQLTVDBUpdate){
+        TVDBUpdate tvdbUpdate = null;
+
+        if(mySQLTVDBUpdate != null){
+            tvdbUpdate = new TVDBUpdate();
+
+            tvdbUpdate.setTime(mySQLTVDBUpdate.getTime());
+        }
+
+        return tvdbUpdate;
     }
 
     public static TVDBSeries convertMySQLTVDBSeries_To_TVDBSeries(MySQLTVDBSeries mySQLTVDBSeries){

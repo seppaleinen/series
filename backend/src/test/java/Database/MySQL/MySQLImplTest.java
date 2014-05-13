@@ -3,10 +3,7 @@ package Database.MySQL;
 import Database.MongoDB.ObjectCreater;
 import Database.MySQL.Entities.MySQLTVDBIMDB;
 import Database.MySQL.Utils.ObjectToJPA;
-import Objects.OMDB;
-import Objects.TVDBEpisode;
-import Objects.TVDBIMDB;
-import Objects.TVDBSeries;
+import Objects.*;
 import org.junit.*;
 
 
@@ -84,6 +81,18 @@ public class MySQLImplTest {
 
         assertNotNull("Result should not be null", foundTVDBEpisode);
         assertEquals("Objects should be equals", tvdbEpisode, foundTVDBEpisode);
+    }
+
+    @Test
+    public void testSaveAndFindTVDBUpdate() {
+        TVDBUpdate tvdbUpdate = ObjectCreater.createTVDBUpdate();
+
+        dbInterface.saveTVDBUpdate(tvdbUpdate);
+
+        TVDBUpdate foundTVDBUpdate = dbInterface.getTVDBUpdate();
+
+        assertNotNull("Result should not be null", foundTVDBUpdate);
+        assertEquals("Objects should be equals", tvdbUpdate, foundTVDBUpdate);
     }
 
     private static boolean databaseExists() {
