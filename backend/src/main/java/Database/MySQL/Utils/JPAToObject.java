@@ -30,6 +30,26 @@ public class JPAToObject {
 
         if(mySQLOMDB != null) {
             omdb = new OMDB();
+
+            omdb.setTitle(mySQLOMDB.getTitle());
+            omdb.setYear(mySQLOMDB.getYear());
+            omdb.setRated(mySQLOMDB.getRated());
+            omdb.setReleased(mySQLOMDB.getReleased());
+            omdb.setRuntime(mySQLOMDB.getRuntime());
+            omdb.setGenre(mySQLOMDB.getGenre());
+            omdb.setDirector(mySQLOMDB.getDirector());
+            omdb.setWriter(mySQLOMDB.getWriter());
+            omdb.setActors(mySQLOMDB.getActors());
+            omdb.setPlot(mySQLOMDB.getPlot());
+            omdb.setLanguage(mySQLOMDB.getLanguage());
+            omdb.setCountry(mySQLOMDB.getCountry());
+            omdb.setAwards(mySQLOMDB.getAwards());
+            omdb.setPoster(mySQLOMDB.getPoster());
+            omdb.setMetascore(mySQLOMDB.getMetascore());
+            omdb.setImdbRating(mySQLOMDB.getImdbRating());
+            omdb.setImdbVotes(mySQLOMDB.getImdbVotes());
+            omdb.setImdbID(mySQLOMDB.getImdbID());
+            omdb.setType(mySQLOMDB.getType());
         }
 
         return omdb;

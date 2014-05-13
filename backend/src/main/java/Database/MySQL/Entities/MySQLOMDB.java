@@ -6,11 +6,11 @@ import java.io.Serializable;
 @Entity
 @Table(name = "OMDB")
 @NamedQueries(
-        @NamedQuery(name = "findByImdbId", query = "select omdb from OMDB omdb where omdb.imdbId = :imdbId")
+        @NamedQuery(name = "findByOMDBImdbId", query = "select OMDB from MySQLOMDB OMDB where OMDB.imdbID = :imdbId")
 )
 public class MySQLOMDB implements Serializable {
     private static final long serialVersionUID = 1L;
-    public static final String FIND_BY_IMDBID = "findByImdbId";
+    public static final String FIND_BY_IMDBID = "findByOMDBImdbId";
 
     private String title;
     private String year;

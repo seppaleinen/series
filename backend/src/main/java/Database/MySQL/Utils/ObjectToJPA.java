@@ -24,6 +24,26 @@ public class ObjectToJPA {
     public static MySQLOMDB convertOMDB_To_MySQLOMDB(OMDB omdb) {
         MySQLOMDB mySQLOMDB = new MySQLOMDB();
 
+        mySQLOMDB.setTitle(omdb.getTitle());
+        mySQLOMDB.setYear(omdb.getYear());
+        mySQLOMDB.setRated(omdb.getRated());
+        mySQLOMDB.setReleased(omdb.getReleased());
+        mySQLOMDB.setRuntime(omdb.getRuntime());
+        mySQLOMDB.setGenre(omdb.getGenre());
+        mySQLOMDB.setDirector(omdb.getDirector());
+        mySQLOMDB.setWriter(omdb.getWriter());
+        mySQLOMDB.setActors(omdb.getActors());
+        mySQLOMDB.setPlot(omdb.getPlot());
+        mySQLOMDB.setLanguage(omdb.getLanguage());
+        mySQLOMDB.setCountry(omdb.getCountry());
+        mySQLOMDB.setAwards(omdb.getAwards());
+        mySQLOMDB.setPoster(omdb.getPoster());
+        mySQLOMDB.setMetascore(omdb.getMetascore());
+        mySQLOMDB.setImdbRating(omdb.getImdbRating());
+        mySQLOMDB.setImdbVotes(omdb.getImdbVotes());
+        mySQLOMDB.setImdbID(omdb.getImdbID());
+        mySQLOMDB.setType(omdb.getType());
+
         return mySQLOMDB;
     }
 }
