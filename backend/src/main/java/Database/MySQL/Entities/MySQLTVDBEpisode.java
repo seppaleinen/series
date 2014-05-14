@@ -12,6 +12,7 @@ public class MySQLTVDBEpisode implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String FIND_BY_SERIESID = "findEpisodeBySeriesId";
 
+    @Id
     private String id;
     private String seasonid;
     private String episodeNumber;
@@ -30,7 +31,6 @@ public class MySQLTVDBEpisode implements Serializable {
     private String dvdChapter;
     private String absoluteNumber;
     private String filename;
-    @Id
     private String seriesId;
     private String thumbAdded;
     private String thumbWidth;

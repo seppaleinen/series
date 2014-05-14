@@ -20,7 +20,6 @@ public class MySQLTVDBIMDB implements Serializable {
     private String firstAired;
     private String imdbId;
     @Id
-    @Column(unique = true)
     private String id;
 
     public String getSeriesId() {

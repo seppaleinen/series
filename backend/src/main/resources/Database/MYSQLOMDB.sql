@@ -16,6 +16,6 @@ poster varchar(255),
 metascore varchar(255),
 imdbRating varchar(255),
 imdbVotes varchar(255),
-imdbID varchar(255),
+imdbID varchar(255) PRIMARY KEY,
 type varchar(255)
 );

@@ -1,5 +1,5 @@
 CREATE TABLE MYDB.TVDBEPISODE (
-id varchar(255),
+id varchar(255) PRIMARY KEY,
 seasonid varchar(255),
 episodeNumber varchar(255),
 episodeName varchar(255),

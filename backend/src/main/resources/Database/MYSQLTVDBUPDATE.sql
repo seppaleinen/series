@@ -1,5 +1,3 @@
 CREATE TABLE MYDB.TVDBUPDATE (
-time varchar(255)
-  #seriesList
-  #episodeList
+time varchar(255) PRIMARY KEY
 );
