@@ -4,6 +4,7 @@ import Database.DBInterface;
 import Objects.*;
 
 public class PostgreSQLImpl implements DBInterface {
+    private static final String JDBC_CONNECTION = "jdbc:postgresql://127.0.0.1:5432/MYPOSTGRES";
     @Override
     public TVDBIMDB getTVDBIMDB(String imdbId) {
         return null;
