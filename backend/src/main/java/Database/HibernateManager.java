@@ -1,4 +1,4 @@
-package Database.MySQL.HibernateManager;
+package Database;
 
 import javax.persistence.*;
 import java.util.List;

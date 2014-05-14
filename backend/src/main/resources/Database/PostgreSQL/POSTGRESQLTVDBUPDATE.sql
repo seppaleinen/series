@@ -1,0 +1,3 @@
+CREATE TABLE TVDBUPDATE (
+time varchar(255) PRIMARY KEY
+);

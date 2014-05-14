@@ -1,57 +1,23 @@
 package Database.PostgreSQL;
 
 import Database.DBInterface;
+import Database.Entities.*;
+import Database.HibernateManager;
+import Database.Entities.Utils.JPAToObject;
+import Database.Entities.Utils.ObjectToJPA;
+import Database.HibernateMethods;
 import Objects.*;
 
-public class PostgreSQLImpl implements DBInterface {
-    private static final String JDBC_CONNECTION = "jdbc:postgresql://127.0.0.1:5432/MYPOSTGRES";
-    @Override
-    public TVDBIMDB getTVDBIMDB(String imdbId) {
-        return null;
+import java.util.List;
+
+public class PostgreSQLImpl extends HibernateMethods {
+    private static final String DEFAULT_PERSISTENCE = "postgres";
+
+    public PostgreSQLImpl(){
+        setPersistence(DEFAULT_PERSISTENCE);
     }
 
-    @Override
-    public TVDBEpisode getTVDBEpisode(String episodeId) {
-        return null;
-    }
-
-    @Override
-    public TVDBSeries getTVDBSeries(String seriesId) {
-        return null;
-    }
-
-    @Override
-    public TVDBUpdate getTVDBUpdate() {
-        return null;
-    }
-
-    @Override
-    public OMDB getOMDB(String IMDBId) {
-        return null;
-    }
-
-    @Override
-    public void saveTVDBIMDB(TVDBIMDB tvdbimdb) {
-
-    }
-
-    @Override
-    public void saveTVDBEpisode(TVDBEpisode tvdbEpisode) {
-
-    }
-
-    @Override
-    public void saveTVDBSeries(TVDBSeries tvdbSeries) {
-
-    }
-
-    @Override
-    public void saveTVDBUpdate(TVDBUpdate tvdbUpdate) {
-
-    }
-
-    @Override
-    public void saveOMDB(OMDB omdb) {
-
+    protected void setPersistence(String persistence){
+        this.persistence = persistence;
     }
 }

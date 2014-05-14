@@ -82,14 +82,6 @@
             <artifactId>liquibase-core</artifactId>
             <version>${liquibase-core.version}</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>1.8.0.10</version>
-            <scope>test</scope>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
@@ -138,12 +130,20 @@
         <mysql.url>jdbc:mysql://localhost:3306/MYDB</mysql.url>
         <mysql_admin.username>root</mysql_admin.username>
         <mysql_admin.password>minstlol</mysql_admin.password>
-        <mysql_changeLogFile>src/main/resources/Database/master.xml</mysql_changeLogFile>
+        <mysql_changeLogFile>src/main/resources/Database/MySQL/master.xml</mysql_changeLogFile>
+
+        <postgre_dev.username>root</postgre_dev.username>
+        <postgre_dev.password>minstlol</postgre_dev.password>
+        <postgre.url>jdbc:postgresql://localhost:5432/mypostgres</postgre.url>
+        <postgre_admin.username>root</postgre_admin.username>
+        <postgre_admin.password>minstlol</postgre_admin.password>
+        <postgre_changeLogFile>src/main/resources/Database/PostgreSQL/master.xml</postgre_changeLogFile>
         <liquibase-plugin.verbose>true</liquibase-plugin.verbose>
         <drop_database>true</drop_database>
     </properties>
 
     <profiles>
+        <!-- MYSQL -->
         <profile>
             <id>mysql</id>
             <activation>
@@ -167,6 +167,43 @@
                                     <url>${mysql.url}</url>
                                     <username>${mysql_dev.username}</username>
                                     <password>${mysql_dev.password}</password>
+                                    <verbose>${liquibase-plugin.verbose}</verbose>
+                                    <dropFirst>${drop_database}</dropFirst>
+                                </configuration>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- POSTGRESQL -->
+        <profile>
+            <id>postgresql</id>
+            <activation>
+                <property>
+                    <name>postgresql</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>${liquibase-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <configuration>
+                                    <changeLogFile>${postgre_changeLogFile}</changeLogFile>
+                                    <driver>org.postgresql.Driver</driver>
+                                    <url>${postgre.url}</url>
+                                    <username>${postgre_dev.username}</username>
+                                    <password>${postgre_dev.password}</password>
                                     <verbose>${liquibase-plugin.verbose}</verbose>
                                     <dropFirst>${drop_database}</dropFirst>
                                 </configuration>

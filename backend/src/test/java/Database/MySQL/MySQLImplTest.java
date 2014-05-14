@@ -1,8 +1,6 @@
 package Database.MySQL;
 
 import Database.MongoDB.ObjectCreater;
-import Database.MySQL.Entities.MySQLTVDBIMDB;
-import Database.MySQL.Utils.ObjectToJPA;
 import Objects.*;
 import org.junit.*;
 
@@ -10,7 +8,6 @@ import org.junit.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 import java.sql.*;
 
 import static org.junit.Assert.assertEquals;

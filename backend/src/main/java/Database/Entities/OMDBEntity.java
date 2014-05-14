@@ -1,4 +1,4 @@
-package Database.MySQL.Entities;
+package Database.Entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,9 +6,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "OMDB")
 @NamedQueries(
-        @NamedQuery(name = "findByOMDBImdbId", query = "select OMDB from MySQLOMDB OMDB where OMDB.imdbID = :imdbId")
+        @NamedQuery(name = "findByOMDBImdbId", query = "select OMDB from OMDBEntity OMDB where OMDB.imdbID = :imdbId")
 )
-public class MySQLOMDB implements Serializable {
+public class OMDBEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String FIND_BY_IMDBID = "findByOMDBImdbId";
 

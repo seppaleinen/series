@@ -1,15 +1,15 @@
-package Database.MySQL.Entities;
+package Database.Entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "TVDBEPISODELIST")
-public class MySQLUpdateEpisode implements Serializable {
+public class UpdateEpisodeEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
 
@@ -18,7 +18,7 @@ public class MySQLUpdateEpisode implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="UPDATE_ID")
-    private MySQLTVDBUpdate mySQLTVDBUpdate;
+    private TVDBUpdateEntity TVDBUpdateEntity;
 
     public int getId() {
         return id;
@@ -36,11 +36,11 @@ public class MySQLUpdateEpisode implements Serializable {
         this.episodeId = episodeId;
     }
 
-    public MySQLTVDBUpdate getMySQLTVDBUpdate() {
-        return mySQLTVDBUpdate;
+    public TVDBUpdateEntity getTVDBUpdateEntity() {
+        return TVDBUpdateEntity;
     }
 
-    public void setMySQLTVDBUpdate(MySQLTVDBUpdate mySQLTVDBUpdate) {
-        this.mySQLTVDBUpdate = mySQLTVDBUpdate;
+    public void setTVDBUpdateEntity(TVDBUpdateEntity TVDBUpdateEntity) {
+        this.TVDBUpdateEntity = TVDBUpdateEntity;
     }
 }

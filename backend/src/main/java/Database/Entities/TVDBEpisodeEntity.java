@@ -1,4 +1,4 @@
-package Database.MySQL.Entities;
+package Database.Entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,9 +6,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "TVDBEPISODE")
 @NamedQueries(
-        @NamedQuery(name = "findEpisodeBySeriesId", query = "select episode from MySQLTVDBEpisode episode where episode.seriesId = :id")
+        @NamedQuery(name = "findEpisodeBySeriesId", query = "select episode from TVDBEpisodeEntity episode where episode.seriesId = :id")
 )
-public class MySQLTVDBEpisode implements Serializable {
+public class TVDBEpisodeEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String FIND_BY_SERIESID = "findEpisodeBySeriesId";
 

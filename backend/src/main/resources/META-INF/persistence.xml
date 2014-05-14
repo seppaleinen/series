@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_1_0.xsd"
-             version="1.0">
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
     <persistence-unit name="mysql" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>Database.MySQL.Entities.MySQLTVDBIMDB</class>
-        <class>Database.MySQL.Entities.MySQLOMDB</class>
-        <class>Database.MySQL.Entities.MySQLTVDBSeries</class>
-        <class>Database.MySQL.Entities.MySQLTVDBEpisode</class>
-        <class>Database.MySQL.Entities.MySQLTVDBUpdate</class>
-        <class>Database.MySQL.Entities.MySQLUpdateEpisode</class>
-        <class>Database.MySQL.Entities.MySQLUpdateSeries</class>
+        <class>Database.Entities.TVDBIMDBEntity</class>
+        <class>Database.Entities.OMDBEntity</class>
+        <class>Database.Entities.TVDBSeriesEntity</class>
+        <class>Database.Entities.TVDBEpisodeEntity</class>
+        <class>Database.Entities.TVDBUpdateEntity</class>
+        <class>Database.Entities.UpdateEpisodeEntity</class>
+        <class>Database.Entities.UpdateSeriesEntity</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -20,6 +21,30 @@
             <property name="javax.persistence.jdbc.password" value="minstlol" />
             <property name="hbm2ddl.auto" value="create" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
+            <property name="hibernate.cache.use_query_cache" value="false"/>
+            <!-- Set to true when troubleshooting -->
+            <property name="hibernate.bytecode.use_reflection_optimizer" value="false"/>
+            <!-- Set to true when troubleshooting -->
+            <property name="hibernate.format_sql" value="false"/>
+            <!-- Set to true when troubleshooting -->
+            <property name="hibernate.use_sql_comments" value="false"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="postgres" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mypostgres" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="minstlol" />
+            <property name="hbm2ddl.auto" value="create" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
