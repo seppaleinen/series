@@ -1,7 +1,12 @@
+import Converters.SaxParser.SaxParser;
+import Converters.XmlParser;
+import Integrations.OMDBInterface;
+import Integrations.URLImpl.OMDBImpl;
 import MediaFinder.ApacheFileUtils.ApacheFileFinder;
 import MediaFinder.FileFinder.FileFinder;
 import MediaFinder.Finder;
 import Objects.FinderSeries;
+import Objects.OMDB;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -14,6 +19,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +32,18 @@ public class StartPage extends WebPage {
     public static final String LISTVIEWCONTAINER_ID = "listViewContainer";
     public static final String NAME_ID = "name";
     public static final String SEARCH_BUTTON_ID = "searchButton";
+    public static final String SEARCH_OMDB = "searchOMDB";
+    public static final String SEARCH_OMDB_BUTTON = "searchOMDBButton";
+    public static final String SEARCH_OMDB_LABEL = "OMDBTitle";
 
     private Form form;
     private TextField<String> directory;
     private Button searchMediaButton;
     private ListView<String> listView;
     private WebMarkupContainer listViewContainer;
+    private TextField<String> searchOmdbTextfield;
+    private Button searchOmdbButton;
+    private Label omdbLabel;
 
     private List<String> results = new ArrayList<>();
     private ModelObject modelObject = new ModelObject();
@@ -52,6 +64,9 @@ public class StartPage extends WebPage {
         listViewContainer = new WebMarkupContainer(LISTVIEWCONTAINER_ID);
         listView = createListView();
         searchMediaButton = createSearchMediaButton();
+        searchOmdbTextfield = new TextField<>(SEARCH_OMDB);
+        searchOmdbButton = createSearchOMDBButton();
+        omdbLabel = new Label(SEARCH_OMDB_LABEL);
     }
 
     private void addComponents(){
@@ -59,6 +74,9 @@ public class StartPage extends WebPage {
         form.add(listViewContainer);
         form.add(searchMediaButton);
         form.add(directory);
+        form.add(searchOmdbTextfield);
+        form.add(searchOmdbButton);
+        form.add(omdbLabel);
         add(form);
     }
 
@@ -68,6 +86,21 @@ public class StartPage extends WebPage {
             protected void populateItem(ListItem<String> resultItem) {
                 String result = resultItem.getModelObject();
                 resultItem.add(new Label(NAME_ID, result));
+            }
+        };
+    }
+
+    private Button createSearchOMDBButton(){
+        return new Button(SEARCH_OMDB_BUTTON){
+            @Override
+            public void onSubmit(){
+                OMDBInterface omdbInterface = new OMDBImpl();
+                InputStream inputStream = omdbInterface.getOmdbInfo(modelObject.getSearchOMDB());
+                XmlParser xmlParser = new SaxParser();
+                OMDB omdb = xmlParser.parseOmdbFromXml(inputStream);
+                if(omdb!= null){
+                    modelObject.setOMDBTitle(omdb.getTitle());
+                }
             }
         };
     }
