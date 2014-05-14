@@ -10,7 +10,7 @@ import Objects.*;
 import java.util.List;
 
 public class MySQLImpl implements DBInterface {
-    private String persistence = "default";
+    private String persistence = "mysql";
     private HibernateManager hibernateManager;
 
     @Override

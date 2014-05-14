@@ -23,7 +23,7 @@ public class MySQLImplTest {
 
     @BeforeClass
     public static void setupClass(){
-        persistenceName = databaseExists() ? "default" : "test";
+        persistenceName = databaseExists() ? "mysql" : "mysqltest";
         System.out.println("Running on " + persistenceName + " persistence");
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(persistenceName);
         entityManager = entityManagerFactory.createEntityManager();
