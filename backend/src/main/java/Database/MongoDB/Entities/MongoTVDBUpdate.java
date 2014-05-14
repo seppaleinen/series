@@ -3,6 +3,7 @@ package Database.MongoDB.Entities;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +13,8 @@ public class MongoTVDBUpdate {
     public static final String TIME_KEY = "time";
     @Id
     private String time;
-    @Embedded
-    private List<String> seriesList = new ArrayList<>();
-    @Embedded
-    private List<String> episodeList = new ArrayList<>();
+    private List<String> seriesList;
+    private List<String> episodeList;
 
     public String getTime() {
         return time;

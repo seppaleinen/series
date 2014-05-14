@@ -116,8 +116,8 @@ public class ObjectToMongo {
         MongoTVDBUpdate mongoTVDBUpdate = new MongoTVDBUpdate();
 
         mongoTVDBUpdate.setTime(tvdbUpdate.getTime());
-        mongoTVDBUpdate.setEpisodeList(mongoTVDBUpdate.getEpisodeList());
-        mongoTVDBUpdate.setSeriesList(mongoTVDBUpdate.getSeriesList());
+        mongoTVDBUpdate.setEpisodeList(tvdbUpdate.getEpisodeList());
+        mongoTVDBUpdate.setSeriesList(tvdbUpdate.getSeriesList());
 
         return mongoTVDBUpdate;
     }
