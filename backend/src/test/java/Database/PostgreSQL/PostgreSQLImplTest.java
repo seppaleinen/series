@@ -35,14 +35,13 @@ public class PostgreSQLImplTest {
         dbInterface = new PostgreSQLImpl();
     }
 
-    @Ignore
     @Test
     public void testConnection() throws ClassNotFoundException, SQLException {
         assertEquals("Postgresql server should be running", "postgres", persistenceName);
     }
 
     private static boolean databaseExists() throws ClassNotFoundException {
-        String dbUrl = "jdbc:postgresql://127.0.0.1:5432/MYPOSTGRES";
+        String dbUrl = "jdbc:postgresql://localhost:5432/mypostgres";
         String username = "root";
         String password = "minstlol";
 
