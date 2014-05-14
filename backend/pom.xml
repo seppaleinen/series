@@ -160,6 +160,7 @@
                         <version>${liquibase-plugin.version}</version>
                         <executions>
                             <execution>
+                                <id>mysql-execution</id>
                                 <phase>process-resources</phase>
                                 <configuration>
                                     <changeLogFile>${mysql_changeLogFile}</changeLogFile>
@@ -197,6 +198,7 @@
                         <version>${liquibase-plugin.version}</version>
                         <executions>
                             <execution>
+                                <id>postgres-execution</id>
                                 <phase>process-resources</phase>
                                 <configuration>
                                     <changeLogFile>${postgre_changeLogFile}</changeLogFile>
