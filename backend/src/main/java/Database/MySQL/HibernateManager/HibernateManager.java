@@ -20,6 +20,8 @@ public class HibernateManager {
 
         T result = getQuerySingleResult(query);
 
+        entityManager.getTransaction().commit();
+
         entityManager.close();
 
         return result;
@@ -32,6 +34,8 @@ public class HibernateManager {
 
         List<T> result = getQueryResultList(query);
 
+        entityManager.getTransaction().commit();
+
         entityManager.close();
 
         return result;
@@ -40,7 +44,7 @@ public class HibernateManager {
     public <T> void saveEntity(T t){
         entityManager.getTransaction().begin();
 
-        entityManager.persist(t);
+        entityManager.merge(t);
 
         entityManager.flush();
 

@@ -19,5 +19,12 @@
     <changeSet id="5" author="David" runAlways="true" failOnError="true">
         <sqlFile splitStatements="true"  path="MYSQLTVDBUPDATE.sql"  relativeToChangelogFile="true"/>
     </changeSet>
+    <changeSet id="6" author="David" runAlways="true" failOnError="true">
+        <sqlFile splitStatements="true"  path="MYSQLUPDATEEPISODE.sql"  relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="7" author="David" runAlways="true" failOnError="true">
+        <sqlFile splitStatements="true"  path="MYSQLUPDATESERIES.sql"  relativeToChangelogFile="true"/>
+    </changeSet>
+
 
 </databaseChangeLog>

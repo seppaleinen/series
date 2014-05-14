@@ -3,6 +3,9 @@ package Database.MySQL.Utils;
 import Database.MySQL.Entities.*;
 import Objects.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ObjectToJPA {
     public static MySQLTVDBIMDB convertTVDBIMDB_To_MySQLTVDBIMDB(TVDBIMDB tvdbimdb){
         MySQLTVDBIMDB mySQLTVDBIMDB = new MySQLTVDBIMDB();
@@ -85,8 +88,44 @@ public class ObjectToJPA {
         MySQLTVDBUpdate mySQLTVDBUpdate = new MySQLTVDBUpdate();
 
         mySQLTVDBUpdate.setTime(tvdbUpdate.getTime());
+        List<MySQLUpdateEpisode> mySQLUpdateEpisodeList = convertStringList_To_MySQLUpdateEpisode(mySQLTVDBUpdate, tvdbUpdate.getEpisodeList());
+        mySQLTVDBUpdate.setEpisodeList(mySQLUpdateEpisodeList);
+        List<MySQLUpdateSeries> mySQLUpdateSeriesList = convertStringList_To_MySQLUpdateSeries(mySQLTVDBUpdate, tvdbUpdate.getSeriesList());
+        mySQLTVDBUpdate.setSeriesList(mySQLUpdateSeriesList);
 
         return mySQLTVDBUpdate;
+    }
+
+    private static List<MySQLUpdateEpisode> convertStringList_To_MySQLUpdateEpisode(MySQLTVDBUpdate mySQLTVDBUpdate, List<String> episodeList) {
+        List<MySQLUpdateEpisode> mySQLUpdateEpisodeList = new ArrayList<>();
+        MySQLUpdateEpisode mySQLUpdateEpisode = null;
+
+        for(String episodeId : episodeList) {
+            mySQLUpdateEpisode = new MySQLUpdateEpisode();
+
+            mySQLUpdateEpisode.setEpisodeId(episodeId);
+            mySQLUpdateEpisode.setMySQLTVDBUpdate(mySQLTVDBUpdate);
+
+            mySQLUpdateEpisodeList.add(mySQLUpdateEpisode);
+        }
+
+        return mySQLUpdateEpisodeList;
+    }
+
+    private static List<MySQLUpdateSeries> convertStringList_To_MySQLUpdateSeries(MySQLTVDBUpdate mySQLTVDBUpdate, List<String> seriesList) {
+        List<MySQLUpdateSeries> mySQLUpdateSeriesList = new ArrayList<>();
+        MySQLUpdateSeries mySQLUpdateSeries = null;
+
+        for(String episodeId : seriesList) {
+            mySQLUpdateSeries = new MySQLUpdateSeries();
+
+            mySQLUpdateSeries.setSeriesId(episodeId);
+            mySQLUpdateSeries.setMySQLTVDBUpdate(mySQLTVDBUpdate);
+
+            mySQLUpdateSeriesList.add(mySQLUpdateSeries);
+        }
+
+        return mySQLUpdateSeriesList;
     }
 
     public static MySQLTVDBSeries convertTVDBSeries_To_MySQLTVDBSeries(TVDBSeries tvdbSeries){

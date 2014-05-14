@@ -44,10 +44,10 @@ public class MySQLImpl implements DBInterface {
     public TVDBUpdate getTVDBUpdate() {
         hibernateManager = new HibernateManager(persistence);
 
-        List<MySQLTVDBUpdate> mySQLTVDBUpdate = hibernateManager.getEntities(MySQLTVDBUpdate.class, MySQLTVDBUpdate.FIND_BY_SERIESID);
+        List<MySQLTVDBUpdate> mySQLTVDBUpdateList = hibernateManager.getEntities(MySQLTVDBUpdate.class, MySQLTVDBUpdate.FIND_BY_SERIESID);
 
-        if(mySQLTVDBUpdate!=null){
-            JPAToObject.convertMySQLTVDBUpdate_To_TVDBUpdate(mySQLTVDBUpdate.get(0));
+        if(mySQLTVDBUpdateList!=null && !mySQLTVDBUpdateList.isEmpty()){
+            return JPAToObject.convertMySQLTVDBUpdate_To_TVDBUpdate(mySQLTVDBUpdateList.get(0));
         }
         return null;
     }

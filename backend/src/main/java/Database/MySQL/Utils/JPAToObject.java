@@ -3,6 +3,9 @@ package Database.MySQL.Utils;
 import Database.MySQL.Entities.*;
 import Objects.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JPAToObject {
     public static TVDBIMDB convertMySQLTVDBIMDB_To_TVDBIMDB(MySQLTVDBIMDB mySQLTVDBIMDB){
         TVDBIMDB tvdbimdb = null;
@@ -100,9 +103,33 @@ public class JPAToObject {
             tvdbUpdate = new TVDBUpdate();
 
             tvdbUpdate.setTime(mySQLTVDBUpdate.getTime());
+            List<String> episodeList = convertMySQLUpdateEpisode_To_StringList(mySQLTVDBUpdate.getEpisodeList());
+            tvdbUpdate.setEpisodeList(episodeList);
+            List<String> seriesList = convertMySQLUpdateSeries_To_StringList(mySQLTVDBUpdate.getSeriesList());
+            tvdbUpdate.setSeriesList(seriesList);
         }
 
         return tvdbUpdate;
+    }
+
+    private static List<String> convertMySQLUpdateEpisode_To_StringList(List<MySQLUpdateEpisode> mySQLUpdateEpisodeList) {
+        List<String> episodeList = new ArrayList<>();
+
+        for(MySQLUpdateEpisode mySQLUpdateEpisode : mySQLUpdateEpisodeList) {
+            episodeList.add(mySQLUpdateEpisode.getEpisodeId());
+        }
+
+        return episodeList;
+    }
+
+    private static List<String> convertMySQLUpdateSeries_To_StringList(List<MySQLUpdateSeries> mySQLUpdateSeriesList) {
+        List<String> seriesList = new ArrayList<>();
+
+        for(MySQLUpdateSeries mySQLUpdateSeries : mySQLUpdateSeriesList) {
+            seriesList.add(mySQLUpdateSeries.getSeriesId());
+        }
+
+        return seriesList;
     }
 
     public static TVDBSeries convertMySQLTVDBSeries_To_TVDBSeries(MySQLTVDBSeries mySQLTVDBSeries){

@@ -42,8 +42,8 @@ public class TVDBUpdate implements Serializable {
 
         TVDBUpdate that = (TVDBUpdate) o;
 
-        //if (episodeList != null ? !episodeList.equals(that.episodeList) : that.episodeList != null) return false;
-        //if (seriesList != null ? !seriesList.equals(that.seriesList) : that.seriesList != null) return false;
+        if (episodeList != null ? !episodeList.equals(that.episodeList) : that.episodeList != null) return false;
+        if (seriesList != null ? !seriesList.equals(that.seriesList) : that.seriesList != null) return false;
         if (time != null ? !time.equals(that.time) : that.time != null) return false;
 
         return true;

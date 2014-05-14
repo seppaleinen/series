@@ -10,6 +10,8 @@
         <class>Database.MySQL.Entities.MySQLTVDBSeries</class>
         <class>Database.MySQL.Entities.MySQLTVDBEpisode</class>
         <class>Database.MySQL.Entities.MySQLTVDBUpdate</class>
+        <class>Database.MySQL.Entities.MySQLUpdateEpisode</class>
+        <class>Database.MySQL.Entities.MySQLUpdateSeries</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/MYDB" />

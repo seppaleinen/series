@@ -1,0 +1,5 @@
+create table MYDB.TVDBSERIESLIST (
+ID integer PRIMARY KEY AUTO_INCREMENT,
+SERIES_ID varchar(255),
+UPDATE_ID varchar(255)
+)

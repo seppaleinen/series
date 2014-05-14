@@ -1,0 +1,5 @@
+create table MYDB.TVDBEPISODELIST (
+ID integer PRIMARY KEY AUTO_INCREMENT,
+EPISODE_ID varchar(255),
+UPDATE_ID varchar(255)
+)
