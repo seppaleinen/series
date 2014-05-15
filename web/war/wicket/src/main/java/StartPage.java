@@ -1,12 +1,15 @@
 import Converters.SaxParser.SaxParser;
 import Converters.XmlParser;
 import Integrations.OMDBInterface;
+import Integrations.TVDBInterface;
 import Integrations.URLImpl.OMDBImpl;
+import Integrations.URLImpl.TVDBImpl;
 import MediaFinder.ApacheFileUtils.ApacheFileFinder;
 import MediaFinder.FileFinder.FileFinder;
 import MediaFinder.Finder;
 import Objects.FinderSeries;
 import Objects.OMDB;
+import Objects.TVDBIMDB;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -36,14 +39,26 @@ public class StartPage extends WebPage {
     public static final String SEARCH_OMDB_BUTTON = "searchOMDBButton";
     public static final String SEARCH_OMDB_LABEL = "OMDBTitle";
 
+    public static final String TVDB_IMDB_TEXT_ID = "tvdbIMDBText";
+    public static final String TVDB_IMDB_BUTTON_ID = "tvdbIMDBButton";
+    public static final String TVDB_IMDB_LABEL_ID = "tvdbIMDBLabel";
+
+    private OMDB omdb;
+
     private Form form;
     private TextField<String> directory;
     private Button searchMediaButton;
     private ListView<String> listView;
     private WebMarkupContainer listViewContainer;
+
     private TextField<String> searchOmdbTextfield;
+    private TextField<String> tvdbIMDBtext;
+
     private Button searchOmdbButton;
+    private Button tvdbIMDBButton;
+
     private Label omdbLabel;
+    private Label tvdbIMDBLabel;
 
     private List<String> results = new ArrayList<>();
     private ModelObject modelObject = new ModelObject();
@@ -64,9 +79,15 @@ public class StartPage extends WebPage {
         listViewContainer = new WebMarkupContainer(LISTVIEWCONTAINER_ID);
         listView = createListView();
         searchMediaButton = createSearchMediaButton();
+
         searchOmdbTextfield = new TextField<>(SEARCH_OMDB);
+        tvdbIMDBtext = new TextField<>(TVDB_IMDB_TEXT_ID);
+
         searchOmdbButton = createSearchOMDBButton();
+        tvdbIMDBButton = createTVDBIMDBButton();
+
         omdbLabel = new Label(SEARCH_OMDB_LABEL);
+        tvdbIMDBLabel = new Label(TVDB_IMDB_LABEL_ID);
     }
 
     private void addComponents(){
@@ -77,6 +98,10 @@ public class StartPage extends WebPage {
         form.add(searchOmdbTextfield);
         form.add(searchOmdbButton);
         form.add(omdbLabel);
+
+        form.add(tvdbIMDBtext);
+        form.add(tvdbIMDBButton);
+        form.add(tvdbIMDBLabel);
         add(form);
     }
 
@@ -97,9 +122,24 @@ public class StartPage extends WebPage {
                 OMDBInterface omdbInterface = new OMDBImpl();
                 InputStream inputStream = omdbInterface.getOmdbInfo(modelObject.getSearchOMDB());
                 XmlParser xmlParser = new SaxParser();
-                OMDB omdb = xmlParser.parseOmdbFromXml(inputStream);
+                omdb = xmlParser.parseOmdbFromXml(inputStream);
                 if(omdb!= null){
-                    modelObject.setOMDBTitle(omdb.getTitle());
+                    modelObject.setOMDBTitle(omdb.getTitle() + " : " + omdb.getImdbID());
+                }
+            }
+        };
+    }
+
+    private Button createTVDBIMDBButton(){
+        return new Button(TVDB_IMDB_BUTTON_ID){
+            @Override
+            public void onSubmit(){
+                TVDBInterface tvdbInterface = new TVDBImpl();
+                InputStream inputStream = tvdbInterface.getIMDB(modelObject.getTvdbIMDBText());
+                XmlParser xmlParser = new SaxParser();
+                TVDBIMDB tvdbimdb = xmlParser.parseTVDBIMDBFromXml(inputStream);
+                if(omdb!= null){
+                    modelObject.setTvdbIMDBLabel(tvdbimdb.getSeriesName() + " : " + tvdbimdb.getSeriesId());
                 }
             }
         };

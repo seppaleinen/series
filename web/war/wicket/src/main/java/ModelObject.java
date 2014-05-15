@@ -4,6 +4,8 @@ public class ModelObject implements Serializable {
     private String directory;
     private String searchOMDB;
     private String OMDBTitle;
+    private String tvdbIMDBText;
+    private String tvdbIMDBLabel;
 
     public String getDirectory() {
         return directory;
@@ -27,5 +29,21 @@ public class ModelObject implements Serializable {
 
     public void setOMDBTitle(String OMDBTitle) {
         this.OMDBTitle = OMDBTitle;
+    }
+
+    public String getTvdbIMDBText() {
+        return tvdbIMDBText;
+    }
+
+    public void setTvdbIMDBText(String tvdbIMDBText) {
+        this.tvdbIMDBText = tvdbIMDBText;
+    }
+
+    public String getTvdbIMDBLabel() {
+        return tvdbIMDBLabel;
+    }
+
+    public void setTvdbIMDBLabel(String tvdbIMDBLabel) {
+        this.tvdbIMDBLabel = tvdbIMDBLabel;
     }
 }
