@@ -43,7 +43,13 @@
     </dependencies>
 
     <properties>
-        <glassfish.dir>/usr/local/opt/glassfish/libexec/glassfish</glassfish.dir>
+        <glassfish.dir>
+		<!-- MAC
+		/usr/local/opt/glassfish/libexec/glassfish
+		-->
+		<!-- UBUNTU -->
+		/opt/glassfish4/glassfish
+	</glassfish.dir>
         <glassfish.passwords>${glassfish.dir}/domains/domain1/config/domain-passwords</glassfish.passwords>
         <user>admin</user>
         <admin.port>4848</admin.port>
