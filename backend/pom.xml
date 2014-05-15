@@ -140,6 +140,7 @@
         <postgre_changeLogFile>src/main/resources/Database/PostgreSQL/master.xml</postgre_changeLogFile>
         <liquibase-plugin.verbose>true</liquibase-plugin.verbose>
         <drop_database>true</drop_database>
+
     </properties>
 
     <profiles>
