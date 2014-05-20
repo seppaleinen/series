@@ -44,11 +44,11 @@
 
     <properties>
         <glassfish.dir>
-		<!-- MAC
+		<!-- MAC -->
 		/usr/local/opt/glassfish/libexec/glassfish
-		-->
-		<!-- UBUNTU -->
+		<!-- UBUNTU 
 		/opt/glassfish4/glassfish
+		-->
 	</glassfish.dir>
         <glassfish.passwords>${glassfish.dir}/domains/domain1/config/domain-passwords</glassfish.passwords>
         <user>admin</user>

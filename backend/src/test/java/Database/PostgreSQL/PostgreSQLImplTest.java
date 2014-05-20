@@ -1,6 +1,7 @@
 package Database.PostgreSQL;
 
 import Database.DBInterface;
+import Database.Entities.TVDBIMDBEntity;
 import Database.MongoDB.ObjectCreater;
 import Objects.*;
 import org.junit.Before;
@@ -20,9 +21,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class PostgreSQLImplTest {
     private PostgreSQLImpl dbInterface;
-    private static final String JDBC_CONNECTION = "jdbc:postgresql://127.0.0.1:5432/MYPOSTGRES";
     private static String persistenceName;
-    private static EntityManager entityManager;
 
     @BeforeClass
     public static void beforeClass() throws ClassNotFoundException {
@@ -108,7 +107,6 @@ public class PostgreSQLImplTest {
             DriverManager.getConnection(dbUrl, username, password);
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }

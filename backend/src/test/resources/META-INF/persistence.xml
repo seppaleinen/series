@@ -99,7 +99,7 @@
     </persistence-unit>
 
     <persistence-unit name="postgrestest" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>Database.Entities.TVDBIMDBEntity</class>
         <class>Database.Entities.OMDBEntity</class>
         <class>Database.Entities.TVDBSeriesEntity</class>
