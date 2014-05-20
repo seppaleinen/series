@@ -1,7 +1,10 @@
 package Objects.Constants;
 
 public class TVDBSeriesConstants {
-    public static final String ELEMENT = "Series";
+    public static final String SERIES_ELEMENT = "Series";
+    public static final String EPISODE_ELEMENT = "Episode";
+
+    public static final String ID = "id";
     public static final String ACTORS = "Actors";
     public static final String AIRS_DAY_OF_WEEK = "Airs_DayOfWeek";
     public static final String AIRS_TIME = "Airs_Time";

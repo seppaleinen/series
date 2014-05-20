@@ -143,9 +143,12 @@ public class XMLSwitchHelper {
         }
     }
 
-    public static void switchTVDBSeries(TVDBSeries tvdbSeries, String switchName, String content) {
+    public static void switchTVDBSeries(TVDBSeries tvdbSeries, TVDBEpisode tvdbEpisode, String switchName, String content) {
         switch (switchName){
-            case TVDBSeriesConstants.ELEMENT:
+            case TVDBSeriesConstants.SERIES_ELEMENT:
+                break;
+            case TVDBSeriesConstants.EPISODE_ELEMENT:
+                tvdbSeries.getTvdbEpisodeList().add(tvdbEpisode);
                 break;
             case TVDBSeriesConstants.ACTORS:
                 tvdbSeries.setActors(content);
@@ -218,6 +221,12 @@ public class XMLSwitchHelper {
                 break;
             case TVDBSeriesConstants.ZAP2IT_ID:
                 tvdbSeries.setZap2itId(content);
+                break;
+            case TVDBSeriesConstants.ID:
+                tvdbSeries.setId(content);
+                break;
+            default:
+                switchTVDBEpisode(tvdbEpisode, switchName, content);
                 break;
         }
     }

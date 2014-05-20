@@ -1,10 +1,13 @@
 package Objects;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TVDBSeries implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private String id;
     private String actors;
     private String airsDayOfWeek;
     private String airsTime;
@@ -29,6 +32,15 @@ public class TVDBSeries implements Serializable {
     private String lastUpdated;
     private String poster;
     private String zap2itId;
+    private List<TVDBEpisode> tvdbEpisodeList = new ArrayList<>();
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getActors() {
         return actors;
@@ -222,10 +234,18 @@ public class TVDBSeries implements Serializable {
         this.zap2itId = zap2itId;
     }
 
+    public List<TVDBEpisode> getTvdbEpisodeList() {
+        return tvdbEpisodeList;
+    }
+
+    public void setTvdbEpisodeList(List<TVDBEpisode> tvdbEpisodeList) {
+        this.tvdbEpisodeList = tvdbEpisodeList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof TVDBSeries)) return false;
 
         TVDBSeries that = (TVDBSeries) o;
 
@@ -254,6 +274,8 @@ public class TVDBSeries implements Serializable {
         if (seriesId != null ? !seriesId.equals(that.seriesId) : that.seriesId != null) return false;
         if (seriesName != null ? !seriesName.equals(that.seriesName) : that.seriesName != null) return false;
         if (status != null ? !status.equals(that.status) : that.status != null) return false;
+        if (tvdbEpisodeList != null ? !tvdbEpisodeList.equals(that.tvdbEpisodeList) : that.tvdbEpisodeList != null)
+            return false;
         if (zap2itId != null ? !zap2itId.equals(that.zap2itId) : that.zap2itId != null) return false;
 
         return true;
@@ -285,6 +307,7 @@ public class TVDBSeries implements Serializable {
         result = 31 * result + (lastUpdated != null ? lastUpdated.hashCode() : 0);
         result = 31 * result + (poster != null ? poster.hashCode() : 0);
         result = 31 * result + (zap2itId != null ? zap2itId.hashCode() : 0);
+        result = 31 * result + (tvdbEpisodeList != null ? tvdbEpisodeList.hashCode() : 0);
         return result;
     }
 }

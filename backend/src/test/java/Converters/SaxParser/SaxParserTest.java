@@ -43,4 +43,9 @@ public class SaxParserTest {
     public void testParseTVDBEpisodeFromXml(){
         parserTests.testParseTVDBEpisodeFromXml(saxParser);
     }
+
+    @Test
+    public void testParseTVDBSeriesAllFromXML(){
+        parserTests.testParseTVDBSeriesAllFromXml(saxParser);
+    }
 }

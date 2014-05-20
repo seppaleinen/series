@@ -9,8 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class ParserTests {
     private static final String XMLDIR = "/XML";
@@ -18,6 +17,8 @@ public class ParserTests {
     private static final String TVDBIMDB = "TVDBIMDB.xml";
     private static final String TVDBEPISODE = "TVDBEPISODE.xml";
     private static final String TVDBSERIES = "TVDBSERIES.xml";
+    private static final String TVDBSERIESALL = "TVDBSERIESALL.xml";
+    private static final String TVDBSERIESBYNAME = "TVDBSERIESBYNAME.xml";
     private static final String OMDB = "OMDB.xml";
 
     public void testParseOMDBFromXml(XmlParser xmlParser){
@@ -54,6 +55,15 @@ public class ParserTests {
         assertNotNull(tvdbEpisode);
         assertEquals("FirstAired should be as expected", "1997-03-10", tvdbEpisode.getFirstAired());
     }
+
+    public void testParseTVDBSeriesAllFromXml(XmlParser xmlParser){
+        InputStream inputStream = getFile(TVDBSERIESALL);
+        TVDBSeries tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
+        assertNotNull(tvdbSeries);
+        assertEquals("Seriesname should be as expected", "Rick and Morty", tvdbSeries.getSeriesName());
+        assertFalse("EpisodeList should not be empty", tvdbSeries.getTvdbEpisodeList().isEmpty());
+    }
+
 
     private InputStream getFile(String filename){
         return this.getClass().getResourceAsStream(XMLDIR + "/" + filename);
