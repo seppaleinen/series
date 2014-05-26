@@ -1,7 +1,8 @@
 apply plugin: 'java'
 
-repositories {
+repositories(){
 	mavenCentral()
+	mavenLocal()
 }
 
 jar {
@@ -25,6 +26,7 @@ dependencies {
 	compile ("com.google.code.gson:gson:2.2.4"){
 		exclude group: "junit"	
 	}
+	compile "com.turn:ttorrent:1.4"
 }
 
 task wrapper(type: Wrapper) {

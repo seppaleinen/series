@@ -1,0 +1,15 @@
+subprojects {
+	apply plugin: 'java'
+	
+	allprojects{
+		repositories(){
+			mavenCentral()
+			mavenLocal()
+		}
+	}
+	
+	dependencies(){
+	}
+
+	version = '1.0-SNAPSHOT'
+}

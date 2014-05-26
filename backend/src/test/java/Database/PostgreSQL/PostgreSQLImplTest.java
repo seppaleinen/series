@@ -35,6 +35,7 @@ public class PostgreSQLImplTest {
         dbInterface.setPersistence(persistenceName);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindTVDBIMDB() {
         TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
@@ -47,6 +48,7 @@ public class PostgreSQLImplTest {
         assertEquals("Objects should be equals", tvdbimdb, foundTVDBIMDB);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindOMDB() {
         OMDB omdb = ObjectCreater.createOMDB();
@@ -59,6 +61,7 @@ public class PostgreSQLImplTest {
         assertEquals("Objects should be equals", omdb, foundOMDB);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindTVDBSeries() {
         TVDBSeries tvdbSeries = ObjectCreater.createTVDBSeries();
@@ -71,6 +74,7 @@ public class PostgreSQLImplTest {
         assertEquals("Objects should be equals", tvdbSeries, foundTVDBSeries);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindTVDBEpisode() {
         TVDBEpisode tvdbEpisode = ObjectCreater.createTVDBEpisode();
@@ -83,6 +87,7 @@ public class PostgreSQLImplTest {
         assertEquals("Objects should be equals", tvdbEpisode, foundTVDBEpisode);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindTVDBUpdate() {
         TVDBUpdate tvdbUpdate = ObjectCreater.createTVDBUpdate();

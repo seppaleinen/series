@@ -1,0 +1,13 @@
+subprojects{
+	apply plugin: 'java'
+
+	repositories(){
+		mavenCentral()
+		mavenLocal()
+	}
+
+	dependencies{
+	}
+	group = 'war'
+	version = '1.0'
+}

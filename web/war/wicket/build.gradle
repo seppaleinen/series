@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+repositories(){
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies{
+	compile "org.apache.wicket:wicket:1.4.17"
+	compile "junit:junit:4.11"
+	compile "javax.servlet:servlet-api:2.5"
+	compile project(':backend')
+}
+
+task wrapper(type: Wrapper){
+	gradleVersion = '1.4'
+}
