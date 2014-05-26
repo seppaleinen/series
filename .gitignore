@@ -33,6 +33,7 @@ backend/*
 
 # Maven
 !pom.xml
+!build.gradle
 
 # Git
 !.gitignore

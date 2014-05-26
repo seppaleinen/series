@@ -7,9 +7,7 @@ import org.junit.contrib.java.lang.system.StandardOutputStreamLog;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class FirstClassTest{
@@ -39,7 +37,7 @@ public class FirstClassTest{
 
         FirstClass.main(arguments);
 
-        assertThat(log.getLog(), containsString(EXISTINGMEDIAAVI));
+        assertTrue(log.getLog().contains(EXISTINGMEDIAAVI));
     }
     @Test
     public void testMultipleArguments() {
@@ -47,8 +45,8 @@ public class FirstClassTest{
 
         FirstClass.main(arguments);
 
-        assertThat(log.getLog(), containsString(EXISTINGMEDIAAVI));
-        assertThat(log.getLog(), containsString(EXISTINGMEDIAMKV));
+        assertTrue(log.getLog().contains(EXISTINGMEDIAAVI));
+        assertTrue(log.getLog().contains(EXISTINGMEDIAMKV));
     }
 
     @Test
