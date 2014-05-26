@@ -1,1 +1,4 @@
-include "backend", "web"
+include ':backend'
+include ':web'
+include ':web:war', 'web:war:wicket'
+include ':web:ear'
