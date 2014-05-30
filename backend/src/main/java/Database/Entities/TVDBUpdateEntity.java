@@ -1,4 +1,4 @@
-package Database.Entities;
+package database.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,11 +23,6 @@ public class TVDBUpdateEntity implements Serializable {
 
     @OneToMany(mappedBy = "TVDBUpdateEntity", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<UpdateSeriesEntity> seriesList = new ArrayList<>();
-
-
-    //@OneToMany(mappedBy = "licens", cascade = {CascadeType.ALL}, orphanRemoval = true)
-    //private List<AktivSubstansLicens> substanser = new ArrayList<>();
-
 
     public String getTime() {
         return time;

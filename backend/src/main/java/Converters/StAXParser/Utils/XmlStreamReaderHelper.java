@@ -1,4 +1,4 @@
-package Converters.StAXParser.Utils;
+package converters.staxparser.utils;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
@@ -6,6 +6,8 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.InputStream;
 
 public class XmlStreamReaderHelper {
+    private XmlStreamReaderHelper(){}
+
     public static XMLStreamReader getXMLStreamReader(InputStream inputStream){
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         return createXmlStreamReader(xmlInputFactory, inputStream);

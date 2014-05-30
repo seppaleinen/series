@@ -1,4 +1,4 @@
-package Converters.DomParser.Utils;
+package converters.domparser.utils;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class DocumentHandler {
+    private DocumentHandler(){}
     public static Document getDocumentFromInputStream(InputStream inputStream){
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = getDocumentBuilder(documentBuilderFactory);
-        Document document = getDocumentFromDocumentBuilder(documentBuilder, inputStream);
-        return document;
+        return getDocumentFromDocumentBuilder(documentBuilder, inputStream);
     }
 
     private static DocumentBuilder getDocumentBuilder(DocumentBuilderFactory documentBuilderFactory){

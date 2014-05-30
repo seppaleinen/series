@@ -1,53 +1,12 @@
-package Database.Entities.Utils;
+package database.entities.utils;
 
-import Database.Entities.*;
-import Objects.*;
+import database.entities.*;
+import objects.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectToJPA {
-    public static TVDBIMDBEntity convertTVDBIMDB_To_MySQLTVDBIMDB(TVDBIMDB tvdbimdb){
-        TVDBIMDBEntity TVDBIMDBEntity = new TVDBIMDBEntity();
-
-        TVDBIMDBEntity.setSeriesId(tvdbimdb.getSeriesId());
-        TVDBIMDBEntity.setLanguage(tvdbimdb.getLanguage());
-        TVDBIMDBEntity.setSeriesName(tvdbimdb.getSeriesName());
-        TVDBIMDBEntity.setBanner(tvdbimdb.getBanner());
-        TVDBIMDBEntity.setOverview(tvdbimdb.getOverview());
-        TVDBIMDBEntity.setFirstAired(tvdbimdb.getFirstAired());
-        TVDBIMDBEntity.setImdbId(tvdbimdb.getImdbId());
-        TVDBIMDBEntity.setId(tvdbimdb.getId());
-
-        return TVDBIMDBEntity;
-    }
-
-    public static OMDBEntity convertOMDB_To_MySQLOMDB(OMDB omdb) {
-        OMDBEntity OMDBEntity = new OMDBEntity();
-
-        OMDBEntity.setTitle(omdb.getTitle());
-        OMDBEntity.setYear(omdb.getYear());
-        OMDBEntity.setRated(omdb.getRated());
-        OMDBEntity.setReleased(omdb.getReleased());
-        OMDBEntity.setRuntime(omdb.getRuntime());
-        OMDBEntity.setGenre(omdb.getGenre());
-        OMDBEntity.setDirector(omdb.getDirector());
-        OMDBEntity.setWriter(omdb.getWriter());
-        OMDBEntity.setActors(omdb.getActors());
-        OMDBEntity.setPlot(omdb.getPlot());
-        OMDBEntity.setLanguage(omdb.getLanguage());
-        OMDBEntity.setCountry(omdb.getCountry());
-        OMDBEntity.setAwards(omdb.getAwards());
-        OMDBEntity.setPoster(omdb.getPoster());
-        OMDBEntity.setMetascore(omdb.getMetascore());
-        OMDBEntity.setImdbRating(omdb.getImdbRating());
-        OMDBEntity.setImdbVotes(omdb.getImdbVotes());
-        OMDBEntity.setImdbID(omdb.getImdbID());
-        OMDBEntity.setType(omdb.getType());
-
-        return OMDBEntity;
-    }
-    
     public static TVDBEpisodeEntity convertTVDBEpisode_To_MySQLTVDBEpisode(TVDBEpisode tvdbEpisode){
         TVDBEpisodeEntity TVDBEpisodeEntity = new TVDBEpisodeEntity();
 

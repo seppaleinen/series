@@ -1,12 +1,10 @@
-import Converters.SaxParser.SaxParser;
-import Converters.XmlParser;
-import Integrations.OMDBInterface;
-import Integrations.TVDBInterface;
-import Integrations.URLImpl.OMDBImpl;
-import Integrations.URLImpl.TVDBImpl;
-import MediaFinder.ApacheFileUtils.ApacheFileFinder;
-import MediaFinder.Finder;
-import Objects.*;
+import converters.saxparser.SaxParser;
+import converters.XmlParser;
+import integrations.TVDBInterface;
+import integrations.urlimpl.TVDBImpl;
+import mediafinder.apachefileutils.ApacheFileFinder;
+import mediafinder.Finder;
+import objects.*;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -32,28 +30,9 @@ public class StartPage extends WebPage {
     public static final String NAME_ID = "name";
     public static final String SEARCH_BUTTON_ID = "searchButton";
 
-
-    public static final String SEARCH_OMDB = "omdbText";
-    public static final String SEARCH_OMDB_BUTTON = "omdbButton";
-    public static final String SEARCH_OMDB_LABEL = "omdbLabel";
-
-    public static final String TVDB_IMDB_TEXT_ID = "tvdbIMDBText";
-    public static final String TVDB_IMDB_BUTTON_ID = "tvdbIMDBButton";
-    public static final String TVDB_IMDB_LABEL_ID = "tvdbIMDBLabel";
-
-    public static final String TVDB_SERIES_TEXT_ID = "tvdbSeriesText";
-    public static final String TVDB_SERIES_BUTTON_ID = "tvdbSeriesButton";
-    public static final String TVDB_SERIES_LABEL_ID = "tvdbSeriesLabel";
-
-    public static final String TVDB_EPISODE_TEXT_ID = "tvdbEpisodeText";
-    public static final String TVDB_EPISODE_BUTTON_ID = "tvdbEpisodeButton";
-    public static final String TVDB_EPISODE_LABEL_ID = "tvdbEpisodeLabel";
-
     public static final String TVDB_UPDATE_TEXT_ID = "tvdbUpdateText";
     public static final String TVDB_UPDATE_BUTTON_ID = "tvdbUpdateButton";
     public static final String TVDB_UPDATE_LABEL_ID = "tvdbUpdateLabel";
-
-    private OMDB omdb;
 
     private Form form;
     private TextField<String> directory;
@@ -61,22 +40,10 @@ public class StartPage extends WebPage {
     private ListView<String> listView;
     private WebMarkupContainer listViewContainer;
 
-    private TextField<String> omdbText;
-    private TextField<String> tvdbIMDBtext;
-    private TextField<String> tvdbSeriesText;
-    private TextField<String> tvdbEpisodeText;
     private TextField<String> tvdbUpdateText;
 
-    private Button omdbButton;
-    private Button tvdbIMDBButton;
-    private Button tvdbSeriesButton;
-    private Button tvdbEpisodeButton;
     private Button tvdbUpdateButton;
 
-    private Label omdbLabel;
-    private Label tvdbIMDBLabel;
-    private Label tvdbSeriesLabel;
-    private Label tvdbEpisodeLabel;
     private Label tvdbUpdateLabel;
 
     private List<String> results = new ArrayList<>();
@@ -99,22 +66,10 @@ public class StartPage extends WebPage {
         listView = createListView();
         searchMediaButton = createSearchMediaButton();
 
-        omdbText = new TextField<>(SEARCH_OMDB);
-        tvdbIMDBtext = new TextField<>(TVDB_IMDB_TEXT_ID);
-        tvdbSeriesText = new TextField<>(TVDB_SERIES_TEXT_ID);
-        tvdbEpisodeText = new TextField<>(TVDB_EPISODE_TEXT_ID);
         tvdbUpdateText = new TextField<>(TVDB_UPDATE_TEXT_ID);
 
-        omdbButton = createSearchOMDBButton();
-        tvdbIMDBButton = createTVDBIMDBButton();
-        tvdbSeriesButton = createTVDBSeriesButton();
-        tvdbEpisodeButton = createTVDBEpisodeButton();
         tvdbUpdateButton = createTVDBUpdateButton();
 
-        omdbLabel = new Label(SEARCH_OMDB_LABEL);
-        tvdbIMDBLabel = new Label(TVDB_IMDB_LABEL_ID);
-        tvdbSeriesLabel = new Label(TVDB_SERIES_LABEL_ID);
-        tvdbEpisodeLabel = new Label(TVDB_EPISODE_LABEL_ID);
         tvdbUpdateLabel = new Label(TVDB_UPDATE_LABEL_ID);
     }
 
@@ -123,22 +78,6 @@ public class StartPage extends WebPage {
         form.add(listViewContainer);
         form.add(searchMediaButton);
         form.add(directory);
-
-        form.add(omdbText);
-        form.add(omdbButton);
-        form.add(omdbLabel);
-
-        form.add(tvdbIMDBtext);
-        form.add(tvdbIMDBButton);
-        form.add(tvdbIMDBLabel);
-
-        form.add(tvdbSeriesText);
-        form.add(tvdbSeriesButton);
-        form.add(tvdbSeriesLabel);
-
-        form.add(tvdbEpisodeText);
-        form.add(tvdbEpisodeButton);
-        form.add(tvdbEpisodeLabel);
 
         form.add(tvdbUpdateText);
         form.add(tvdbUpdateButton);
@@ -152,66 +91,6 @@ public class StartPage extends WebPage {
             protected void populateItem(ListItem<String> resultItem) {
                 String result = resultItem.getModelObject();
                 resultItem.add(new Label(NAME_ID, result));
-            }
-        };
-    }
-
-    private Button createSearchOMDBButton(){
-        return new Button(SEARCH_OMDB_BUTTON){
-            @Override
-            public void onSubmit(){
-                OMDBInterface omdbInterface = new OMDBImpl();
-                InputStream inputStream = omdbInterface.getOmdbInfo(modelObject.getOmdbText());
-                XmlParser xmlParser = new SaxParser();
-                omdb = xmlParser.parseOmdbFromXml(inputStream);
-                if(omdb!= null){
-                    modelObject.setOmdbLabel(omdb.getTitle() + " : " + omdb.getImdbID());
-                }
-            }
-        };
-    }
-
-    private Button createTVDBIMDBButton(){
-        return new Button(TVDB_IMDB_BUTTON_ID){
-            @Override
-            public void onSubmit(){
-                TVDBInterface tvdbInterface = new TVDBImpl();
-                InputStream inputStream = tvdbInterface.getIMDB(modelObject.getTvdbIMDBText());
-                XmlParser xmlParser = new SaxParser();
-                TVDBIMDB tvdbimdb = xmlParser.parseTVDBIMDBFromXml(inputStream);
-                if(tvdbimdb!= null){
-                    modelObject.setTvdbIMDBLabel(tvdbimdb.getSeriesName() + " : " + tvdbimdb.getSeriesId());
-                }
-            }
-        };
-    }
-
-    private Button createTVDBSeriesButton(){
-        return new Button(TVDB_SERIES_BUTTON_ID){
-            @Override
-            public void onSubmit(){
-                TVDBInterface tvdbInterface = new TVDBImpl();
-                InputStream inputStream = tvdbInterface.getSeries(modelObject.getTvdbSeriesText());
-                XmlParser xmlParser = new SaxParser();
-                TVDBSeries tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
-                if(tvdbSeries != null){
-                    modelObject.setTvdbSeriesLabel(tvdbSeries.getSeriesName() + " : " + tvdbSeries.getSeriesId());
-                }
-            }
-        };
-    }
-
-    private Button createTVDBEpisodeButton(){
-        return new Button(TVDB_EPISODE_BUTTON_ID){
-            @Override
-            public void onSubmit(){
-                TVDBInterface tvdbInterface = new TVDBImpl();
-                InputStream inputStream = tvdbInterface.getEpisode(modelObject.getTvdbEpisodeText());
-                XmlParser xmlParser = new SaxParser();
-                TVDBEpisode tvdbEpisode = xmlParser.parseTVDBEpisodeFromXML(inputStream);
-                if(tvdbEpisode != null){
-                    modelObject.setTvdbEpisodeLabel(tvdbEpisode.getEpisodeName() + " : " + tvdbEpisode.getImdbId());
-                }
             }
         };
     }

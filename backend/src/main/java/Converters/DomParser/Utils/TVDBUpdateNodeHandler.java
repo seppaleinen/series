@@ -1,7 +1,7 @@
-package Converters.DomParser.Utils;
+package converters.domparser.utils;
 
-import Converters.XMLSwitchHelper;
-import Objects.TVDBUpdate;
+import converters.XMLSwitchHelper;
+import objects.TVDBUpdate;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -9,6 +9,7 @@ import org.w3c.dom.NodeList;
 
 public class TVDBUpdateNodeHandler {
     private static TVDBUpdate tvdbUpdate;
+    private TVDBUpdateNodeHandler(){}
 
     public static TVDBUpdate parse(Document document) {
         NodeList nodeList = document.getDocumentElement().getChildNodes();

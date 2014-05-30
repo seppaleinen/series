@@ -1,9 +1,9 @@
-package Converters.StAXParser.Utils;
+package converters.staxparser.utils;
 
-import Converters.XMLSwitchHelper;
-import Objects.Constants.TVDBSeriesConstants;
-import Objects.TVDBEpisode;
-import Objects.TVDBSeries;
+import converters.XMLSwitchHelper;
+import objects.constants.TVDBSeriesConstants;
+import objects.TVDBEpisode;
+import objects.TVDBSeries;
 
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;

@@ -1,6 +1,6 @@
-package Database.MongoDB.Dao;
+package database.mongodb.dao;
 
-import Database.MongoDB.Entities.MongoTVDBUpdate;
+import database.mongodb.entities.MongoTVDBUpdate;
 import com.mongodb.Mongo;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.dao.BasicDAO;

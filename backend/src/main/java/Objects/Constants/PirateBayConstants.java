@@ -1,4 +1,4 @@
-package Objects.Constants;
+package objects.constants;
 
 public class PirateBayConstants {
     public static final String ID = "id";

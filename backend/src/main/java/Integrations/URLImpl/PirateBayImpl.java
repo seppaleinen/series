@@ -1,6 +1,6 @@
-package Integrations.URLImpl;
+package integrations.urlimpl;
 
-import Integrations.PirateBayInterface;
+import integrations.PirateBayInterface;
 
 public class PirateBayImpl implements PirateBayInterface {
     private static final String API_KEY = "486a08cbced645da8f54e46da29a69c4";

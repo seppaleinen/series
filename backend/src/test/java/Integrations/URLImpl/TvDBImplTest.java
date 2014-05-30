@@ -1,6 +1,6 @@
-package Integrations.URLImpl;
+package integrations.urlimpl;
 
-import Integrations.TVDBInterface;
+import integrations.TVDBInterface;
 import org.junit.Before;
 
 public class TvDBImplTest {

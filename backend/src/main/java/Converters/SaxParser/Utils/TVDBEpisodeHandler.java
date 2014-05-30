@@ -1,8 +1,8 @@
-package Converters.SaxParser.Utils;
+package converters.saxparser.utils;
 
-import Converters.XMLSwitchHelper;
-import Objects.Constants.TVDBEpisodeConstants;
-import Objects.TVDBEpisode;
+import converters.XMLSwitchHelper;
+import objects.constants.TVDBEpisodeConstants;
+import objects.TVDBEpisode;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

@@ -5,24 +5,18 @@
 
     <!--Databas-->
     <changeSet id="1" author="David" runAlways="true" failOnError="true">
-        <sqlFile splitStatements="false" path="POSTGRESQLOMDB.sql"        relativeToChangelogFile="true"/>
-    </changeSet>
-    <changeSet id="2" author="David" runAlways="true" failOnError="true">
         <sqlFile splitStatements="false" path="POSTGRESQLTVDBEPISODE.sql" relativeToChangelogFile="true"/>
     </changeSet>
-    <changeSet id="3" author="David" runAlways="true" failOnError="true">
-        <sqlFile splitStatements="true"  path="POSTGRESQLTVDBIMDB.sql"    relativeToChangelogFile="true"/>
-    </changeSet>
-    <changeSet id="4" author="David" runAlways="true" failOnError="true">
+    <changeSet id="2" author="David" runAlways="true" failOnError="true">
         <sqlFile splitStatements="true"  path="POSTGRESQLTVDBSERIES.sql"  relativeToChangelogFile="true"/>
     </changeSet>
-    <changeSet id="5" author="David" runAlways="true" failOnError="true">
+    <changeSet id="3" author="David" runAlways="true" failOnError="true">
         <sqlFile splitStatements="true"  path="POSTGRESQLTVDBUPDATE.sql"  relativeToChangelogFile="true"/>
     </changeSet>
-    <changeSet id="6" author="David" runAlways="true" failOnError="true">
+    <changeSet id="4" author="David" runAlways="true" failOnError="true">
         <sqlFile splitStatements="true"  path="POSTGRESQLUPDATEEPISODE.sql"  relativeToChangelogFile="true"/>
     </changeSet>
-    <changeSet id="7" author="David" runAlways="true" failOnError="true">
+    <changeSet id="5" author="David" runAlways="true" failOnError="true">
         <sqlFile splitStatements="true"  path="POSTGRESQLUPDATESERIES.sql"  relativeToChangelogFile="true"/>
     </changeSet>
 

@@ -1,61 +1,12 @@
-package Database.Entities.Utils;
+package database.entities.utils;
 
-import Database.Entities.*;
-import Objects.*;
+import database.entities.*;
+import objects.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class JPAToObject {
-    public static TVDBIMDB convertMySQLTVDBIMDB_To_TVDBIMDB(TVDBIMDBEntity tvdbimdbEntity){
-        TVDBIMDB tvdbimdb = null;
-
-        if(tvdbimdbEntity != null) {
-            tvdbimdb = new TVDBIMDB();
-
-            tvdbimdb.setSeriesId(tvdbimdbEntity.getSeriesId());
-            tvdbimdb.setLanguage(tvdbimdbEntity.getLanguage());
-            tvdbimdb.setSeriesName(tvdbimdbEntity.getSeriesName());
-            tvdbimdb.setBanner(tvdbimdbEntity.getBanner());
-            tvdbimdb.setOverview(tvdbimdbEntity.getOverview());
-            tvdbimdb.setFirstAired(tvdbimdbEntity.getFirstAired());
-            tvdbimdb.setImdbId(tvdbimdbEntity.getImdbId());
-            tvdbimdb.setId(tvdbimdbEntity.getId());
-        }
-
-        return tvdbimdb;
-    }
-
-    public static OMDB convertMySQLOMDB_To_OMDB(OMDBEntity omdbEntity) {
-        OMDB omdb = null;
-
-        if(omdbEntity != null) {
-            omdb = new OMDB();
-
-            omdb.setTitle(omdbEntity.getTitle());
-            omdb.setYear(omdbEntity.getYear());
-            omdb.setRated(omdbEntity.getRated());
-            omdb.setReleased(omdbEntity.getReleased());
-            omdb.setRuntime(omdbEntity.getRuntime());
-            omdb.setGenre(omdbEntity.getGenre());
-            omdb.setDirector(omdbEntity.getDirector());
-            omdb.setWriter(omdbEntity.getWriter());
-            omdb.setActors(omdbEntity.getActors());
-            omdb.setPlot(omdbEntity.getPlot());
-            omdb.setLanguage(omdbEntity.getLanguage());
-            omdb.setCountry(omdbEntity.getCountry());
-            omdb.setAwards(omdbEntity.getAwards());
-            omdb.setPoster(omdbEntity.getPoster());
-            omdb.setMetascore(omdbEntity.getMetascore());
-            omdb.setImdbRating(omdbEntity.getImdbRating());
-            omdb.setImdbVotes(omdbEntity.getImdbVotes());
-            omdb.setImdbID(omdbEntity.getImdbID());
-            omdb.setType(omdbEntity.getType());
-        }
-
-        return omdb;
-    }
-    
     public static TVDBEpisode convertMySQLTVDBEpisode_To_TVDBEpisode(TVDBEpisodeEntity tvdbEpisodeEntity){
         TVDBEpisode tvdbEpisode = null;
         

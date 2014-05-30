@@ -1,14 +1,6 @@
-package Database.PostgreSQL;
+package database.postgresql;
 
-import Database.DBInterface;
-import Database.Entities.*;
-import Database.HibernateManager;
-import Database.Entities.Utils.JPAToObject;
-import Database.Entities.Utils.ObjectToJPA;
-import Database.HibernateMethods;
-import Objects.*;
-
-import java.util.List;
+import database.HibernateMethods;
 
 public class PostgreSQLImpl extends HibernateMethods {
     private static final String DEFAULT_PERSISTENCE = "postgres";

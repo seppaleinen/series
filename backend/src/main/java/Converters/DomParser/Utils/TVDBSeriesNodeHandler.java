@@ -1,8 +1,8 @@
-package Converters.DomParser.Utils;
+package converters.domparser.utils;
 
-import Converters.XMLSwitchHelper;
-import Objects.TVDBEpisode;
-import Objects.TVDBSeries;
+import converters.XMLSwitchHelper;
+import objects.TVDBEpisode;
+import objects.TVDBSeries;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -11,6 +11,9 @@ import org.w3c.dom.NodeList;
 public class TVDBSeriesNodeHandler {
     private static TVDBSeries tvdbSeries;
     private static TVDBEpisode tvdbEpisode;
+
+    private TVDBSeriesNodeHandler(){}
+
     public static TVDBSeries parse(Document document) {
         NodeList nodeList = document.getDocumentElement().getChildNodes();
         iterateNodeList(nodeList);

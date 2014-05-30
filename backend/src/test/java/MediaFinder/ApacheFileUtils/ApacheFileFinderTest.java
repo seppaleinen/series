@@ -1,6 +1,6 @@
-package MediaFinder.ApacheFileUtils;
+package mediafinder.apachefileutils;
 
-import Objects.FinderSeries;
+import objects.FinderSeries;
 import org.junit.Before;
 import org.junit.Test;
 

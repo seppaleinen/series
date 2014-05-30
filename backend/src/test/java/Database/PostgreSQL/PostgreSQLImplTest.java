@@ -1,18 +1,12 @@
-package Database.PostgreSQL;
+package database.postgresql;
 
-import Database.DBInterface;
-import Database.Entities.TVDBIMDBEntity;
-import Database.MongoDB.ObjectCreater;
-import Objects.*;
+import database.mongodb.ObjectCreater;
+import objects.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -37,32 +31,6 @@ public class PostgreSQLImplTest {
 
     @Ignore
     @Test
-    public void testSaveAndFindTVDBIMDB() {
-        TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
-
-        dbInterface.saveTVDBIMDB(tvdbimdb);
-
-        TVDBIMDB foundTVDBIMDB = dbInterface.getTVDBIMDB(tvdbimdb.getImdbId());
-
-        assertNotNull("Result should not be null", foundTVDBIMDB);
-        assertEquals("Objects should be equals", tvdbimdb, foundTVDBIMDB);
-    }
-
-    @Ignore
-    @Test
-    public void testSaveAndFindOMDB() {
-        OMDB omdb = ObjectCreater.createOMDB();
-
-        dbInterface.saveOMDB(omdb);
-
-        OMDB foundOMDB = dbInterface.getOMDB(omdb.getImdbID());
-
-        assertNotNull("Result should not be null", foundOMDB);
-        assertEquals("Objects should be equals", omdb, foundOMDB);
-    }
-
-    @Ignore
-    @Test
     public void testSaveAndFindTVDBSeries() {
         TVDBSeries tvdbSeries = ObjectCreater.createTVDBSeries();
 
@@ -71,7 +39,7 @@ public class PostgreSQLImplTest {
         TVDBSeries foundTVDBSeries = dbInterface.getTVDBSeries(tvdbSeries.getSeriesId());
 
         assertNotNull("Result should not be null", foundTVDBSeries);
-        assertEquals("Objects should be equals", tvdbSeries, foundTVDBSeries);
+        assertEquals("objects should be equals", tvdbSeries, foundTVDBSeries);
     }
 
     @Ignore
@@ -84,7 +52,7 @@ public class PostgreSQLImplTest {
         TVDBEpisode foundTVDBEpisode = dbInterface.getTVDBEpisode(tvdbEpisode.getSeriesId());
 
         assertNotNull("Result should not be null", foundTVDBEpisode);
-        assertEquals("Objects should be equals", tvdbEpisode, foundTVDBEpisode);
+        assertEquals("objects should be equals", tvdbEpisode, foundTVDBEpisode);
     }
 
     @Ignore
@@ -97,7 +65,7 @@ public class PostgreSQLImplTest {
         TVDBUpdate foundTVDBUpdate = dbInterface.getTVDBUpdate();
 
         assertNotNull("Result should not be null", foundTVDBUpdate);
-        assertEquals("Objects should be equals", tvdbUpdate, foundTVDBUpdate);
+        assertEquals("objects should be equals", tvdbUpdate, foundTVDBUpdate);
     }
 
     private static boolean databaseExists() throws ClassNotFoundException {

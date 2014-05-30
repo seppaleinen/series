@@ -1,7 +1,7 @@
-package Database.MySQL;
+package database.mysql;
 
-import Database.MongoDB.ObjectCreater;
-import Objects.*;
+import database.mongodb.ObjectCreater;
+import objects.*;
 import org.junit.*;
 
 
@@ -33,30 +33,6 @@ public class MySQLImplTest {
     }
 
     @Test
-    public void testSaveAndFindTVDBIMDB() {
-        TVDBIMDB tvdbimdb = ObjectCreater.createTVDBIMDB();
-
-        dbInterface.saveTVDBIMDB(tvdbimdb);
-
-        TVDBIMDB foundTVDBIMDB = dbInterface.getTVDBIMDB(tvdbimdb.getImdbId());
-
-        assertNotNull("Result should not be null", foundTVDBIMDB);
-        assertEquals("Objects should be equals", tvdbimdb, foundTVDBIMDB);
-    }
-
-    @Test
-    public void testSaveAndFindOMDB() {
-        OMDB omdb = ObjectCreater.createOMDB();
-
-        dbInterface.saveOMDB(omdb);
-
-        OMDB foundOMDB = dbInterface.getOMDB(omdb.getImdbID());
-
-        assertNotNull("Result should not be null", foundOMDB);
-        assertEquals("Objects should be equals", omdb, foundOMDB);
-    }
-
-    @Test
     public void testSaveAndFindTVDBSeries() {
         TVDBSeries tvdbSeries = ObjectCreater.createTVDBSeries();
 
@@ -65,7 +41,7 @@ public class MySQLImplTest {
         TVDBSeries foundTVDBSeries = dbInterface.getTVDBSeries(tvdbSeries.getSeriesId());
 
         assertNotNull("Result should not be null", foundTVDBSeries);
-        assertEquals("Objects should be equals", tvdbSeries, foundTVDBSeries);
+        assertEquals("objects should be equals", tvdbSeries, foundTVDBSeries);
     }
 
     @Test
@@ -77,7 +53,7 @@ public class MySQLImplTest {
         TVDBEpisode foundTVDBEpisode = dbInterface.getTVDBEpisode(tvdbEpisode.getSeriesId());
 
         assertNotNull("Result should not be null", foundTVDBEpisode);
-        assertEquals("Objects should be equals", tvdbEpisode, foundTVDBEpisode);
+        assertEquals("objects should be equals", tvdbEpisode, foundTVDBEpisode);
     }
 
     @Test
@@ -89,7 +65,7 @@ public class MySQLImplTest {
         TVDBUpdate foundTVDBUpdate = dbInterface.getTVDBUpdate();
 
         assertNotNull("Result should not be null", foundTVDBUpdate);
-        assertEquals("Objects should be equals", tvdbUpdate, foundTVDBUpdate);
+        assertEquals("objects should be equals", tvdbUpdate, foundTVDBUpdate);
     }
 
     private static boolean databaseExists() {

@@ -1,4 +1,4 @@
-package Integrations.URLImpl.Utils;
+package integrations.urlimpl.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

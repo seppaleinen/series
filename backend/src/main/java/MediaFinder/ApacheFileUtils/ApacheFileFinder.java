@@ -1,8 +1,8 @@
-package MediaFinder.ApacheFileUtils;
+package mediafinder.apachefileutils;
 
-import MediaFinder.ApacheFileUtils.Utils.CustomFileVisitor;
-import MediaFinder.Finder;
-import Objects.FinderSeries;
+import mediafinder.apachefileutils.utils.CustomFileVisitor;
+import mediafinder.Finder;
+import objects.FinderSeries;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;

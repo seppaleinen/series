@@ -1,31 +1,13 @@
-package Converters.DomParser;
+package converters.domparser;
 
-import Converters.DomParser.Utils.*;
-import Converters.XmlParser;
-import Objects.*;
+import converters.domparser.utils.*;
+import converters.XmlParser;
+import objects.*;
 import org.w3c.dom.Document;
 
 import java.io.InputStream;
 
 public class DomParser implements XmlParser {
-    @Override
-    public TVDBEpisode parseTVDBEpisodeFromXML(InputStream xml) {
-        Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return TVDBEpisodeNodeHandler.parse(document);
-    }
-
-    @Override
-    public TVDBIMDB parseTVDBIMDBFromXml(InputStream xml) {
-        Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return TVDBIMDBNodeHandler.parse(document);
-    }
-
-    @Override
-    public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
-        Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return TVDBSeriesNodeHandler.parse(document);
-    }
-
     @Override
     public TVDBUpdate parseTVDBUpdateFromXml(InputStream xml) {
         Document document = DocumentHandler.getDocumentFromInputStream(xml);
@@ -33,7 +15,7 @@ public class DomParser implements XmlParser {
     }
 
     @Override
-    public OMDB parseOmdbFromXml(InputStream xml) {
-        Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return OMDBNodeHandler.parse(document);
-    }}
+    public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
+        return null;
+    }
+}

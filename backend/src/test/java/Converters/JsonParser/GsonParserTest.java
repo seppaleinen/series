@@ -1,6 +1,6 @@
-package Converters.JsonParser;
+package converters.jsonparser;
 
-import Objects.PirateBay;
+import objects.PirateBay;
 import org.junit.Before;
 import org.junit.Test;
 

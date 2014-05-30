@@ -1,4 +1,4 @@
-package Integrations;
+package integrations;
 
 public interface PirateBayInterface {
 

@@ -1,4 +1,4 @@
-package Database.MongoDB.Entities;
+package database.mongodb.entities;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;

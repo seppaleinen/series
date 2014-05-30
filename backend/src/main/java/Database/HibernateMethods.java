@@ -1,24 +1,15 @@
-package Database;
+package database;
 
-import Database.Entities.*;
-import Database.Entities.Utils.JPAToObject;
-import Database.Entities.Utils.ObjectToJPA;
-import Objects.*;
+import database.entities.*;
+import database.entities.utils.JPAToObject;
+import database.entities.utils.ObjectToJPA;
+import objects.*;
 
 import java.util.List;
 
 public class HibernateMethods implements DBInterface {
     public String persistence = "mysql";
     public HibernateManager hibernateManager;
-
-    @Override
-    public TVDBIMDB getTVDBIMDB(String imdbId) {
-        hibernateManager = new HibernateManager(persistence);
-
-        TVDBIMDBEntity tvdbimdbEntity = hibernateManager.getEntity(TVDBIMDBEntity.class, TVDBIMDBEntity.FIND_BY_IMDBID, "imdbId", imdbId);
-
-        return JPAToObject.convertMySQLTVDBIMDB_To_TVDBIMDB(tvdbimdbEntity);
-    }
 
     @Override
     public TVDBEpisode getTVDBEpisode(String episodeId) {
@@ -51,24 +42,6 @@ public class HibernateMethods implements DBInterface {
     }
 
     @Override
-    public OMDB getOMDB(String IMDBId) {
-        hibernateManager = new HibernateManager(persistence);
-
-        OMDBEntity omdbEntity = hibernateManager.getEntity(OMDBEntity.class, OMDBEntity.FIND_BY_IMDBID, "imdbId", IMDBId);
-
-        return JPAToObject.convertMySQLOMDB_To_OMDB(omdbEntity);
-    }
-
-    @Override
-    public void saveTVDBIMDB(TVDBIMDB tvdbimdb) {
-        hibernateManager = new HibernateManager(persistence);
-
-        TVDBIMDBEntity tvdbimdbEntity = ObjectToJPA.convertTVDBIMDB_To_MySQLTVDBIMDB(tvdbimdb);
-
-        hibernateManager.saveEntity(tvdbimdbEntity);
-    }
-
-    @Override
     public void saveTVDBEpisode(TVDBEpisode tvdbEpisode) {
         hibernateManager = new HibernateManager(persistence);
 
@@ -93,14 +66,5 @@ public class HibernateMethods implements DBInterface {
         TVDBUpdateEntity tvdbUpdateEntity = ObjectToJPA.convertTVDBUpdate_To_MySQLTVDBUpdate(tvdbUpdate);
 
         hibernateManager.saveEntity(tvdbUpdateEntity);
-    }
-
-    @Override
-    public void saveOMDB(OMDB omdb) {
-        hibernateManager = new HibernateManager(persistence);
-
-        OMDBEntity omdbEntity = ObjectToJPA.convertOMDB_To_MySQLOMDB(omdb);
-
-        hibernateManager.saveEntity(omdbEntity);
     }
 }

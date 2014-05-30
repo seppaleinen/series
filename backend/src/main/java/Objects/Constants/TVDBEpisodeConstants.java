@@ -1,4 +1,4 @@
-package Objects.Constants;
+package objects.constants;
 
 public class TVDBEpisodeConstants {
     public static final String ELEMENT = "Episode";

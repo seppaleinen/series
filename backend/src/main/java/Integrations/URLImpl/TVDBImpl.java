@@ -1,28 +1,26 @@
-package Integrations.URLImpl;
+package integrations.urlimpl;
 
-import Integrations.TVDBInterface;
-import Integrations.URLImpl.Utils.UrlConnection;
+import integrations.TVDBInterface;
+import integrations.urlimpl.utils.UrlConnection;
 
 import java.io.InputStream;
 
 public class TVDBImpl extends UrlConnection implements TVDBInterface {
+    @Override
     public InputStream getUpdatesSince(String dateSinceLastUpdate){
         String tvDBUrl = UPDATES_INFORMATION.replaceAll("#", dateSinceLastUpdate);
         return getTVDBInfo(tvDBUrl);
     }
 
-    public InputStream getEpisode(String episodeId){
-        String tvDBUrl = EPISODE_INFORMATION.replaceAll("#", episodeId);
+    @Override
+    public InputStream getSeriesByName(String seriesName) {
+        String tvDBUrl = SERIES_INFORMATION_BY_NAME.replaceAll("#", seriesName.replaceAll(" ", "+"));
         return getTVDBInfo(tvDBUrl);
     }
 
-    public InputStream getSeries(String seriesId){
-        String tvDBUrl = SERIE_INFORMATION.replaceAll("#", seriesId);
-        return getTVDBInfo(tvDBUrl);
-    }
-
-    public InputStream getIMDB(String imdbId){
-        String tvDBUrl = IMDB_INFORMATION.replaceAll("#", imdbId);
+    @Override
+    public InputStream getSeriesInfo(String seriesId) {
+        String tvDBUrl = EPISODE_ALL_INFO.replaceAll("#", seriesId);
         return getTVDBInfo(tvDBUrl);
     }
 

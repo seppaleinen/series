@@ -1,9 +1,8 @@
-package MediaFinder.ApacheFileUtils.Utils;
+package mediafinder.apachefileutils.utils;
 
-import MediaFinder.MediaFinderConstants;
-import Objects.FinderSeries;
+import mediafinder.MediaFinderConstants;
+import objects.FinderSeries;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;

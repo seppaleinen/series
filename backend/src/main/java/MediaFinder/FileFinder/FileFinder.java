@@ -1,9 +1,9 @@
-package MediaFinder.FileFinder;
+package mediafinder.filefinder;
 
-import MediaFinder.Finder;
-import MediaFinder.MediaFinderConstants;
-import MediaFinder.MediaInfo;
-import Objects.FinderSeries;
+import mediafinder.Finder;
+import mediafinder.MediaFinderConstants;
+import mediafinder.MediaInfo;
+import objects.FinderSeries;
 
 import java.io.File;
 import java.util.ArrayList;

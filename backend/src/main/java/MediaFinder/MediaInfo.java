@@ -1,7 +1,7 @@
-package MediaFinder;
+package mediafinder;
 
-import Objects.Constants.MediaInfoConstants;
-import Objects.FinderSeries;
+import objects.constants.MediaInfoConstants;
+import objects.FinderSeries;
 
 public class MediaInfo {
     private static final String SEPARATOR = System.getProperty("file.separator");

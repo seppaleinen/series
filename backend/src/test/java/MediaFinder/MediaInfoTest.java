@@ -1,6 +1,6 @@
-package MediaFinder;
+package mediafinder;
 
-import Objects.FinderSeries;
+import objects.FinderSeries;
 import org.junit.Before;
 import org.junit.Test;
 

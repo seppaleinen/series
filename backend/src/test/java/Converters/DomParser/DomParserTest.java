@@ -1,7 +1,7 @@
-package Converters.DomParser;
+package converters.domparser;
 
-import Converters.ParserTests;
-import Converters.XmlParser;
+import converters.ParserTests;
+import converters.XmlParser;
 import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
@@ -20,28 +20,7 @@ public class DomParserTest {
     }
 
     @Test
-    public void testParseOMDBFromXml(){
-        parserTests.testParseOMDBFromXml(saxParser);
-    }
-
-    @Test
     public void testParseTVDBUpdateFromXml() throws IOException, ParserConfigurationException, SAXException {
         parserTests.testParseTVDBUpdateFromXml(saxParser);
     }
-
-    @Test
-    public void testParseTVDBIMDBFromXml() {
-        parserTests.testParseTVDBIMDBFromXml(saxParser);
-    }
-
-    @Test
-    public void testParseTVDBSeriesFromXml(){
-        parserTests.testParseTVDBSeriesFromXml(saxParser);
-    }
-
-    @Test
-    public void testParseTVDBEpisodeFromXml(){
-        parserTests.testParseTVDBEpisodeFromXml(saxParser);
-    }
-
 }

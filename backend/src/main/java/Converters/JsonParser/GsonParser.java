@@ -1,6 +1,6 @@
-package Converters.JsonParser;
+package converters.jsonparser;
 
-import Objects.PirateBay;
+import objects.PirateBay;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

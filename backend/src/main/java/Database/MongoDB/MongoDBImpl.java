@@ -1,16 +1,12 @@
-package Database.MongoDB;
+package database.mongodb;
 
-import Database.DBInterface;
-import Database.MongoDB.Dao.*;
-import Database.MongoDB.Entities.*;
-import Database.MongoDB.Utils.MongoToObject;
-import Database.MongoDB.Utils.ObjectToMongo;
-import Objects.*;
-import Objects.Constants.OMDBConstants;
-import Objects.Constants.TVDBEpisodeConstants;
-import Objects.Constants.TVDBUpdateConstants;
+import database.DBInterface;
+import database.mongodb.dao.*;
+import database.mongodb.entities.*;
+import database.mongodb.utils.MongoToObject;
+import database.mongodb.utils.ObjectToMongo;
+import objects.*;
 import com.mongodb.*;
-import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
 import java.net.UnknownHostException;
@@ -26,15 +22,6 @@ public class MongoDBImpl implements DBInterface {
     public MongoDBImpl(){
         mongoClient = getMongoClient();
         morphia = new Morphia();
-    }
-
-    @Override
-    public TVDBIMDB getTVDBIMDB(String imdbId) {
-        TVDBIMDBMorphiaDao tvdbimdbMorphiaDao = new TVDBIMDBMorphiaDao(mongoClient, morphia, DATABASE);
-
-        MongoTVDBIMDB mongoTVDBIMDB = tvdbimdbMorphiaDao.findOne(MongoTVDBIMDB.IMDBID_KEY, imdbId);
-
-        return MongoToObject.convertMongoTVDBIMDB_To_TVDBIMDB(mongoTVDBIMDB);
     }
 
     @Override
@@ -65,24 +52,6 @@ public class MongoDBImpl implements DBInterface {
     }
 
     @Override
-    public OMDB getOMDB(String IMDBId) {
-        OMDBMorphiaDao omdbMorphiaDao = new OMDBMorphiaDao(mongoClient, morphia, DATABASE);
-
-        MongoOMDB mongoOMDB = omdbMorphiaDao.findOne(MongoOMDB.IMDB_KEY, IMDBId);
-
-        return MongoToObject.convertMongoOMDB_To_OMDB(mongoOMDB);
-    }
-
-    @Override
-    public void saveTVDBIMDB(TVDBIMDB tvdbimdb) {
-        MongoTVDBIMDB mongoTVDBIMDB = ObjectToMongo.convertTVDBIMDB_To_MongoTVDBIMDB(tvdbimdb);
-
-        TVDBIMDBMorphiaDao tvdbimdbMorphiaDao = new TVDBIMDBMorphiaDao(mongoClient, morphia, DATABASE);
-
-        tvdbimdbMorphiaDao.save(mongoTVDBIMDB);
-    }
-
-    @Override
     public void saveTVDBEpisode(TVDBEpisode tvdbEpisode) {
         MongoTVDBEpisode mongoTVDBEpisode = ObjectToMongo.convertTVDBEpisode_To_MongoTVDBEpisode(tvdbEpisode);
 
@@ -109,15 +78,6 @@ public class MongoDBImpl implements DBInterface {
         tvdbUpdateMorphiaDao.save(mongoTVDBUpdate);
     }
 
-    @Override
-    public void saveOMDB(OMDB omdb) {
-        MongoOMDB mongoOMDB = ObjectToMongo.convertOMDB_To_MongoOMDB(omdb);
-
-        OMDBMorphiaDao omdbMorphiaDao = new OMDBMorphiaDao(mongoClient, morphia, DATABASE);
-
-        omdbMorphiaDao.save(mongoOMDB);
-    }
-
     private MongoClient getMongoClient(){
         MongoClient client = null;
         if(mongoClient==null){
@@ -126,8 +86,7 @@ public class MongoDBImpl implements DBInterface {
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else{
             client = mongoClient;
         }
         return client;

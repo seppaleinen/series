@@ -1,4 +1,4 @@
-package MediaFinder;
+package mediafinder;
 
 import java.util.ArrayList;
 import java.util.Arrays;

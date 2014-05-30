@@ -1,4 +1,4 @@
-package Objects.Constants;
+package objects.constants;
 
 public class TVDBUpdateConstants {
     public static final String ELEMENTNAME = "Items";

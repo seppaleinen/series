@@ -1,6 +1,6 @@
-package Database.MongoDB;
+package database.mongodb;
 
-import Objects.*;
+import objects.*;
 
 public class ObjectCreater {
     public static TVDBUpdate createTVDBUpdate(){
@@ -80,46 +80,5 @@ public class ObjectCreater {
         tvdbEpisode.setLanguage("LANGUAGE");
 
         return tvdbEpisode;
-    }
-
-    public static TVDBIMDB createTVDBIMDB(){
-        TVDBIMDB tvdbimdb = new TVDBIMDB();
-
-        tvdbimdb.setSeriesId("SERIESID");
-        tvdbimdb.setLanguage("LANGUAGE");
-        tvdbimdb.setSeriesName("SERIESNAME");
-        tvdbimdb.setBanner("BANNER");
-        tvdbimdb.setOverview("OVERVIEW");
-        tvdbimdb.setFirstAired("FIRSTAIRED");
-        tvdbimdb.setImdbId("IMDBID");
-        tvdbimdb.setId("ID");
-
-        return tvdbimdb;
-    }
-
-    public static OMDB createOMDB(){
-        OMDB omdb = new OMDB();
-
-        omdb.setTitle("TITLE");
-        omdb.setYear("YEAR");
-        omdb.setRated("RATED");
-        omdb.setReleased("RELEASED");
-        omdb.setRuntime("RUNTIME");
-        omdb.setGenre("GENRE");
-        omdb.setDirector("DIRECTOR");
-        omdb.setWriter("WRITER");
-        omdb.setActors("ACTORS");
-        omdb.setPlot("PLOT");
-        omdb.setLanguage("LANGUAGE");
-        omdb.setCountry("COUNTRY");
-        omdb.setAwards("AWARDS");
-        omdb.setPoster("POSTER");
-        omdb.setMetascore("METASCORE");
-        omdb.setImdbRating("IMDBRATING");
-        omdb.setImdbVotes("IMDBVOTES");
-        omdb.setImdbID("IMDBID");
-        omdb.setType("TYPE");
-
-        return omdb;
     }
 }

@@ -1,8 +1,8 @@
-package Converters.SaxParser.Utils;
+package converters.saxparser.utils;
 
-import Converters.XMLSwitchHelper;
-import Objects.Constants.TVDBUpdateConstants;
-import Objects.TVDBUpdate;
+import converters.XMLSwitchHelper;
+import objects.constants.TVDBUpdateConstants;
+import objects.TVDBUpdate;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

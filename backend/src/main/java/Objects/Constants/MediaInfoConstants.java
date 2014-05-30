@@ -1,4 +1,4 @@
-package Objects.Constants;
+package objects.constants;
 
 public enum MediaInfoConstants {
     FILENAME(1),

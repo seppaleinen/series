@@ -1,6 +1,6 @@
-package Database.MySQL;
+package database.mysql;
 
-import Database.HibernateMethods;
+import database.HibernateMethods;
 
 public class MySQLImpl extends HibernateMethods {
     private static final String DEFAULT_PERSISTENCE = "mysql";

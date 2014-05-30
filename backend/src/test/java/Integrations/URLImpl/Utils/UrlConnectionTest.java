@@ -1,4 +1,4 @@
-package Integrations.URLImpl.Utils;
+package integrations.urlimpl.utils;
 
 import org.junit.Before;
 import org.junit.Test;

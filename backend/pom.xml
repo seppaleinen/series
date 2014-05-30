@@ -102,10 +102,19 @@
         </dependency>
 
         <!-- TORRENT -->
+        <!--
         <dependency>
             <groupId>com.turn</groupId>
             <artifactId>ttorrent</artifactId>
             <version>1.4</version>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>jBittorrent</groupId>
+            <artifactId>jBittorrent-api</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/jBittorrentAPI.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -150,14 +159,14 @@
         <mysql.url>jdbc:mysql://localhost:3306/MYDB</mysql.url>
         <mysql_admin.username>root</mysql_admin.username>
         <mysql_admin.password>minstlol</mysql_admin.password>
-        <mysql_changeLogFile>src/main/resources/Database/MySQL/master.xml</mysql_changeLogFile>
+        <mysql_changeLogFile>src/main/resources/database/MySQL/master.xml</mysql_changeLogFile>
 
         <postgre_dev.username>root</postgre_dev.username>
         <postgre_dev.password>minstlol</postgre_dev.password>
         <postgre.url>jdbc:postgresql://localhost:5432/mypostgres</postgre.url>
         <postgre_admin.username>root</postgre_admin.username>
         <postgre_admin.password>minstlol</postgre_admin.password>
-        <postgre_changeLogFile>src/main/resources/Database/PostgreSQL/master.xml</postgre_changeLogFile>
+        <postgre_changeLogFile>src/main/resources/database/PostgreSQL/master.xml</postgre_changeLogFile>
         <liquibase-plugin.verbose>true</liquibase-plugin.verbose>
         <drop_database>true</drop_database>
 

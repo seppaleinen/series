@@ -1,41 +1,10 @@
-package Database.MongoDB.Utils;
+package database.mongodb.utils;
 
-import Database.MongoDB.Entities.*;
-import Objects.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import database.mongodb.entities.*;
+import objects.*;
 
 public class MongoToObject {
-    public static OMDB convertMongoOMDB_To_OMDB(MongoOMDB mongoOMDB){
-        OMDB omdb = null;
-
-        if(mongoOMDB!=null){
-            omdb = new OMDB();
-
-            omdb.setTitle(mongoOMDB.getTitle());
-            omdb.setYear(mongoOMDB.getYear());
-            omdb.setRated(mongoOMDB.getRated());
-            omdb.setReleased(mongoOMDB.getReleased());
-            omdb.setRuntime(mongoOMDB.getRuntime());
-            omdb.setGenre(mongoOMDB.getGenre());
-            omdb.setDirector(mongoOMDB.getDirector());
-            omdb.setWriter(mongoOMDB.getWriter());
-            omdb.setActors(mongoOMDB.getActors());
-            omdb.setPlot(mongoOMDB.getPlot());
-            omdb.setLanguage(mongoOMDB.getLanguage());
-            omdb.setCountry(mongoOMDB.getCountry());
-            omdb.setAwards(mongoOMDB.getAwards());
-            omdb.setPoster(mongoOMDB.getPoster());
-            omdb.setMetascore(mongoOMDB.getMetascore());
-            omdb.setImdbRating(mongoOMDB.getImdbRating());
-            omdb.setImdbVotes(mongoOMDB.getImdbVotes());
-            omdb.setImdbID(mongoOMDB.getImdbID());
-            omdb.setType(mongoOMDB.getType());
-        }
-
-        return omdb;
-    }
+    private MongoToObject(){}
 
     public static TVDBEpisode convertMongoTVDBEpisode_To_TVDBEpisode(MongoTVDBEpisode mongoTVDBEpisode){
         TVDBEpisode tvdbEpisode = null;
@@ -75,26 +44,6 @@ public class MongoToObject {
         }
 
         return tvdbEpisode;
-    }
-
-
-    public static TVDBIMDB convertMongoTVDBIMDB_To_TVDBIMDB(MongoTVDBIMDB mongoTVDBIMDB){
-        TVDBIMDB tvdbimdb = null;
-
-        if(mongoTVDBIMDB != null){
-            tvdbimdb = new TVDBIMDB();
-
-            tvdbimdb.setSeriesId(mongoTVDBIMDB.getSeriesId());
-            tvdbimdb.setLanguage(mongoTVDBIMDB.getLanguage());
-            tvdbimdb.setSeriesName(mongoTVDBIMDB.getSeriesName());
-            tvdbimdb.setBanner(mongoTVDBIMDB.getBanner());
-            tvdbimdb.setOverview(mongoTVDBIMDB.getOverview());
-            tvdbimdb.setFirstAired(mongoTVDBIMDB.getFirstAired());
-            tvdbimdb.setImdbId(mongoTVDBIMDB.getImdbId());
-            tvdbimdb.setId(mongoTVDBIMDB.getId());
-        }
-
-        return tvdbimdb;
     }
 
     public static TVDBSeries convertMongoTVDBSeries_To_TVDBSeries(MongoTVDBSeries mongoTVDBSeries){

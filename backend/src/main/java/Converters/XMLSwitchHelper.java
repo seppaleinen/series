@@ -1,9 +1,11 @@
-package Converters;
+package converters;
 
-import Objects.*;
-import Objects.Constants.*;
+import objects.*;
+import objects.constants.*;
 
 public class XMLSwitchHelper {
+    private XMLSwitchHelper(){}
+
     public static void switchTVDBUpdate(TVDBUpdate tvdbUpdate, String switchName, String content) {
         switch (switchName) {
             case TVDBUpdateConstants.TIME:
@@ -14,6 +16,8 @@ public class XMLSwitchHelper {
                 break;
             case TVDBUpdateConstants.EPISODE:
                 tvdbUpdate.getEpisodeList().add(content);
+                break;
+            default:
                 break;
         }
     }
@@ -109,36 +113,7 @@ public class XMLSwitchHelper {
             case TVDBEpisodeConstants.LANGUAGE:
                 tvdbEpisode.setLanguage(content);
                 break;
-        }
-    }
-
-    public static void switchTVDBIMDB(TVDBIMDB tvdbimdb, String switchName, String content) {
-        switch (switchName){
-            case TVDBIMDBConstants.ELEMENT:
-                break;
-            case TVDBIMDBConstants.SERIES_ID:
-                tvdbimdb.setSeriesId(content);
-                break;
-            case TVDBIMDBConstants.LANGUAGE:
-                tvdbimdb.setLanguage(content);
-                break;
-            case TVDBIMDBConstants.SERIES_NAME:
-                tvdbimdb.setSeriesName(content);
-                break;
-            case TVDBIMDBConstants.BANNER:
-                tvdbimdb.setBanner(content);
-                break;
-            case TVDBIMDBConstants.OVERVIEW:
-                tvdbimdb.setOverview(content);
-                break;
-            case TVDBIMDBConstants.FIRST_AIRED:
-                tvdbimdb.setFirstAired(content);
-                break;
-            case TVDBIMDBConstants.IMDB_ID:
-                tvdbimdb.setImdbId(content);
-                break;
-            case TVDBIMDBConstants.ID:
-                tvdbimdb.setId(content);
+            default:
                 break;
         }
     }
@@ -227,68 +202,6 @@ public class XMLSwitchHelper {
                 break;
             default:
                 switchTVDBEpisode(tvdbEpisode, switchName, content);
-                break;
-        }
-    }
-
-    public static void switchOMDB(OMDB omdb, String switchName, String content) {
-        switch(switchName) {
-            case OMDBConstants.TITLE:
-                omdb.setTitle(content);
-                break;
-            case OMDBConstants.YEAR:
-                omdb.setYear(content);
-                break;
-            case OMDBConstants.RATED:
-                omdb.setRated(content);
-                break;
-            case OMDBConstants.RELEASED:
-                omdb.setReleased(content);
-                break;
-            case OMDBConstants.RUNTIME:
-                omdb.setRuntime(content);
-                break;
-            case OMDBConstants.GENRE:
-                omdb.setGenre(content);
-                break;
-            case OMDBConstants.DIRECTOR:
-                omdb.setDirector(content);
-                break;
-            case OMDBConstants.WRITER:
-                omdb.setWriter(content);
-                break;
-            case OMDBConstants.ACTORS:
-                omdb.setActors(content);
-                break;
-            case OMDBConstants.PLOT:
-                omdb.setPlot(content);
-                break;
-            case OMDBConstants.LANGUAGE:
-                omdb.setLanguage(content);
-                break;
-            case OMDBConstants.COUNTRY:
-                omdb.setCountry(content);
-                break;
-            case OMDBConstants.AWARDS:
-                omdb.setAwards(content);
-                break;
-            case OMDBConstants.POSTER:
-                omdb.setPoster(content);
-                break;
-            case OMDBConstants.METASCORE:
-                omdb.setMetascore(content);
-                break;
-            case OMDBConstants.IMDB_RATING:
-                omdb.setImdbRating(content);
-                break;
-            case OMDBConstants.IMDB_VOTES:
-                omdb.setImdbVotes(content);
-                break;
-            case OMDBConstants.IMDB_ID:
-                omdb.setImdbID(content);
-                break;
-            case OMDBConstants.TYPE:
-                omdb.setType(content);
                 break;
         }
     }
