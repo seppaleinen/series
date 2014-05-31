@@ -10,6 +10,20 @@ import static org.junit.Assert.*;
 public class ParserTestHelper {
     private ParserTestHelper(){}
 
+    public static void assertSeriesByName(TVDBSeries tvdbSeries){
+        assertNotNull("tvdbSeries should not be null", tvdbSeries);
+        equals("seriesid", "275274", tvdbSeries.getSeriesId());
+        equals("language", "en", tvdbSeries.getLanguage());
+        equals("SeriesName", "Rick and Morty", tvdbSeries.getSeriesName());
+        equals("banner", "graphical/275274-g5.jpg", tvdbSeries.getBanner());
+        equals("Overview", "A sociopathic scientist drags his unintelligent grandson on insanely dangerous adventures across the universe.", tvdbSeries.getOverview());
+        equals("FirstAired", "2013-12-02", tvdbSeries.getFirstAired());
+        equals("Network", "Adult Swim", tvdbSeries.getNetwork());
+        equals("IMDB_ID", "tt2861424", tvdbSeries.getImdbId());
+        equals("id", "275274", tvdbSeries.getId());
+        assertTrue("EpisodeList should be empty", tvdbSeries.getTvdbEpisodeList().isEmpty());
+    }
+
     public static void assertEpisodes(List<TVDBEpisode> episodeList){
         assertNotNull("EpisodeList should not be null", episodeList);
         equals("tvdbEpisodeListSize", 15, episodeList.size());

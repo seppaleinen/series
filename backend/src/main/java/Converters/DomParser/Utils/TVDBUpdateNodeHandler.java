@@ -8,16 +8,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class TVDBUpdateNodeHandler {
-    private static TVDBUpdate tvdbUpdate;
-    private TVDBUpdateNodeHandler(){}
+    private TVDBUpdate tvdbUpdate;
+    public TVDBUpdateNodeHandler(){}
 
-    public static TVDBUpdate parse(Document document) {
+    public TVDBUpdate parse(Document document) {
         NodeList nodeList = document.getDocumentElement().getChildNodes();
         iterateNodeList(nodeList);
         return tvdbUpdate;
     }
 
-    private static void iterateNodeList(NodeList nodeList) {
+    private void iterateNodeList(NodeList nodeList) {
         for(int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
             if(node instanceof Element) {
@@ -29,7 +29,7 @@ public class TVDBUpdateNodeHandler {
         }
     }
 
-    private static void extractInformationFromNode(Node node) {
+    private void extractInformationFromNode(Node node) {
         if(node.getLastChild()!=null) {
             String content = node.getLastChild().getTextContent().trim();
             XMLSwitchHelper.switchTVDBUpdate(tvdbUpdate, node.getNodeName(), content);

@@ -28,4 +28,9 @@ public class StAXParserTest {
     public void testParseTVDBSeriesAllFromXml(){
         parserTests.testParseTVDBSeriesAll(staxParser);
     }
+
+    @Test
+    public void testParseTVDBSeriesByNameFromXml(){
+        parserTests.testParseTVDBSeriesByName(staxParser);
+    }
 }

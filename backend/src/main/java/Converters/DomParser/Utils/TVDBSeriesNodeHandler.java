@@ -10,18 +10,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class TVDBSeriesNodeHandler {
-    private static TVDBSeries tvdbSeries;
-    private static TVDBEpisode tvdbEpisode;
+    private TVDBSeries tvdbSeries;
+    private TVDBEpisode tvdbEpisode;
 
-    private TVDBSeriesNodeHandler(){}
+    public TVDBSeriesNodeHandler(){}
 
-    public static TVDBSeries parse(Document document) {
+    public TVDBSeries parse(Document document) {
         NodeList nodeList = document.getDocumentElement().getChildNodes();
         iterateNodeList(nodeList);
         return tvdbSeries;
     }
 
-    private static void iterateNodeList(NodeList nodeList) {
+    private void iterateNodeList(NodeList nodeList) {
         for(int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
             if(node instanceof Element) {
@@ -38,7 +38,7 @@ public class TVDBSeriesNodeHandler {
         }
     }
 
-    private static void iterateChildNodeList(NodeList nodeList) {
+    private void iterateChildNodeList(NodeList nodeList) {
         for(int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
             if(node instanceof Element) {
@@ -47,7 +47,7 @@ public class TVDBSeriesNodeHandler {
         }
     }
 
-    private static void extractInformationFromNode(Node node) {
+    private void extractInformationFromNode(Node node) {
         if(node.getLastChild()!=null) {
             String content = node.getLastChild().getTextContent().trim();
             if(tvdbEpisode != null){

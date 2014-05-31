@@ -35,6 +35,12 @@ public class ParserTests {
         ParserTestHelper.assertEpisodes(tvdbSeries.getTvdbEpisodeList());
     }
 
+    public void testParseTVDBSeriesByName(XmlParser xmlParser){
+        InputStream inputStream = getFile(TVDBSERIESBYNAME);
+        TVDBSeries tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
+        ParserTestHelper.assertSeriesByName(tvdbSeries);
+    }
+
     private InputStream getFile(String filename) {
         return this.getClass().getResourceAsStream(XMLDIR + "/" + filename);
     }

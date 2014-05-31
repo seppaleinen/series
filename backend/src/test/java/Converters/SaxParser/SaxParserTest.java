@@ -28,4 +28,9 @@ public class SaxParserTest {
     public void testParseTVDBSeriesAllFromXml(){
         parserTests.testParseTVDBSeriesAll(saxParser);
     }
+
+    @Test
+    public void testParseTVDBSeriesByNameFromXml(){
+        parserTests.testParseTVDBSeriesByName(saxParser);
+    }
 }

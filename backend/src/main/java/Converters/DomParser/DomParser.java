@@ -8,15 +8,23 @@ import org.w3c.dom.Document;
 import java.io.InputStream;
 
 public class DomParser implements XmlParser {
+    private DocumentHandler documentHandler;
+    private Document document;
+
+    public DomParser(){
+        documentHandler = new DocumentHandler();
+    }
     @Override
     public TVDBUpdate parseTVDBUpdateFromXml(InputStream xml) {
-        Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return TVDBUpdateNodeHandler.parse(document);
+        document = documentHandler.getDocumentFromInputStream(xml);
+        TVDBUpdateNodeHandler updateNodeHandler = new TVDBUpdateNodeHandler();
+        return updateNodeHandler.parse(document);
     }
 
     @Override
     public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
-        Document document = DocumentHandler.getDocumentFromInputStream(xml);
-        return TVDBSeriesNodeHandler.parse(document);
+        document = documentHandler.getDocumentFromInputStream(xml);
+        TVDBSeriesNodeHandler seriesNodeHandler = new TVDBSeriesNodeHandler();
+        return seriesNodeHandler.parse(document);
     }
 }

@@ -143,6 +143,7 @@ public class XMLSwitchHelper {
             case TVDBSeriesConstants.IMDB_ID:
                 tvdbSeries.setImdbId(content);
                 break;
+            case TVDBSeriesConstants.LANGUAGE_BY_NAME:
             case TVDBSeriesConstants.LANGUAGE:
                 tvdbSeries.setLanguage(content);
                 break;
@@ -164,6 +165,7 @@ public class XMLSwitchHelper {
             case TVDBSeriesConstants.RUNTIME:
                 tvdbSeries.setRuntime(content);
                 break;
+            case TVDBSeriesConstants.SERIES_ID_BY_NAME:
             case TVDBSeriesConstants.SERIES_ID:
                 tvdbSeries.setSeriesId(content);
                 break;

@@ -10,14 +10,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class DocumentHandler {
-    private DocumentHandler(){}
-    public static Document getDocumentFromInputStream(InputStream inputStream){
+    public DocumentHandler(){}
+    public Document getDocumentFromInputStream(InputStream inputStream){
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = getDocumentBuilder(documentBuilderFactory);
         return getDocumentFromDocumentBuilder(documentBuilder, inputStream);
     }
 
-    private static DocumentBuilder getDocumentBuilder(DocumentBuilderFactory documentBuilderFactory){
+    private DocumentBuilder getDocumentBuilder(DocumentBuilderFactory documentBuilderFactory){
         DocumentBuilder documentBuilder = null;
         try {
             documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -27,7 +27,7 @@ public class DocumentHandler {
         return documentBuilder;
     }
 
-    private static Document getDocumentFromDocumentBuilder(DocumentBuilder documentBuilder, InputStream inputStream){
+    private Document getDocumentFromDocumentBuilder(DocumentBuilder documentBuilder, InputStream inputStream){
         Document document = null;
         try {
             document = documentBuilder.parse(inputStream);

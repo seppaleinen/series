@@ -13,6 +13,7 @@ public class TVDBSeriesConstants {
     public static final String GENRE = "Genre";
     public static final String IMDB_ID = "IMDB_ID";
     public static final String LANGUAGE = "Language";
+    public static final String LANGUAGE_BY_NAME = "language";
     public static final String NETWORK = "Network";
     public static final String NETWORK_ID = "NetworkID";
     public static final String OVERVIEW = "Overview";
@@ -20,6 +21,7 @@ public class TVDBSeriesConstants {
     public static final String RATING_COUNT = "RatingCount";
     public static final String RUNTIME = "Runtime";
     public static final String SERIES_ID = "SeriesID";
+    public static final String SERIES_ID_BY_NAME = "seriesid";
     public static final String SERIES_NAME = "SeriesName";
     public static final String STATUS = "Status";
     public static final String ADDED = "added";
