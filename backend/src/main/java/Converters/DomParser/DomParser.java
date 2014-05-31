@@ -16,6 +16,7 @@ public class DomParser implements XmlParser {
 
     @Override
     public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
-        return null;
+        Document document = DocumentHandler.getDocumentFromInputStream(xml);
+        return TVDBSeriesNodeHandler.parse(document);
     }
 }

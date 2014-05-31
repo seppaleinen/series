@@ -3,6 +3,7 @@ package converters.domparser.utils;
 import converters.XMLSwitchHelper;
 import objects.TVDBEpisode;
 import objects.TVDBSeries;
+import objects.constants.TVDBSeriesConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -24,8 +25,12 @@ public class TVDBSeriesNodeHandler {
         for(int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
             if(node instanceof Element) {
-                if(tvdbSeries==null){
+                String tagName = ((Element) node).getTagName();
+                if(TVDBSeriesConstants.SERIES_ELEMENT.equals(tagName) && tvdbSeries==null){
                     tvdbSeries = new TVDBSeries();
+                } else if(TVDBSeriesConstants.EPISODE_ELEMENT.equals(tagName)){
+                    tvdbSeries.getTvdbEpisodeList().add(tvdbEpisode);
+                    tvdbEpisode = new TVDBEpisode();
                 }
                 NodeList childNodeList = node.getChildNodes();
                 iterateChildNodeList(childNodeList);
@@ -45,7 +50,11 @@ public class TVDBSeriesNodeHandler {
     private static void extractInformationFromNode(Node node) {
         if(node.getLastChild()!=null) {
             String content = node.getLastChild().getTextContent().trim();
-            XMLSwitchHelper.switchTVDBSeries(tvdbSeries, tvdbEpisode, node.getNodeName(), content);
+            if(tvdbEpisode != null){
+                XMLSwitchHelper.switchTVDBEpisode(tvdbEpisode, node.getNodeName(), content);
+            } else{
+                XMLSwitchHelper.switchTVDBSeries(tvdbSeries, node.getNodeName(), content);
+            }
         }
     }
 }

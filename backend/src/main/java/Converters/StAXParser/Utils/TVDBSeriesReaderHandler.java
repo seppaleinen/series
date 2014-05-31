@@ -28,6 +28,7 @@ public class TVDBSeriesReaderHandler {
                     tvdbSeries = new TVDBSeries();
                 }
                 if(TVDBSeriesConstants.EPISODE_ELEMENT.equals(xmlStreamReader.getLocalName())){
+                    tvdbSeries.getTvdbEpisodeList().add(tvdbEpisode);
                     tvdbEpisode = new TVDBEpisode();
                 }
                 break;
@@ -35,7 +36,11 @@ public class TVDBSeriesReaderHandler {
                 content = xmlStreamReader.getText().trim();
                 break;
             case XMLStreamConstants.END_ELEMENT:
-                XMLSwitchHelper.switchTVDBSeries(tvdbSeries, tvdbEpisode, xmlStreamReader.getLocalName(), content);
+                if(tvdbEpisode==null){
+                    XMLSwitchHelper.switchTVDBSeries(tvdbSeries, xmlStreamReader.getLocalName(), content);
+                } else {
+                    XMLSwitchHelper.switchTVDBEpisode(tvdbEpisode, xmlStreamReader.getLocalName(), content);
+                }
                 break;
         }
     }

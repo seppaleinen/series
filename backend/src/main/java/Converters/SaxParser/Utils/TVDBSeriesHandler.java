@@ -19,13 +19,18 @@ public class TVDBSeriesHandler extends DefaultHandler {
                 tvdbSeries = new TVDBSeries();
                 break;
             case TVDBSeriesConstants.EPISODE_ELEMENT:
+                tvdbSeries.getTvdbEpisodeList().add(tvdbEpisode);
                 tvdbEpisode = new TVDBEpisode();
                 break;
         }
     }
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        XMLSwitchHelper.switchTVDBSeries(tvdbSeries, tvdbEpisode, qName, content);
+        if(tvdbEpisode == null){
+            XMLSwitchHelper.switchTVDBSeries(tvdbSeries, qName, content);
+        } else {
+            XMLSwitchHelper.switchTVDBEpisode(tvdbEpisode, qName, content);
+        }
     }
     public void characters(char[] ch, int start, int length) throws SAXException {
         content = String.copyValueOf(ch, start, length).trim();

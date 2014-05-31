@@ -118,12 +118,9 @@ public class XMLSwitchHelper {
         }
     }
 
-    public static void switchTVDBSeries(TVDBSeries tvdbSeries, TVDBEpisode tvdbEpisode, String switchName, String content) {
+    public static void switchTVDBSeries(TVDBSeries tvdbSeries, String switchName, String content) {
         switch (switchName){
             case TVDBSeriesConstants.SERIES_ELEMENT:
-                break;
-            case TVDBSeriesConstants.EPISODE_ELEMENT:
-                tvdbSeries.getTvdbEpisodeList().add(tvdbEpisode);
                 break;
             case TVDBSeriesConstants.ACTORS:
                 tvdbSeries.setActors(content);
@@ -159,7 +156,7 @@ public class XMLSwitchHelper {
                 tvdbSeries.setOverview(content);
                 break;
             case TVDBSeriesConstants.RATING:
-                tvdbSeries.setRatingCount(content);
+                tvdbSeries.setRating(content);
                 break;
             case TVDBSeriesConstants.RATING_COUNT:
                 tvdbSeries.setRatingCount(content);
@@ -201,7 +198,6 @@ public class XMLSwitchHelper {
                 tvdbSeries.setId(content);
                 break;
             default:
-                switchTVDBEpisode(tvdbEpisode, switchName, content);
                 break;
         }
     }

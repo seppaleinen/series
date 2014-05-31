@@ -16,6 +16,7 @@ public class StAXParser implements XmlParser {
 
     @Override
     public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
-        return null;
+        XMLStreamReader xmlStreamReader = XmlStreamReaderHelper.getXMLStreamReader(xml);
+        return TVDBSeriesReaderHandler.parse(xmlStreamReader);
     }
 }

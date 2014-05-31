@@ -26,7 +26,13 @@ public class SaxParser implements XmlParser {
 
     @Override
     public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
-        return null;
+        TVDBSeries tvdbSeries;
+
+        TVDBSeriesHandler saxHandler = new TVDBSeriesHandler();
+        parse(saxHandler, xml);
+        tvdbSeries = saxHandler.getTVDBSeries();
+
+        return tvdbSeries;
     }
 
     private void parse(DefaultHandler defaultHandler, InputStream xml){

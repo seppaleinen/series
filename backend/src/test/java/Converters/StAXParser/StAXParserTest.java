@@ -10,17 +10,22 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 public class StAXParserTest {
-    private XmlParser saxParser;
+    private XmlParser staxParser;
     private ParserTests parserTests;
 
     @Before
     public void setup(){
-        saxParser = new StAXParser();
+        staxParser = new StAXParser();
         parserTests = new ParserTests();
     }
 
     @Test
     public void testParseTVDBUpdateFromXml() throws IOException, ParserConfigurationException, SAXException {
-        parserTests.testParseTVDBUpdateFromXml(saxParser);
+        parserTests.testParseTVDBUpdateFromXml(staxParser);
+    }
+
+    @Test
+    public void testParseTVDBSeriesAllFromXml(){
+        parserTests.testParseTVDBSeriesAll(staxParser);
     }
 }
