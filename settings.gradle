@@ -1,4 +1,12 @@
-include ':backend'
-include ':web'
-include ':web:war', 'web:war:wicket'
+rootProject.name = 'project'
+include ':web:war:wicket'
+include ':web:war'
 include ':web:ear'
+include ':web'
+include ':backend'
+
+project(':web:war:wicket').projectDir = "$rootDir/web/war/wicket" as File
+project(':web:war').projectDir = "$rootDir/web/war" as File
+project(':web:ear').projectDir = "$rootDir/web/ear" as File
+project(':web').projectDir = "$rootDir/web" as File
+project(':backend').projectDir = "$rootDir/backend" as File

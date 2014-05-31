@@ -1,27 +1,12 @@
-apply plugin: 'java'
+
 apply plugin: 'war'
-apply plugin: 'jetty'
 
-repositories(){
-	mavenCentral()
-	mavenLocal()
-}
-
-sourceSets{
-	main{
-		java{
-			srcDir 'src/main/java'
-		}
-		resources{
-			srcDir 'src/main/resources'
-			srcDir 'src/main/java'
-		}
-	}
-}
-
-dependencies{
-	compile "org.apache.wicket:wicket:1.4.17"
-	compile "junit:junit:4.11"
-	compile "javax.servlet:servlet-api:2.5"
-	compile project(':backend')
+description = 'wicket'
+dependencies {
+    compile(group: 'org.apache.wicket', name: 'wicket', version:'1.4.17') {
+exclude(module: 'slf4j-api')
+    }
+    compile group: 'junit', name: 'junit', version:'4.11'
+  compile project(':backend')
+    providedCompile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
 }
