@@ -1,15 +1,16 @@
+package se.david.web.page;
+
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
+import se.david.web.page.StartPage;
 
 import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 public class StartPageTest {
     private static final String MEDIA = "/Media";

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectToJPA {
+    private ObjectToJPA(){}
+
     public static TVDBEpisodeEntity convertTVDBEpisode_To_MySQLTVDBEpisode(TVDBEpisode tvdbEpisode){
         TVDBEpisodeEntity TVDBEpisodeEntity = new TVDBEpisodeEntity();
 

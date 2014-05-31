@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JPAToObject {
+    private JPAToObject(){}
+
     public static TVDBEpisode convertMySQLTVDBEpisode_To_TVDBEpisode(TVDBEpisodeEntity tvdbEpisodeEntity){
         TVDBEpisode tvdbEpisode = null;
         

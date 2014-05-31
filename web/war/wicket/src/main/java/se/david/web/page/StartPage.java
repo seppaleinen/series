@@ -1,3 +1,5 @@
+package se.david.web.page;
+
 import converters.saxparser.SaxParser;
 import converters.XmlParser;
 import integrations.TVDBInterface;
@@ -15,6 +17,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
+import se.david.web.model.ModelObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -34,6 +37,14 @@ public class StartPage extends WebPage {
     public static final String TVDB_UPDATE_BUTTON_ID = "tvdbUpdateButton";
     public static final String TVDB_UPDATE_LABEL_ID = "tvdbUpdateLabel";
 
+    public static final String TVDB_SERIES_ALL_TEXT_ID = "tvdbSeriesAllText";
+    public static final String TVDB_SERIES_ALL_BUTTON_ID = "tvdbSeriesAllButton";
+    public static final String TVDB_SERIES_ALL_LABEL_ID = "tvdbSeriesAllLabel";
+
+    public static final String TVDB_SERIES_BY_NAME_TEXT_ID = "tvdbSeriesByNameText";
+    public static final String TVDB_SERIES_BY_NAME_BUTTON_ID = "tvdbSeriesByNameButton";
+    public static final String TVDB_SERIES_BY_NAME_LABEL_ID = "tvdbSeriesByNameLabel";
+
     private Form form;
     private TextField<String> directory;
     private Button searchMediaButton;
@@ -41,10 +52,16 @@ public class StartPage extends WebPage {
     private WebMarkupContainer listViewContainer;
 
     private TextField<String> tvdbUpdateText;
+    private TextField<String> tvdbSeriesAllText;
+    private TextField<String> tvdbSeriesByNameText;
 
     private Button tvdbUpdateButton;
+    private Button tvdbSeriesAllButton;
+    private Button tvdbSeriesByNameButton;
 
     private Label tvdbUpdateLabel;
+    private Label tvdbSeriesAllLabel;
+    private Label tvdbSeriesByNameLabel;
 
     private List<String> results = new ArrayList<>();
     private ModelObject modelObject = new ModelObject();
@@ -67,10 +84,16 @@ public class StartPage extends WebPage {
         searchMediaButton = createSearchMediaButton();
 
         tvdbUpdateText = new TextField<>(TVDB_UPDATE_TEXT_ID);
+        tvdbSeriesAllText = new TextField<>(TVDB_SERIES_ALL_TEXT_ID);
+        tvdbSeriesByNameText = new TextField<>(TVDB_SERIES_BY_NAME_TEXT_ID);
 
         tvdbUpdateButton = createTVDBUpdateButton();
+        tvdbSeriesAllButton = createTVDBSeriesAllButton();
+        tvdbSeriesByNameButton = createTVDBSeriesByNameButton();
 
         tvdbUpdateLabel = new Label(TVDB_UPDATE_LABEL_ID);
+        tvdbSeriesAllLabel = new Label(TVDB_SERIES_ALL_LABEL_ID);
+        tvdbSeriesByNameLabel = new Label(TVDB_SERIES_BY_NAME_LABEL_ID);
     }
 
     private void addComponents(){
@@ -82,6 +105,15 @@ public class StartPage extends WebPage {
         form.add(tvdbUpdateText);
         form.add(tvdbUpdateButton);
         form.add(tvdbUpdateLabel);
+
+        form.add(tvdbSeriesAllText);
+        form.add(tvdbSeriesAllButton);
+        form.add(tvdbSeriesAllLabel);
+
+        form.add(tvdbSeriesByNameText);
+        form.add(tvdbSeriesByNameButton);
+        form.add(tvdbSeriesByNameLabel);
+
         add(form);
     }
 
@@ -105,6 +137,36 @@ public class StartPage extends WebPage {
                 TVDBUpdate tvdbUpdate = xmlParser.parseTVDBUpdateFromXml(inputStream);
                 if(tvdbUpdate != null){
                     modelObject.setTvdbUpdateLabel(tvdbUpdate.getTime());
+                }
+            }
+        };
+    }
+
+    private Button createTVDBSeriesAllButton(){
+        return new Button(TVDB_SERIES_ALL_BUTTON_ID){
+            @Override
+            public void onSubmit(){
+                TVDBInterface tvdbInterface = new TVDBImpl();
+                InputStream inputStream = tvdbInterface.getSeriesInfo(modelObject.getTvdbSeriesAllText());
+                XmlParser xmlParser = new SaxParser();
+                TVDBSeries tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
+                if(tvdbSeries != null){
+                    modelObject.setTvdbSeriesAllLabel(tvdbSeries.getSeriesName());
+                }
+            }
+        };
+    }
+
+    private Button createTVDBSeriesByNameButton(){
+        return new Button(TVDB_SERIES_BY_NAME_BUTTON_ID){
+            @Override
+            public void onSubmit(){
+                TVDBInterface tvdbInterface = new TVDBImpl();
+                InputStream inputStream = tvdbInterface.getSeriesByName(modelObject.getTvdbSeriesByNameText());
+                XmlParser xmlParser = new SaxParser();
+                TVDBSeries tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
+                if(tvdbSeries != null){
+                    modelObject.setTvdbSeriesByNameLabel(tvdbSeries.getSeriesId());
                 }
             }
         };
