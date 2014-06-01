@@ -17,6 +17,7 @@ public class TvDBImplTest {
         tvDB = new TVDBImpl();
     }
 
+    @Ignore
     @Test
     public void testGetSeriesByName(){
         String searchString = "Rick and morty";
@@ -24,6 +25,7 @@ public class TvDBImplTest {
         assertNotNull("InputStream should not be null", inputStream);
     }
 
+    @Ignore
     @Test
     public void testGetUpdatesSince(){
         String searchString = "1398082571";
@@ -31,6 +33,7 @@ public class TvDBImplTest {
         assertNotNull("InputStream should not be null", inputStream);
     }
 
+    @Ignore
     @Test
     public void testGetSeriesInfo(){
         String searchString = "275274";
