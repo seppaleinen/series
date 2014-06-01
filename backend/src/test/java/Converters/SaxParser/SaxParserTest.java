@@ -33,4 +33,7 @@ public class SaxParserTest {
     public void testParseTVDBSeriesByNameFromXml(){
         parserTests.testParseTVDBSeriesByName(saxParser);
     }
+
+    @Test
+    public void testParseTVDBSeriesByNameMultipleFromXml(){ parserTests.testParseTVDBSeriesByNameMultiple(saxParser); }
 }

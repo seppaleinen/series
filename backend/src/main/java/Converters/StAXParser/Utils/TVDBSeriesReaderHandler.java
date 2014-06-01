@@ -7,21 +7,25 @@ import objects.TVDBSeries;
 
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TVDBSeriesReaderHandler {
-    private static TVDBSeries tvdbSeries;
-    private static TVDBEpisode tvdbEpisode;
-    private static String content;
+    private List<TVDBSeries> tvdbSeriesList = new ArrayList<>();
 
-    public static TVDBSeries parse(XMLStreamReader xmlStreamReader) {
+    private TVDBSeries tvdbSeries;
+    private TVDBEpisode tvdbEpisode;
+    private String content;
+
+    public List<TVDBSeries> parse(XMLStreamReader xmlStreamReader) {
         while (XmlStreamReaderHelper.readerHasNext(xmlStreamReader)) {
             int event = XmlStreamReaderHelper.getNextEvent(xmlStreamReader);
             switchEvent(event, xmlStreamReader);
         }
-        return tvdbSeries;
+        return tvdbSeriesList;
     }
 
-    private static void switchEvent(int event, XMLStreamReader xmlStreamReader) {
+    private void switchEvent(int event, XMLStreamReader xmlStreamReader) {
         switch (event) {
             case XMLStreamConstants.START_ELEMENT:
                 if(TVDBSeriesConstants.SERIES_ELEMENT.equals(xmlStreamReader.getLocalName())) {
@@ -31,13 +35,18 @@ public class TVDBSeriesReaderHandler {
                     tvdbSeries.getTvdbEpisodeList().add(tvdbEpisode);
                     tvdbEpisode = new TVDBEpisode();
                 }
+                content = null;
                 break;
             case XMLStreamConstants.CHARACTERS:
-                content = xmlStreamReader.getText().trim();
+                if(content == null){
+                    content = xmlStreamReader.getText();
+                } else {
+                    content += xmlStreamReader.getText();
+                }
                 break;
             case XMLStreamConstants.END_ELEMENT:
                 if(tvdbEpisode==null){
-                    XMLSwitchHelper.switchTVDBSeries(tvdbSeries, xmlStreamReader.getLocalName(), content);
+                    XMLSwitchHelper.switchTVDBSeries(tvdbSeriesList, tvdbSeries, xmlStreamReader.getLocalName(), content);
                 } else {
                     XMLSwitchHelper.switchTVDBEpisode(tvdbEpisode, xmlStreamReader.getLocalName(), content);
                 }

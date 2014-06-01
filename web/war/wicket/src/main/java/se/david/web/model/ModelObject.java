@@ -1,6 +1,9 @@
 package se.david.web.model;
 
+import objects.FinderSeries;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class ModelObject implements Serializable {
     private String directory;
@@ -10,6 +13,7 @@ public class ModelObject implements Serializable {
     private String tvdbSeriesAllLabel;
     private String tvdbSeriesByNameText;
     private String tvdbSeriesByNameLabel;
+    private List<FinderSeries> finderList;
 
     public String getDirectory() {
         return directory;
@@ -65,5 +69,13 @@ public class ModelObject implements Serializable {
 
     public void setTvdbSeriesByNameLabel(String tvdbSeriesByNameLabel) {
         this.tvdbSeriesByNameLabel = tvdbSeriesByNameLabel;
+    }
+
+    public List<FinderSeries> getFinderList() {
+        return finderList;
+    }
+
+    public void setFinderList(List<FinderSeries> finderList) {
+        this.finderList = finderList;
     }
 }

@@ -6,6 +6,7 @@ import objects.*;
 import org.w3c.dom.Document;
 
 import java.io.InputStream;
+import java.util.List;
 
 public class DomParser implements XmlParser {
     private DocumentHandler documentHandler;
@@ -22,7 +23,7 @@ public class DomParser implements XmlParser {
     }
 
     @Override
-    public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
+    public List<TVDBSeries> parseTVDBSeriesFromXml(InputStream xml) {
         document = documentHandler.getDocumentFromInputStream(xml);
         TVDBSeriesNodeHandler seriesNodeHandler = new TVDBSeriesNodeHandler();
         return seriesNodeHandler.parse(document);

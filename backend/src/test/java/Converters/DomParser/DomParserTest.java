@@ -4,6 +4,7 @@ import converters.ParserTests;
 import converters.XmlParser;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -33,5 +34,11 @@ public class DomParserTest {
     @Test
     public void testParseTVDBSeriesByNameFromXml(){
         parserTests.testParseTVDBSeriesByName(domParser);
+    }
+
+    @Ignore
+    @Test
+    public void testParseTVDBSeriesByNameMultipleFromXml(){
+        parserTests.testParseTVDBSeriesByNameMultiple(domParser);
     }
 }

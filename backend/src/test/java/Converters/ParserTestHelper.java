@@ -10,6 +10,70 @@ import static org.junit.Assert.*;
 public class ParserTestHelper {
     private ParserTestHelper(){}
 
+    public static void assertMultipleSeriesByName(List<TVDBSeries> tvdbSeriesList){
+        assertNotNull("tvdbSeriesList should not be null", tvdbSeriesList);
+        equals("Size", 6, tvdbSeriesList.size());
+
+        TVDBSeries tvdbSeriesFirst = tvdbSeriesList.get(0);
+        equals("seriesid", "74995", tvdbSeriesFirst.getSeriesId());
+        equals("language", "en", tvdbSeriesFirst.getLanguage());
+        equals("SeriesName", "Cosmos", tvdbSeriesFirst.getSeriesName());
+        equals("banner", "graphical/74995-g7.jpg", tvdbSeriesFirst.getBanner());
+        equals("Overview", "Carl Sagan brings us the Cosmos, everything that ever was and ever will be, in an approach that is easily accessible even for those of us that are not science wizards.  This 13 part series covers everything from the history of astronomy, the challenges it faced at its creation, how the universe was created and how it all might end.First aired in 1980, updated segments have been added to the series to include recent discoveries and the current theories in astronomy.Winner of an Emmy and a Peabody Award.", tvdbSeriesFirst.getOverview());
+        equals("FirstAired", "1980-09-28", tvdbSeriesFirst.getFirstAired());
+        equals("Network", "PBS", tvdbSeriesFirst.getNetwork());
+        equals("IMDB_ID", "tt0081846", tvdbSeriesFirst.getImdbId());
+        equals("zap2it_id", "SH001071", tvdbSeriesFirst.getZap2itId());
+        equals("id", "74995", tvdbSeriesFirst.getId());
+
+        TVDBSeries tvdbSeriesSecond = tvdbSeriesList.get(1);
+        equals("seriesid", "278770", tvdbSeriesSecond.getSeriesId());
+        equals("language", "en", tvdbSeriesSecond.getLanguage());
+        equals("SeriesName", "Ultraman Cosmos", tvdbSeriesSecond.getSeriesName());
+        equals("banner", "graphical/278770-g.jpg", tvdbSeriesSecond.getBanner());
+        equals("FirstAired", "2001-07-07", tvdbSeriesSecond.getFirstAired());
+        equals("id", "278770", tvdbSeriesSecond.getId());
+
+        TVDBSeries tvdbSeriesThird = tvdbSeriesList.get(2);
+        equals("seriesid", "271623", tvdbSeriesThird.getSeriesId());
+        equals("language", "en", tvdbSeriesThird.getLanguage());
+        equals("SeriesName", "Images of the Cosmos", tvdbSeriesThird.getSeriesName());
+        equals("Overview", "A study of how revolutions in Astronomy have enabled Astronomers to more accurately map our Galaxy & beyond.", tvdbSeriesThird.getOverview());
+        equals("FirstAired", "1993-07-18", tvdbSeriesThird.getFirstAired());
+        equals("id", "271623", tvdbSeriesThird.getId());
+
+        TVDBSeries tvdbSeriesFourth = tvdbSeriesList.get(3);
+        equals("seriesid", "257422", tvdbSeriesFourth.getSeriesId());
+        equals("language", "en", tvdbSeriesFourth.getLanguage());
+        equals("SeriesName", "Beyond the Cosmos", tvdbSeriesFourth.getSeriesName());
+        equals("banner", "graphical/257422-g2.jpg", tvdbSeriesFourth.getBanner());
+        equals("Overview", "The world may run on it, but do we actually know what 'time' really is? Travel back to the Big Bang, where physicists believe the ultimate secrets of time may be hidden.  Brian Greene is going to let you in on a secret: We've all been deceived. Our perceptions of time and space have led us astray. Much of what we thought we knew about our universe-that the past has already happened and the future is yet to be, that space is just an empty void, that our universe is the only universe that exists-just might be wrong. The Fabric of the Cosmos, a four-hour series based on the book by renowned physicist and acclaimed author Brian Greene, takes us to the frontiers of physics to see how scientists are piecing together the most complete picture yet of space, time and the universe. With each step, audiences will discover that just beneath the surface of our everyday experience lies a world we'd hardly recognize-a startling world far stranger and more wondrous than anyone expected.", tvdbSeriesFourth.getOverview());
+        equals("FirstAired", "2012-04-03", tvdbSeriesFourth.getFirstAired());
+        equals("id", "257422", tvdbSeriesFourth.getId());
+
+        TVDBSeries tvdbSeriesFifth = tvdbSeriesList.get(4);
+        equals("seriesid", "260586", tvdbSeriesFifth.getSeriesId());
+        equals("language", "en", tvdbSeriesFifth.getLanguage());
+        equals("SeriesName", "Cosmos: A Spacetime Odyssey", tvdbSeriesFifth.getSeriesName());
+        equals("banner", "graphical/260586-g5.jpg", tvdbSeriesFifth.getBanner());
+        equals("Overview", "Hosted by renowned astrophysicist Neil deGrasse Tyson, Cosmos explores how we discovered the laws of nature and found our coordinates in space and time. It brings to life never-before-told stories of the heroic quest for knowledge and transport viewers to new worlds and across the universe for a vision of the cosmos on the grandest scale. The most profound scientific concepts are presented with stunning clarity, uniting skepticism and wonder, and weaving rigorous science with the emotional and spiritual into a transcendent experience.", tvdbSeriesFifth.getOverview());
+        equals("FirstAired", "2014-03-09", tvdbSeriesFifth.getFirstAired());
+        equals("Network", "FOX", tvdbSeriesFifth.getNetwork());
+        equals("IMDB_ID", "tt2395695", tvdbSeriesFifth.getImdbId());
+        equals("zap2it_id", "SH01446110", tvdbSeriesFifth.getZap2itId());
+        equals("id", "260586", tvdbSeriesFifth.getId());
+
+        TVDBSeries tvdbSeriesSixth = tvdbSeriesList.get(5);
+        equals("seriesid", "81034", tvdbSeriesSixth.getSeriesId());
+        equals("language", "en", tvdbSeriesSixth.getLanguage());
+        equals("SeriesName", "The Cosmos A Beginner's Guide", tvdbSeriesSixth.getSeriesName());
+        equals("banner", "graphical/81034-g.jpg", tvdbSeriesSixth.getBanner());
+        equals("Overview", "It's the story of everything - from the first microseconds of our universe to the exciting future of first contact and homes beyond our Earth. Join Adam Hart-Davis, Janet Sumner and Maggie Aderin for a journey around the planet to discover the latest thinking about the Cosmos.", tvdbSeriesSixth.getOverview());
+        equals("FirstAired", "2007-10-07", tvdbSeriesSixth.getFirstAired());
+        equals("Network", "BBC Two", tvdbSeriesSixth.getNetwork());
+        equals("id", "81034", tvdbSeriesSixth.getId());
+    }
+
     public static void assertSeriesByName(TVDBSeries tvdbSeries){
         assertNotNull("tvdbSeries should not be null", tvdbSeries);
         equals("seriesid", "275274", tvdbSeries.getSeriesId());
@@ -41,14 +105,11 @@ public class ParserTestHelper {
         equalsNull("GuestStars", firstEpisode.getGuestStars());
         equals("IMDB_ID", "tt2930486", firstEpisode.getImdbId());
         equals("Language", "en", firstEpisode.getLanguage());
-        //@TODO stax och saxparser klipper bort "-tecken
-        /*
         equals("Overview", "Justin actually made this as a way to poke fun at the idea of getting cease and desist letters. \n" +
                 "\n" +
                 "At the time (October 2006) he had nothing to lose and his original intention was to call this \"back to the future: the new official universal studios cartoon featuring the new Doc Brown and Marty McFly\" and then just sit back and wait for a letter from their lawyers to arrive. That's actually why it's so filthy. He was just looking to \"troll\" a big studio.\n" +
                 "\n" +
-                "7 years later, hit new animated TV show on adult swim.", firstEpisode.getOverview());
-        */
+                "7 years later, hit new animated TV show on adult swim. ", firstEpisode.getOverview());
         equalsNull("ProductionCode", firstEpisode.getProductionCode());
         equals("Rating", "10.0", firstEpisode.getRating());
         equals("SeasonNumber", "0", firstEpisode.getSeasonNumber());

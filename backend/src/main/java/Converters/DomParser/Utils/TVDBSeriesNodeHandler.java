@@ -9,16 +9,21 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TVDBSeriesNodeHandler {
+    private List<TVDBSeries> tvdbSeriesList = new ArrayList<>();
+
     private TVDBSeries tvdbSeries;
     private TVDBEpisode tvdbEpisode;
 
     public TVDBSeriesNodeHandler(){}
 
-    public TVDBSeries parse(Document document) {
+    public List<TVDBSeries> parse(Document document) {
         NodeList nodeList = document.getDocumentElement().getChildNodes();
         iterateNodeList(nodeList);
-        return tvdbSeries;
+        return tvdbSeriesList;
     }
 
     private void iterateNodeList(NodeList nodeList) {
@@ -28,6 +33,7 @@ public class TVDBSeriesNodeHandler {
                 String tagName = ((Element) node).getTagName();
                 if(TVDBSeriesConstants.SERIES_ELEMENT.equals(tagName) && tvdbSeries==null){
                     tvdbSeries = new TVDBSeries();
+                    tvdbSeriesList.add(tvdbSeries);
                 } else if(TVDBSeriesConstants.EPISODE_ELEMENT.equals(tagName)){
                     tvdbSeries.getTvdbEpisodeList().add(tvdbEpisode);
                     tvdbEpisode = new TVDBEpisode();
@@ -49,11 +55,11 @@ public class TVDBSeriesNodeHandler {
 
     private void extractInformationFromNode(Node node) {
         if(node.getLastChild()!=null) {
-            String content = node.getLastChild().getTextContent().trim();
+            String content = node.getLastChild().getTextContent();
             if(tvdbEpisode != null){
                 XMLSwitchHelper.switchTVDBEpisode(tvdbEpisode, node.getNodeName(), content);
             } else{
-                XMLSwitchHelper.switchTVDBSeries(tvdbSeries, node.getNodeName(), content);
+                XMLSwitchHelper.switchTVDBSeries(tvdbSeriesList, tvdbSeries, node.getNodeName(), content);
             }
         }
     }

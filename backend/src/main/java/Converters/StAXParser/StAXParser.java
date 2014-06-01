@@ -6,17 +6,20 @@ import objects.*;
 
 import javax.xml.stream.XMLStreamReader;
 import java.io.InputStream;
+import java.util.List;
 
 public class StAXParser implements XmlParser {
     @Override
     public TVDBUpdate parseTVDBUpdateFromXml(InputStream xml) {
         XMLStreamReader xmlStreamReader = XmlStreamReaderHelper.getXMLStreamReader(xml);
-        return TVDBUpdateReaderHandler.parse(xmlStreamReader);
+        TVDBUpdateReaderHandler updateReaderHandler = new TVDBUpdateReaderHandler();
+        return updateReaderHandler.parse(xmlStreamReader);
     }
 
     @Override
-    public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
+    public List<TVDBSeries> parseTVDBSeriesFromXml(InputStream xml) {
         XMLStreamReader xmlStreamReader = XmlStreamReaderHelper.getXMLStreamReader(xml);
-        return TVDBSeriesReaderHandler.parse(xmlStreamReader);
+        TVDBSeriesReaderHandler seriesReaderHandler = new TVDBSeriesReaderHandler();
+        return seriesReaderHandler.parse(xmlStreamReader);
     }
 }

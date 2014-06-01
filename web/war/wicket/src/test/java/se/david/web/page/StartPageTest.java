@@ -35,14 +35,11 @@ public class StartPageTest {
     @SuppressWarnings("unchecked")
     public void testPressButton(){
         tester.startPage(startPage);
-        FormTester formTester = tester.newFormTester("form");
+        FormTester formTester = tester.newFormTester(StartPage.FORM_ID);
         formTester.setValue(StartPage.DIRECTORY_ID, getFile(MEDIA));
         formTester.setValue(StartPage.SEARCH_BUTTON_ID, "");
         formTester.submit();
         tester.assertNoErrorMessage();
-        String listViewId = StartPage.FORM_ID + ":" + StartPage.LISTVIEWCONTAINER_ID + ":" + StartPage.LISTVIEW_ID;
-        ListView<String> listView = (ListView<String>) tester.getComponentFromLastRenderedPage(listViewId);
-        assertEquals("ListView size should be as expected", listView.size(), 6);
     }
 
     private String getFile(String directory){

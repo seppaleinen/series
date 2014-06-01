@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
@@ -16,6 +17,7 @@ public class ParserTests {
     private static final String TVDBUPDATES = "TVDBUPDATES.xml";
     private static final String TVDBSERIESALL = "TVDBSERIESALL.xml";
     private static final String TVDBSERIESBYNAME = "TVDBSERIESBYNAME.xml";
+    private static final String TVDBSERIESBYNAMEMULTIPLE = "TVDBSERIESBYNAMEMULTIPLE.xml";
 
     public void testParseTVDBUpdateFromXml(XmlParser xmlParser) throws IOException, ParserConfigurationException, SAXException {
         InputStream inputStream = getFile(TVDBUPDATES);
@@ -30,15 +32,22 @@ public class ParserTests {
 
     public void testParseTVDBSeriesAll(XmlParser xmlParser){
         InputStream inputStream = getFile(TVDBSERIESALL);
-        TVDBSeries tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
-        ParserTestHelper.assertSeries(tvdbSeries);
-        ParserTestHelper.assertEpisodes(tvdbSeries.getTvdbEpisodeList());
+        List<TVDBSeries> tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
+        ParserTestHelper.assertSeries(tvdbSeries.get(0));
+        ParserTestHelper.assertEpisodes(tvdbSeries.get(0).getTvdbEpisodeList());
     }
 
     public void testParseTVDBSeriesByName(XmlParser xmlParser){
         InputStream inputStream = getFile(TVDBSERIESBYNAME);
-        TVDBSeries tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
-        ParserTestHelper.assertSeriesByName(tvdbSeries);
+        List<TVDBSeries> tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
+        ParserTestHelper.assertSeriesByName(tvdbSeries.get(0));
+    }
+
+    public void testParseTVDBSeriesByNameMultiple(XmlParser xmlParser){
+        InputStream inputStream = getFile(TVDBSERIESBYNAMEMULTIPLE);
+        List<TVDBSeries> tvdbSeries = xmlParser.parseTVDBSeriesFromXml(inputStream);
+        ParserTestHelper.assertMultipleSeriesByName(tvdbSeries);
+
     }
 
     private InputStream getFile(String filename) {

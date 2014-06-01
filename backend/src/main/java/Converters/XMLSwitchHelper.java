@@ -3,6 +3,8 @@ package converters;
 import objects.*;
 import objects.constants.*;
 
+import java.util.List;
+
 public class XMLSwitchHelper {
     private XMLSwitchHelper(){}
 
@@ -118,9 +120,10 @@ public class XMLSwitchHelper {
         }
     }
 
-    public static void switchTVDBSeries(TVDBSeries tvdbSeries, String switchName, String content) {
+    public static void switchTVDBSeries(List<TVDBSeries> tvdbSeriesList, TVDBSeries tvdbSeries, String switchName, String content) {
         switch (switchName){
             case TVDBSeriesConstants.SERIES_ELEMENT:
+                tvdbSeriesList.add(tvdbSeries);
                 break;
             case TVDBSeriesConstants.ACTORS:
                 tvdbSeries.setActors(content);

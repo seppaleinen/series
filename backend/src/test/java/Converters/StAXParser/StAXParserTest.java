@@ -33,4 +33,7 @@ public class StAXParserTest {
     public void testParseTVDBSeriesByNameFromXml(){
         parserTests.testParseTVDBSeriesByName(staxParser);
     }
+
+    @Test
+    public void testParseTVDBSeriesByNameMultipleFromXml() { parserTests.testParseTVDBSeriesByNameMultiple(staxParser); }
 }

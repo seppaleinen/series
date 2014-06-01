@@ -11,6 +11,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class SaxParser implements XmlParser {
     @Override
@@ -25,8 +26,8 @@ public class SaxParser implements XmlParser {
     }
 
     @Override
-    public TVDBSeries parseTVDBSeriesFromXml(InputStream xml) {
-        TVDBSeries tvdbSeries;
+    public List<TVDBSeries> parseTVDBSeriesFromXml(InputStream xml) {
+        List<TVDBSeries> tvdbSeries;
 
         TVDBSeriesHandler saxHandler = new TVDBSeriesHandler();
         parse(saxHandler, xml);

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data>
+  <Series>
+    <seriesid>74995</seriesid>
+    <language>en</language>
+    <SeriesName>Cosmos</SeriesName>
+    <banner>graphical/74995-g7.jpg</banner>
+    <Overview>Carl Sagan brings us the Cosmos, everything that ever was and ever will be, in an approach that is easily accessible even for those of us that are not science wizards.  This 13 part series covers everything from the history of astronomy, the challenges it faced at its creation, how the universe was created and how it all might end.First aired in 1980, updated segments have been added to the series to include recent discoveries and the current theories in astronomy.Winner of an Emmy and a Peabody Award.</Overview>
+    <FirstAired>1980-09-28</FirstAired>
+    <Network>PBS</Network>
+    <IMDB_ID>tt0081846</IMDB_ID>
+    <zap2it_id>SH001071</zap2it_id>
+    <id>74995</id>
+  </Series>
+  <Series>
+    <seriesid>278770</seriesid>
+    <language>en</language>
+    <SeriesName>Ultraman Cosmos</SeriesName>
+    <banner>graphical/278770-g.jpg</banner>
+    <FirstAired>2001-07-07</FirstAired>
+    <id>278770</id>
+  </Series>
+  <Series>
+    <seriesid>271623</seriesid>
+    <language>en</language>
+    <SeriesName>Images of the Cosmos</SeriesName>
+    <Overview>A study of how revolutions in Astronomy have enabled Astronomers to more accurately map our Galaxy &amp; beyond.</Overview>
+    <FirstAired>1993-07-18</FirstAired>
+    <id>271623</id>
+  </Series>
+  <Series>
+    <seriesid>257422</seriesid>
+    <language>en</language>
+    <SeriesName>Beyond the Cosmos</SeriesName>
+    <banner>graphical/257422-g2.jpg</banner>
+    <Overview>The world may run on it, but do we actually know what 'time' really is? Travel back to the Big Bang, where physicists believe the ultimate secrets of time may be hidden.  Brian Greene is going to let you in on a secret: We've all been deceived. Our perceptions of time and space have led us astray. Much of what we thought we knew about our universe-that the past has already happened and the future is yet to be, that space is just an empty void, that our universe is the only universe that exists-just might be wrong. The Fabric of the Cosmos, a four-hour series based on the book by renowned physicist and acclaimed author Brian Greene, takes us to the frontiers of physics to see how scientists are piecing together the most complete picture yet of space, time and the universe. With each step, audiences will discover that just beneath the surface of our everyday experience lies a world we'd hardly recognize-a startling world far stranger and more wondrous than anyone expected.</Overview>
+    <FirstAired>2012-04-03</FirstAired>
+    <Network>National Geographic</Network>
+    <id>257422</id>
+  </Series>
+  <Series>
+    <seriesid>260586</seriesid>
+    <language>en</language>
+    <SeriesName>Cosmos: A Spacetime Odyssey</SeriesName>
+    <banner>graphical/260586-g5.jpg</banner>
+    <Overview>Hosted by renowned astrophysicist Neil deGrasse Tyson, Cosmos explores how we discovered the laws of nature and found our coordinates in space and time. It brings to life never-before-told stories of the heroic quest for knowledge and transport viewers to new worlds and across the universe for a vision of the cosmos on the grandest scale. The most profound scientific concepts are presented with stunning clarity, uniting skepticism and wonder, and weaving rigorous science with the emotional and spiritual into a transcendent experience.</Overview>
+    <FirstAired>2014-03-09</FirstAired>
+    <Network>FOX</Network>
+    <IMDB_ID>tt2395695</IMDB_ID>
+    <zap2it_id>SH01446110</zap2it_id>
+    <id>260586</id>
+  </Series>
+  <Series>
+    <seriesid>81034</seriesid>
+    <language>en</language>
+    <SeriesName>The Cosmos A Beginner's Guide</SeriesName>
+    <banner>graphical/81034-g.jpg</banner>
+    <Overview>It's the story of everything - from the first microseconds of our universe to the exciting future of first contact and homes beyond our Earth. Join Adam Hart-Davis, Janet Sumner and Maggie Aderin for a journey around the planet to discover the latest thinking about the Cosmos.</Overview>
+    <FirstAired>2007-10-07</FirstAired>
+    <Network>BBC Two</Network>
+    <id>81034</id>
+  </Series>
+</Data>

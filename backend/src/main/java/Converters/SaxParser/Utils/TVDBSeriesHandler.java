@@ -8,7 +8,12 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TVDBSeriesHandler extends DefaultHandler {
+    private List<TVDBSeries> tvdbSeriesList = new ArrayList<>();
+
     private TVDBSeries tvdbSeries;
     private TVDBEpisode tvdbEpisode;
     private String content;
@@ -23,20 +28,25 @@ public class TVDBSeriesHandler extends DefaultHandler {
                 tvdbEpisode = new TVDBEpisode();
                 break;
         }
+        content = null;
     }
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if(tvdbEpisode == null){
-            XMLSwitchHelper.switchTVDBSeries(tvdbSeries, qName, content);
+            XMLSwitchHelper.switchTVDBSeries(tvdbSeriesList, tvdbSeries, qName, content);
         } else {
             XMLSwitchHelper.switchTVDBEpisode(tvdbEpisode, qName, content);
         }
     }
     public void characters(char[] ch, int start, int length) throws SAXException {
-        content = String.copyValueOf(ch, start, length).trim();
+        if(content==null){
+            content = String.copyValueOf(ch, start, length);
+        } else {
+            content += String.copyValueOf(ch, start, length);
+        }
     }
 
-    public TVDBSeries getTVDBSeries(){
-        return tvdbSeries;
+    public List<TVDBSeries> getTVDBSeries(){
+        return tvdbSeriesList;
     }
 }
