@@ -1,22 +1,22 @@
 package objects;
 
 public class PirateBay {
-    private String id;
+    private Long id;
     private String name;
     private String category;
     private String magnet;
     private String uploaded;
     private String uploader;
     private String size;
-    private String seeders;
-    private String leechers;
-    private String trusted;
+    private int seeders;
+    private int leechers;
+    private boolean trusted;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -68,27 +68,27 @@ public class PirateBay {
         this.size = size;
     }
 
-    public String getSeeders() {
+    public int getSeeders() {
         return seeders;
     }
 
-    public void setSeeders(String seeders) {
+    public void setSeeders(int seeders) {
         this.seeders = seeders;
     }
 
-    public String getLeechers() {
+    public int getLeechers() {
         return leechers;
     }
 
-    public void setLeechers(String leechers) {
+    public void setLeechers(int leechers) {
         this.leechers = leechers;
     }
 
-    public String getTrusted() {
+    public boolean isTrusted() {
         return trusted;
     }
 
-    public void setTrusted(String trusted) {
+    public void setTrusted(boolean trusted) {
         this.trusted = trusted;
     }
 }
