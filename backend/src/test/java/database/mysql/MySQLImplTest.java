@@ -15,15 +15,12 @@ import static org.junit.Assert.assertNotNull;
 
 public class MySQLImplTest {
     private MySQLImpl dbInterface;
-    private static EntityManager entityManager;
     private static String persistenceName;
 
     @BeforeClass
     public static void setupClass(){
         persistenceName = databaseExists() ? "mysql" : "mysqltest";
         System.out.println("Running on " + persistenceName + " persistence");
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(persistenceName);
-        entityManager = entityManagerFactory.createEntityManager();
     }
 
     @Before

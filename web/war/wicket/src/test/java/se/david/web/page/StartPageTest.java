@@ -15,7 +15,7 @@ import java.util.Locale;
 import static org.junit.Assert.assertEquals;
 
 public class StartPageTest {
-    private static final String SEPARATOR = System.getProperty("\\" + "file.separator");
+    private static final String SEPARATOR = System.getProperty("file.separator");
     private static final String MEDIA = SEPARATOR + "Media";
     private WicketTester tester;
     private StartPage startPage;
@@ -37,12 +37,9 @@ public class StartPageTest {
     @Test
     @SuppressWarnings("unchecked")
     public void testPressButton(){
-        String path = "/Media";
-        System.out.println("PATH: " + path);
-
         tester.startPage(startPage);
         FormTester formTester = tester.newFormTester(StartPage.FORM_ID);
-        formTester.setValue(StartPage.DIRECTORY_ID, getFile(path));
+        formTester.setValue(StartPage.DIRECTORY_ID, getFile(MEDIA));
         formTester.setValue(StartPage.SEARCH_BUTTON_ID, "");
         formTester.submit();
         tester.assertNoErrorMessage();

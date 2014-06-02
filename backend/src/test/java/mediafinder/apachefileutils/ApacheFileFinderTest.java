@@ -19,7 +19,6 @@ public class ApacheFileFinderTest {
         apacheFileFinder = new ApacheFileFinder();
     }
 
-    @Ignore
     @Test
     public void testSearchDirectory() {
         int expectedResultSize = 6;

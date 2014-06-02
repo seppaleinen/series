@@ -17,7 +17,6 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/MYDB" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="minstlol" />
-            <property name="hbm2ddl.auto" value="create" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 
             <property name="hibernate.show_sql" value="true"/>
@@ -49,6 +48,7 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
             <property name="hibernate.connection.username" value="sa"/>
             <property name="hibernate.connection.password" value=""/>
+            <property name="hbm2ddl.auto" value="create-drop" />
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
@@ -76,7 +76,6 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mypostgres" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="minstlol" />
-            <property name="hbm2ddl.auto" value="create" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
 
             <property name="hibernate.show_sql" value="true"/>
@@ -107,7 +106,7 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
             <property name="hibernate.connection.username" value="sa"/>
             <property name="hibernate.connection.password" value=""/>
-            <property name="hbm2ddl.auto" value="create" />
+            <property name="hbm2ddl.auto" value="create-drop" />
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>

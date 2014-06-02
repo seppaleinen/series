@@ -15,7 +15,7 @@ public class TVDBUpdateEntity implements Serializable {
     public static final String FIND_BY_SERIESID = "findUpdateBy";
 
     @Id
-    @Column(name = "time", unique = true)
+    @Column(name = "UPDATETIME")
     private String time;
 
     @OneToMany(mappedBy = "TVDBUpdateEntity", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)

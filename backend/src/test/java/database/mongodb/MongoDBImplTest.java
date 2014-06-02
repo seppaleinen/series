@@ -26,7 +26,6 @@ public class MongoDBImplTest {
         dbInterface.setMongoClient(client);
     }
 
-    @Ignore
     @Test
     public void testSaveAndFindTVDBEpisode(){
         TVDBEpisode tvdbEpisode = ObjectCreater.createTVDBEpisode();
@@ -37,7 +36,6 @@ public class MongoDBImplTest {
         assertEquals("objects should be equals", tvdbEpisode, foundTVDBEpisode);
     }
 
-    @Ignore
     @Test
     public void testSaveAndFindTVDBSeries(){
         TVDBSeries tvdbSeries = ObjectCreater.createTVDBSeries();
@@ -48,7 +46,6 @@ public class MongoDBImplTest {
         assertEquals("objects should be equals", tvdbSeries, foundTVDBSeries);
     }
 
-    @Ignore
     @Test
     public void testSaveAndFindTVDBUpdate(){
         TVDBUpdate tvdbUpdate = ObjectCreater.createTVDBUpdate();
