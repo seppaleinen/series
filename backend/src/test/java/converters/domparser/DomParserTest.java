@@ -2,7 +2,6 @@ package converters.domparser;
 
 import converters.ParserTests;
 import converters.XmlParser;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
