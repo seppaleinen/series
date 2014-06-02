@@ -2,6 +2,7 @@ package se.david.web.page;
 
 import mediafinder.apachefileutils.ApacheFileFinder;
 import mediafinder.Finder;
+import mediafinder.filefinder.FileFinder;
 import objects.*;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
@@ -56,7 +57,7 @@ public class StartPage extends WebPage {
         return new Button(SEARCH_BUTTON_ID){
             @Override
             public void onSubmit(){
-                Finder mediaFinder = new ApacheFileFinder();
+                Finder mediaFinder = new FileFinder();
                 if(modelObject.getDirectory()!= null && !modelObject.getDirectory().isEmpty()){
                     List<FinderSeries> mediaFinderResults = mediaFinder.searchDirectory(modelObject.getDirectory());
                     modelObject.setFinderList(mediaFinderResults);
