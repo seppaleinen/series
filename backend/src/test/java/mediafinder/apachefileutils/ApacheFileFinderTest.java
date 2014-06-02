@@ -2,6 +2,7 @@ package mediafinder.apachefileutils;
 
 import objects.FinderSeries;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ApacheFileFinderTest {
         apacheFileFinder = new ApacheFileFinder();
     }
 
+    @Ignore
     @Test
     public void testSearchDirectory() {
         int expectedResultSize = 6;
