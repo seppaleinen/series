@@ -8,8 +8,8 @@
    <name>project</name>
 
     <modules>
-        <module>web</module>
         <module>backend</module>
+        <module>web</module>
     </modules>
 
     <dependencies>
