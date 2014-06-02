@@ -3,6 +3,7 @@ package mediafinder.filefinder;
 import mediafinder.Finder;
 import objects.FinderSeries;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class FileFinderTest {
         fileFinder = new FileFinder();
     }
 
+    @Ignore
     @Test
     public void testFinder(){
         int expectedResultSize = 6;

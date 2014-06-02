@@ -32,6 +32,7 @@ public class MySQLImplTest {
         dbInterface.setPersistence(persistenceName);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindTVDBSeries() {
         TVDBSeries tvdbSeries = ObjectCreater.createTVDBSeries();
@@ -44,6 +45,7 @@ public class MySQLImplTest {
         assertEquals("objects should be equals", tvdbSeries, foundTVDBSeries);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindTVDBEpisode() {
         TVDBEpisode tvdbEpisode = ObjectCreater.createTVDBEpisode();
@@ -56,6 +58,7 @@ public class MySQLImplTest {
         assertEquals("objects should be equals", tvdbEpisode, foundTVDBEpisode);
     }
 
+    @Ignore
     @Test
     public void testSaveAndFindTVDBUpdate() {
         TVDBUpdate tvdbUpdate = ObjectCreater.createTVDBUpdate();
