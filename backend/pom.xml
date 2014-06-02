@@ -126,14 +126,6 @@
         -->
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>maven repository</id>
-            <url>http://repo.maven.apache.org/maven2</url>
-        </repository>
-    </repositories>
-
-
     <build>
         <plugins>
             <!-- Dedicate FirstClass as mainmethod -->
