@@ -19,7 +19,6 @@ public class FileFinderTest {
         fileFinder = new FileFinder();
     }
 
-    @Ignore
     @Test
     public void testFinder(){
         int expectedResultSize = 6;

@@ -4,7 +4,7 @@ import objects.constants.MediaInfoConstants;
 import objects.FinderSeries;
 
 public class MediaInfo {
-    private static final String SEPARATOR = System.getProperty("file.separator");
+    private final String SEPARATOR = System.getProperty("file.separator");
     private FinderSeries finderSeries;
 
     public FinderSeries getFinderSeriesFromPath(String mediaPath){
@@ -23,7 +23,7 @@ public class MediaInfo {
     }
 
     private String splitInfo(String mediaPath, MediaInfoConstants mediaInfoConstant){
-        String[] splitMediaPath = mediaPath.split(SEPARATOR);
+        String[] splitMediaPath = mediaPath.split("\\" + SEPARATOR);
         int arrayLength = splitMediaPath.length - mediaInfoConstant.getNumber();
         return splitMediaPath[arrayLength];
     }

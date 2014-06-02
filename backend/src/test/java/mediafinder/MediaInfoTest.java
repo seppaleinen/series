@@ -9,20 +9,20 @@ import static org.junit.Assert.*;
 
 public class MediaInfoTest {
     private MediaInfo mediaInfo;
-    private static final String SERIES_DIR = "/Downloads/Series";
+    private static final String SEPARATOR = "\\" + System.getProperty("file.separator");
+    private static final String SERIES_DIR = "." + SEPARATOR + "Downloads" + SEPARATOR + "Series";
     private static final String ARCHER_DIR = "Archer S05";
     private static final String ARCHER_EPISODE = "Archer.2009.S05E10.HDTV.XviD-AFG.avi";
-    private static final String ARCHER_PATH = SERIES_DIR + "/" + ARCHER_DIR + "/" + ARCHER_EPISODE;
+    private static final String ARCHER_PATH = SERIES_DIR + SEPARATOR + ARCHER_DIR + SEPARATOR + ARCHER_EPISODE;
     private static final String EVANGELION_DIR = "Neon Genesis Evangelion";
     private static final String EVANGELION_EPISODE = "NGE-24.mkv";
-    private static final String EVANGELION_PATH = SERIES_DIR + "/" + EVANGELION_DIR + "/" + EVANGELION_EPISODE;
+    private static final String EVANGELION_PATH = SERIES_DIR + SEPARATOR + EVANGELION_DIR + SEPARATOR + EVANGELION_EPISODE;
 
     @Before
     public void setup(){
         mediaInfo = new MediaInfo();
     }
 
-    @Ignore
     @Test
     public void testGetFilenameFromPath(){
         String result = mediaInfo.getFilenameFromPath(ARCHER_PATH);

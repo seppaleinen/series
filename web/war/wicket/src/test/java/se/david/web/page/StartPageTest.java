@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import se.david.web.page.StartPage;
 
@@ -31,6 +32,7 @@ public class StartPageTest {
         tester.assertRenderedPage(StartPage.class);
     }
 
+    @Ignore
     @Test
     @SuppressWarnings("unchecked")
     public void testPressButton(){
