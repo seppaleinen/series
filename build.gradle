@@ -1,8 +1,11 @@
+apply plugin: 'sonar-runner'
+
 allprojects  {
   apply plugin: 'maven'
+  apply plugin: 'java'
 
   group = 'root'
-version = '1.0'
+  version = '1.0'
 }
 
 subprojects {
@@ -20,7 +23,7 @@ subprojects {
   
   dependencies {
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.7'
-}
+    testCompile group: 'junit', name: 'junit', version:'4.11'
 
-  
+  }	
 }
