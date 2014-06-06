@@ -22,6 +22,7 @@ web/war/wicket/*
 !web/ear/
 web/ear/*
 !web/ear/src/
+!gradle/
 
 !backend
 backend/*
@@ -35,6 +36,8 @@ backend/*
 !pom.xml
 !build.gradle
 !settings.gradle
+!gradlew
+!gradlew.bat
 !mavenvsgradle.sh
 
 # Git
