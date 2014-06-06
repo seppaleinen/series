@@ -26,8 +26,8 @@ public class TorrentLeechCrawlerTest {
     @Ignore
     @Test
     public void testTorrentLeechLogin(){
-        String username = "seppaleinen";
-        String password = "minstlol";
+        String username = "";
+        String password = "";
         boolean loggedIn = crawler.login(username, password);
         assertTrue("loggedIn should be true", loggedIn);
     }
