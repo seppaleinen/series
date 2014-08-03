@@ -4,6 +4,7 @@ import objects.constants.MediaInfoConstants;
 import objects.FinderSeries;
 
 public class MediaInfo {
+    private static final boolean IS_WINDOWS = System.getProperty( "os.name" ).contains( "indow" );
     private final String SEPARATOR = System.getProperty("file.separator");
     private FinderSeries finderSeries;
 
@@ -23,7 +24,8 @@ public class MediaInfo {
     }
 
     private String splitInfo(String mediaPath, MediaInfoConstants mediaInfoConstant){
-        String[] splitMediaPath = mediaPath.split(SEPARATOR + SEPARATOR);
+        String SEP = IS_WINDOWS ? SEPARATOR + SEPARATOR : SEPARATOR;
+        String[] splitMediaPath = mediaPath.split(SEP);
         int arrayLength = splitMediaPath.length - mediaInfoConstant.getNumber();
         return splitMediaPath[arrayLength];
     }
