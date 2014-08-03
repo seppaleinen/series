@@ -23,7 +23,7 @@ public class MediaInfo {
     }
 
     private String splitInfo(String mediaPath, MediaInfoConstants mediaInfoConstant){
-        String[] splitMediaPath = mediaPath.split(SEPARATOR);
+        String[] splitMediaPath = mediaPath.split(SEPARATOR + SEPARATOR);
         int arrayLength = splitMediaPath.length - mediaInfoConstant.getNumber();
         return splitMediaPath[arrayLength];
     }
