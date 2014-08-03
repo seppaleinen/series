@@ -12,6 +12,7 @@ import java.util.List;
 
 public class ApacheFileFinder implements Finder {
     private CustomFileVisitor customFileVisitor;
+    private static final boolean IS_WINDOWS = System.getProperty( "os.name" ).contains( "indow" );
 
     public ApacheFileFinder() {
         customFileVisitor = new CustomFileVisitor();
@@ -33,6 +34,10 @@ public class ApacheFileFinder implements Finder {
     }
 
     private Path getPath(String directory) {
-        return FileSystems.getDefault().getPath(directory);
+        String fixedPath = null;
+        if(IS_WINDOWS) {
+            fixedPath = directory.substring(1);
+        }
+        return FileSystems.getDefault().getPath(fixedPath);
     }
 }
