@@ -34,7 +34,7 @@ public class ApacheFileFinder implements Finder {
     }
 
     private Path getPath(String directory) {
-        String fixedPath = null;
+        String fixedPath = directory;
         if(IS_WINDOWS) {
             fixedPath = directory.substring(1);
         }
