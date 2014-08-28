@@ -30,9 +30,9 @@ public class gpsDistanceTest {
         double dlong = (endpointLng - startpointLng) * d2r;
         double dlat = (endpointLat - startpointLat) * d2r;
         double a = Math.pow(Math.sin(dlat / 2.0), 2)
-                + Math.cos(startpointLat * d2r)
-                * Math.cos(endpointLat * d2r)
-                * Math.pow(Math.sin(dlong / 2.0), 2);
+                 + Math.cos(startpointLat * d2r)
+                 * Math.cos(endpointLat * d2r)
+                 * Math.pow(Math.sin(dlong / 2.0), 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         return earthRadius * c;
