@@ -2,6 +2,7 @@ package integrations.urlimpl;
 
 import integrations.PirateBayInterface;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -16,6 +17,7 @@ public class PirateBayImplTest {
         pirateBay = new PirateBayImpl();
     }
 
+    @Ignore
     @Test
     public void test(){
         String searchString = "Rick and morty";
