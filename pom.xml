@@ -27,6 +27,12 @@
         </dependency>
     </dependencies>
 
+
+
+
+
+
+
     <properties>
         <sonar.jdbc.url>
             <!--MYSQL-->
