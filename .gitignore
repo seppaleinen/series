@@ -33,6 +33,7 @@ backend/*
 # -----------------------------------------------------------------
 
 # Maven
+!.travis.yml
 !pom.xml
 !build.gradle
 !settings.gradle
