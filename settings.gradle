@@ -1,6 +1,0 @@
-rootProject.name = 'project'
-include ':web:war:wicket'
-include ':web:war'
-include ':web:ear'
-include ':web'
-include ':backend'
