@@ -33,6 +33,7 @@ backend/*
 # -----------------------------------------------------------------
 
 # Maven
+!.coveralls.yml
 !README.md
 !.travis.yml
 !pom.xml
