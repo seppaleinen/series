@@ -42,7 +42,3 @@ buildscript {
     }
 }
 cobertura.coverageFormats = ['html', 'xml']
-
-task wrapper(type: Wrapper){
-    gradleVersion = '2.1.1'
-}

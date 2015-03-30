@@ -1,7 +1,6 @@
 language: java
 jdk:
   - "oraclejdk7"
-script: gradle clean build
 after_success:
 - ./gradlew cobertura coveralls
 env:
