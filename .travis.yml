@@ -4,6 +4,4 @@ jdk:
 after_success:
 - ./gradlew cobertura coveralls
 env:
-  global:
-    - COVERALLS_REPO_TOKEN=d4v0Dh57pC0DIDUWNYvmulIDhc9O1pMFT
     - TERM=dumb
