@@ -2,6 +2,6 @@ language: java
 jdk:
   - "oraclejdk7"
 after_success:
-- ./gradlew jacocoTestReport coveralls
+- ./gradlew cobertura coveralls
 env:
     - TERM=dumb
