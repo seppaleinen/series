@@ -1,6 +1,4 @@
 apply plugin: 'sonar-runner'
-apply plugin: 'jacoco'
-apply plugin: 'com.github.kt3k.coveralls'
 
 allprojects  {
   apply plugin: 'maven'
@@ -28,38 +26,18 @@ subprojects {
   }
 }
 
-dependencies {
-    compile group: 'org.kt3k.gradle.plugin', name:'coveralls-gradle-plugin', version:'2.3.1'
-}
+apply plugin: 'cobertura'
+apply plugin: 'com.github.kt3k.coveralls'
 
-task jacocoRootReport(type: JacocoReport, group: 'Coverage reports') {
-    description = 'Generates an aggregate report from all subprojects'
-    dependsOn(publishedProjects.test)
-
-    additionalSourceDirs = files(publishedProjects.sourceSets.main.allSource.srcDirs)
-    sourceDirectories = files(publishedProjects.sourceSets.main.allSource.srcDirs)
-    classDirectories = files(publishedProjects.sourceSets.main.output)
-    executionData = files(publishedProjects.jacocoTestReport.executionData)
-
-    reports {
-        html.enabled = true
-        xml.enabled = true
+buildscript {
+    repositories {
+        mavenCentral()
     }
 
-    doFirst {
-        executionData = files(executionData.findAll { it.exists() })
+    dependencies {
+        classpath 'net.saliman:gradle-cobertura-plugin:2.0.0' // cobertura plugin
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.3.1'
     }
 }
 
-coveralls {
-    sourceDirs = publishedProjects.sourceSets.main.allSource.srcDirs.flatten()
-    jacocoReportPath = "${buildDir}/reports/jacoco/jacocoRootReport/jacocoRootReport.xml"
-}
-
-tasks.coveralls {
-    group = 'Coverage reports'
-    description = 'Uploads the aggregated coverage report to Coveralls'
-
-    dependsOn jacocoRootReport
-    onlyIf { System.env.'CI' }
-}
+cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
