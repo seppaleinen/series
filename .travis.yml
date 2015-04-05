@@ -2,3 +2,7 @@ language: java
 jdk:
   - "oraclejdk7"
 after_success: mvn cobertura:cobertura coveralls:report
+env:
+  global:
+    - TERM=dumb
+    - SECURE=fPLAckqm64LBIeTEUlAs8Jx+z/EXQT3Q/lW+jDj5djXca3EGEWmLHo+UAlwub0wF4TAHGcsLDk7y/LTg5v+4woeDbxTP/WgZ0fYgDS8IXjRnzLmpTmGQhy8ViS3QfgEXwHOG3oV/h1r7GQ7LSNrM9KXWi8dPphanfLVC8tqlBnc=
