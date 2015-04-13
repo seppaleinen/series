@@ -6,3 +6,13 @@ env:
   global:
     - TERM=dumb
     - SECURE=fPLAckqm64LBIeTEUlAs8Jx+z/EXQT3Q/lW+jDj5djXca3EGEWmLHo+UAlwub0wF4TAHGcsLDk7y/LTg5v+4woeDbxTP/WgZ0fYgDS8IXjRnzLmpTmGQhy8ViS3QfgEXwHOG3oV/h1r7GQ7LSNrM9KXWi8dPphanfLVC8tqlBnc=
+    - secure: "WDSvf5IvGWhBn7+8NcsUQgnNf7kXrMClv5GSVhMNgp5fkkMOro5ZoH5pGnyX+mKOSZen2YY2kY3FhMhB9JIpTFmobfHht2I9a6dXoDXC6wiGlqjW2+2aN6jLY1JuS5o93Dja6oBW+UgUauGKnuPM/XGRFnYvAQddo9jXiBumikI="
+
+addons:
+  coverity_scan:
+    project:
+      name: "seppaleinen/series"
+    notification_email: davideriksson@swedenmail.com
+    build_command_prepend: "mvn clean"
+    build_command:   "mvn -DskipTests=true compile"
+    branch_pattern: coverity_scan
